@@ -26,6 +26,16 @@
                             <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Privacy</a>
                         </li>
                     </ul>
+                     @if (User.Identity.IsAuthenticated) //tjekker om bruger er logget ind
+                    {
+                        <form method="post" asp-page="/Account/Logout">
+                            <button type="submit" class="nav-link btn btn-link">Log ud</button> @* Viser log ud knap *@
+                        </form>
+                    }
+                    else
+                    {
+                        <a class="nav-link" asp-area="" asp-page="/Account/Login">Log ind</a> @* Viser log ind link *@
+                    }
                 </div>
             </div>
         </nav>
