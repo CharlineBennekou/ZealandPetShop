@@ -20,3 +20,71 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+
+/*GetAllItems Page html*/
+.product-title {
+    text-align: center;
+    color: #f16d65;
+}
+
+.product-container {
+    display: flex; /* Sets the container as a flex container */
+    flex-wrap: wrap; /* Allows flex items to wrap onto multiple lines */
+    justify-content: space-between; /* Spaces items evenly along the main axis */
+}
+
+.product-card {
+    margin-bottom: 20px; /* Adds bottom margin to provide spacing between cards */
+}
+
+.product-box {
+    /*sletter måske border når billederne kommer*/ border: 1px solid #ccc; /* Adds a 1px solid border with light gray color */
+
+    padding: 10px; /* Adds 10 pixels of padding inside the box */
+    width: 300px; /* Adjusts the width to fit the content */
+    box-sizing: border-box; /* Includes border and padding in the total width and height */
+    display: flex; /* Sets the box as a flex container */
+    flex-direction: column; /* Stacks items vertically */
+    align-items: center; /* Centers items along the cross axis */
+    justify-content: center; /* Centers items along the main axis */
+}
+
+.addCart {
+    background-color: #f16d65; /* Sets the background color to #f16d65 */
+    color: black; /* Sets the text color to black */
+    border: none; /* Removes the border */
+    padding: 5px 85px; /* Adjust padding to make the button longer */
+    cursor: pointer; /* Changes cursor to pointer */
+    margin-top: 10px; /* Adds top margin for spacing */
+}
+
+    .addCart:hover {
+        background-color: #e05d55; /* Changes background color on hover to a slightly darker shade */
+        border: none; /* Removes the border on hover */
+    }
+
+.detail-info {
+    background-color: #f16d65; /* Sets the background color to #f16d65 */
+    color: black; /* Sets the text color to black */
+    border: none; /* Removes the border */
+    padding: 5px 109px; /* Adjust padding to make the button longer */
+    cursor: pointer; /* Changes cursor to pointer */
+    margin-top: 10px; /* Adds top margin for spacing */
+}
+
+    .detail-info:hover {
+        background-color: #e05d55; /* Changes background color on hover to a slightly darker shade */
+        border: none; /* Removes the border on hover */
+    }
+
+
+.image-item {
+    width: 100%; /* Ensure the image container spans the full width of the box */
+    overflow: hidden; /* Hide any overflowing content */
+}
+
+.image-image {
+    width: 100%; /* Make the image fill the entire width of its container */
+    height: auto; /* Maintain the aspect ratio */
+}
