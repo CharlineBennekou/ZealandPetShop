@@ -15,6 +15,8 @@
         [Required(ErrorMessage = "Item skal have et navn")]
         public string? Name { get; set; }
 
+        public string Description { get; set; }
+
         [Display(Name = "Pris")]
         [Required(ErrorMessage = "Der skal angives en pris")]
         public double? Price { get; set; }
@@ -24,11 +26,12 @@
             Id = NextId++; 
         }
 
-        public Item(int id, string imagePath ,string name, double price)
+        public Item(string name, string imagePath, string description, double price)
         {
             Id = NextId++;
-            ImagePath = imagePath;
             Name = name;
+            ImagePath = imagePath;
+            Description = description;
             Price = price;
         }
     }
