@@ -14,5 +14,10 @@
         public User()
         {
         }
+
+        public override string ToString()
+        {
+            return $"{{{nameof(Id)}={Id.ToString()}, {nameof(UserName)}={UserName}, {nameof(Password)}={Password}}}";
+        }
     }
 }

@@ -12,6 +12,8 @@ namespace ZealandPetShop.Pages.Login
 {
     public class LogInModel : PageModel
     {
+        public static User LoggedInUser { get; set; } = null;
+
         private Userservice _userService;
         public LogInModel(Userservice userService)
         {
@@ -39,7 +41,7 @@ namespace ZealandPetShop.Pages.Login
 
                     if (passwordHasher.VerifyHashedPassword(null, user.Password, Password) == PasswordVerificationResult.Success)
                     {
-                        // LoggedInUser = user;
+                        LoggedInUser = user;
 
                         var claims = new List<Claim> { new Claim(ClaimTypes.Name, UserName) };
 
@@ -47,7 +49,7 @@ namespace ZealandPetShop.Pages.Login
 
                         var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
                         await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsIdentity));
-                        return RedirectToPage("/Item/GetAllItems");
+                        return RedirectToPage("/index");
                     }
                 }
             }

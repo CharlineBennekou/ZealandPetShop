@@ -1,8 +1,22 @@
+using Microsoft.AspNetCore.Authentication.Cookies;
+using ZealandPetShop.Services;
+
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
+builder.Services.AddSingleton<Userservice, Userservice>();
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(cookieOptions => {
+    cookieOptions.LoginPath = "/Login/LogIn";
+     cookieOptions.LogoutPath = "/Login/Logout";
 
+});
+builder.Services.Configure<CookiePolicyOptions>(options => {
+    // This lambda determines whether user consent for non-essential cookies is needed for a given request. options.CheckConsentNeeded = context => true;
+    options.MinimumSameSitePolicy = SameSiteMode.None;
+
+});
 var app = builder.Build();
 
 
