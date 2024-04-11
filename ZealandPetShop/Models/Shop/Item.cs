@@ -21,7 +21,7 @@
 
         public Item()
         {
-            Id = NextId++;
+            Id = NextId++; 
         }
 
         public Item(int id, string imagePath ,string name, double price)
