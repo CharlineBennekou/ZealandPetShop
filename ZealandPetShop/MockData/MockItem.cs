@@ -10,8 +10,7 @@ namespace ZealandPetShop.MockData
             new Item("Halsbånd", "/images/hundeHalsbånd.png" ,"Sort hunde halsbånd", 45.00),
             new Item("Kaninbur", "/images/kaninburBlå.png" ,"Kaninbur med blå bund", 300.00),
             new Item("Børste", "/images/grønBørste.png" ,"Grøn børste", 35.00),
-            new Item("Madskål", "/images/gulMadskål.png" ,"Gul madskål", 20.00),
-            new Item("Guld Halsbånd", "/images/gulMadskål.png" ,"Gul madskål", 20.00)
+            new Item("Madskål", "/images/gulMadskål.png" ,"Gul madskål", 20.00)
         };
 
         public static List<Item> GetMockItems()
