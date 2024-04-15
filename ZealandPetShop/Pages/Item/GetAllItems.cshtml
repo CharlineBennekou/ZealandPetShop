@@ -25,9 +25,9 @@
                 <form method="post" asp-page-handler="AddToCart" asp-route-id="@item.Id">
                     <button type="submit" class="addCart"><b>Tilføj til Kurv</b></button>
                 </form>
-                <form method="post" asp-page-handler="SeeDetails" asp-route-id="@item.Id">
+                <a asp-page="ItemDetail" asp-route-id="@item.Id">
                     <button type="submit" class="detail-info"><b>Se info</b></button>
-                </form>
+                </a>
 
             </div>
         </div>

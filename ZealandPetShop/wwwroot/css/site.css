@@ -88,3 +88,72 @@ body {
     width: 100%; /* Make the image fill the entire width of its container */
     height: auto; /* Maintain the aspect ratio */
 }
+
+
+/*ITEM DETAIL PAGE*/
+
+/* Center the content horizontally */
+.product-container-detail {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 70vh; /* Adjust as needed */
+}
+
+/* Style for the card */
+.card {
+    display: flex;
+    flex-direction: row; /* Arrange the content in a row */
+    align-items: center; /* Center items vertically */
+    border: hidden;
+}
+
+/* Style for the image */
+.image-item-detail {
+    flex: 0 0 auto; /* Allow the image to grow and shrink as needed */
+    margin-right: 20px; /* Add some spacing between the image and other content */
+}
+
+    .image-item-detail img {
+        max-width: 100%; /* Ensure the image doesn't exceed container width */
+        height: auto; /* Maintain aspect ratio */
+        max-height: 400px; /* Set the maximum height of the image */
+        border: solid;
+    }
+
+/* Style for the card body */
+.card-body {
+    flex: 1 1 auto; /* Allow the card body to grow and shrink as needed */
+}
+
+.card-title {
+    color: #f16d65;
+}
+
+.addCart-detail {
+    background-color: #f16d65; /* Sets the background color to #f16d65 */
+    color: black; /* Sets the text color to black */
+    border: none; /* Removes the border */
+    padding: 5px 29px; /* Adjust padding to make the button longer */
+    cursor: pointer; /* Changes cursor to pointer */
+    margin-top: 10px; /* Adds top margin for spacing */
+}
+
+    .addCart-detail:hover {
+        background-color: #e05d55; /* Changes background color on hover to a slightly darker shade */
+        border: none; /* Removes the border on hover */
+    }
+
+.buyNow-detail {
+    background-color: black; /* Sets the background color to black */
+    color: white; /* Sets the text color to white */
+    border: none; /* Removes the border */
+    padding: 5px 50px; /* Adjust padding to make the button longer */
+    cursor: pointer; /* Changes cursor to pointer */
+    margin-top: 10px; /* Adds top margin for spacing */
+}
+
+    .buyNow-detail:hover {
+        background-color: dimgrey;
+        border: none;
+    }
