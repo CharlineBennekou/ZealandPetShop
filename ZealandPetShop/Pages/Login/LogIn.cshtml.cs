@@ -35,7 +35,7 @@ namespace ZealandPetShop.Pages.Login
             List<User> users = _userService._users;
             foreach (User user in users)
             {
-                if (Email == user.Email)
+                if (string.Equals(Email, user.Email, StringComparison.OrdinalIgnoreCase))
                 {
                     var passwordHasher = new PasswordHasher<string>();
 
