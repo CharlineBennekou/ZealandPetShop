@@ -20,7 +20,7 @@ namespace ZealandPetShop.Pages.Login
             _userService = userService;
         }
         [BindProperty]
-        public string UserName { get; set; }
+        public string Email { get; set; }
 
         [BindProperty, DataType(DataType.Password)]
         public string Password { get; set; }
@@ -35,7 +35,7 @@ namespace ZealandPetShop.Pages.Login
             List<User> users = _userService._users;
             foreach (User user in users)
             {
-                if (UserName == user.UserName)
+                if (Email == user.Email)
                 {
                     var passwordHasher = new PasswordHasher<string>();
 
@@ -43,9 +43,9 @@ namespace ZealandPetShop.Pages.Login
                     {
                         LoggedInUser = user;
 
-                        var claims = new List<Claim> { new Claim(ClaimTypes.Name, UserName) };
+                        var claims = new List<Claim> { new Claim(ClaimTypes.Name, user.FirstName) };
 
-                        if (UserName == "admin") claims.Add(new Claim(ClaimTypes.Role, "admin"));
+                        if (Email == "admin") claims.Add(new Claim(ClaimTypes.Role, "admin"));
 
                         var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
                         await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsIdentity));
