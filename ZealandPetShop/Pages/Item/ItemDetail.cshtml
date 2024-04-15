@@ -1,0 +1,28 @@
+﻿@page "{Id:int}"
+@model ZealandPetShop.Pages.Item.ItemDetailModel
+@{
+}
+
+
+<body>
+    <div class="product-container-detail">
+        <div class="card">
+            <div class="image-item-detail">
+                <img src="@Model.Item.ImagePath" alt="@Model.Item.Id" class="image-image">
+            </div>
+            <div class="card-body">
+                <h2 class="card-title"><b>@Model.Item.Name</b></h2>
+                <h3 class="card-price">@Model.Item.Price,-</h3>
+                <form method="post" asp-page-handler="AddToCart" asp-route-id="@Model.Item.Id">
+                    <button type="submit" class="addCart-detail"><b>Tilføj til Kurv</b></button>
+                </form>
+                <form method="post" asp-page-handler="BuyNow" asp-route-id="@Model.Item.Id">
+                    <button type="submit" class="buyNow-detail"><b>Køb Nu</b></button>
+                </form>
+                <br />
+                <h6>Produkt beskrivelse:</h6>
+                <p>@Model.Item.Description</p>
+            </div>
+        </div>
+    </div>
+</body>
