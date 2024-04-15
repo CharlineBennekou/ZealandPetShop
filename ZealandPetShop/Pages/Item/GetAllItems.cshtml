@@ -20,7 +20,6 @@
                     <img src="@item.ImagePath" alt="@item.Id" class="image-image">
                 </div>
                 <h2>@item.Name</h2>
-                <p>@item.Description</p>
                 <p>@item.Price,-</p>
                 <form method="post" asp-page-handler="AddToCart" asp-route-id="@item.Id">
                     <button type="submit" class="addCart"><b>Tilføj til Kurv</b></button>
