@@ -9,8 +9,9 @@ namespace ZealandPetShop.MockData
             private static PasswordHasher<string> passwordHasher = new PasswordHasher<string>();
 
         private static List<User> users = new List<User>() {
-              new User("admin", passwordHasher.HashPassword(null, "kode")),
-              new User("kunde", passwordHasher.HashPassword(null, "kode"))
+            new User("admin@zealanddyr.com", passwordHasher.HashPassword(null,"kode"), "Admin", "Zealand", "12344321", "Addresse"),
+            new User("admin@zealanddyr.com", passwordHasher.HashPassword(null,"kode"), "Admin", "Zealand", "12344321", "Addresse"),
+            new User("Joe@gmail.com", passwordHasher.HashPassword(null,"kode"), "Admin", "Zealand", "12344321", "Addresse")
             };
 
         public static List<User> GetMockUsers()
