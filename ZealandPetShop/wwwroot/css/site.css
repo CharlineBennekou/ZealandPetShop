@@ -62,6 +62,7 @@ body {
     .addCart:hover {
         background-color: #e05d55; /* Changes background color on hover to a slightly darker shade */
         border: none; /* Removes the border on hover */
+        color: white;
     }
 
 .detail-info {
@@ -76,6 +77,7 @@ body {
     .detail-info:hover {
         background-color: #e05d55; /* Changes background color on hover to a slightly darker shade */
         border: none; /* Removes the border on hover */
+        color: white;
     }
 
 
@@ -142,6 +144,7 @@ body {
     .addCart-detail:hover {
         background-color: #e05d55; /* Changes background color on hover to a slightly darker shade */
         border: none; /* Removes the border on hover */
+        color: white;
     }
 
 .buyNow-detail {
@@ -163,8 +166,66 @@ body {
 /*FORSIDE*/
 
 /* Make the image fill the entire width */
-.forside-image { 
+/*.forside-image { 
+    width: 100%;
+    height: auto;
+    display: block;
+}*/
+
+.image-container{
+    position: relative;
+    width: 100% 
+
+}
+
+
+.image-container img{
     width: 100%;
     height: auto;
     display: block;
 }
+
+.text-overlay {
+    position: absolute;
+    top: 50%;
+    /*    right: 50%;
+*/ transform: translate(-50%, -50%);
+    text-align: center;
+    background-color: #F8F0E0;
+    padding: 20px;
+    width: 350px; /* Justér bredden efter behov */
+    height: 200px; /* Justér højden efter behov */
+    color: black;
+    margin-left: 300px;
+}
+
+    .text-overlay h3 {
+        margin: 0;
+    }
+
+#btn-shopping {
+    /*background-color: #F16D65;*/ /* Baggrundsfarve */
+    /*color: black;*/ /* Tekstfarve */
+    /*border: none;*/ /* Fjern kantlinjer */
+    /*padding: 10px 20px;*/ /* Justér polstring */
+    /*text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin-top: 20px;*/ /* Justér afstanden til teksten */
+    background-color: #f16d65; /* Sets the background color to #f16d65 */
+    color: black; /* Sets the text color to black */
+    text-align: center;
+    border: none; /* Removes the border */
+    padding: 8px 60px; /* Adjust padding to make the button longer */
+    cursor: pointer; /* Changes cursor to pointer */
+    margin-top: 10px; /* Adds top margin for spacing */
+}
+
+    #btn-shopping:hover {
+     
+    background-color: #e05d55; /* Changes background color on hover to a slightly darker shade */
+    border: none; /* Removes the border on hover */
+    color: white;
+}
+
