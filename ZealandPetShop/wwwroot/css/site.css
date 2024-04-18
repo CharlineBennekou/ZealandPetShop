@@ -62,6 +62,7 @@ body {
     .addCart:hover {
         background-color: #e05d55; /* Changes background color on hover to a slightly darker shade */
         border: none; /* Removes the border on hover */
+        color: white;
     }
 
 .detail-info {
@@ -76,6 +77,7 @@ body {
     .detail-info:hover {
         background-color: #e05d55; /* Changes background color on hover to a slightly darker shade */
         border: none; /* Removes the border on hover */
+        color: white;
     }
 
 
@@ -142,6 +144,7 @@ body {
     .addCart-detail:hover {
         background-color: #e05d55; /* Changes background color on hover to a slightly darker shade */
         border: none; /* Removes the border on hover */
+        color: white;
     }
 
 .buyNow-detail {
@@ -223,5 +226,6 @@ body {
      
     background-color: #e05d55; /* Changes background color on hover to a slightly darker shade */
     border: none; /* Removes the border on hover */
+    color: white;
 }
 
