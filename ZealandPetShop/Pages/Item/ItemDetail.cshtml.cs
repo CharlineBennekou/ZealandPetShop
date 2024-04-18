@@ -27,7 +27,7 @@ namespace ZealandPetShop.Pages.Item
 
         public IActionResult OnGet(int Id)
         {
-            Items = MockItem.GetMockItems();
+            Items = MockItems.GetMockItems();
             Item = GetItemId(Id);
             if (Item == null)
             { return NotFound(); }

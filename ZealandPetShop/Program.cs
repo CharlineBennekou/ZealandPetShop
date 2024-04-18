@@ -6,7 +6,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
-builder.Services.AddSingleton<Userservice, Userservice>();
+builder.Services.AddSingleton<DbService, DbService>();
+builder.Services.AddSingleton<UserService, UserService>();
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(cookieOptions => {
     cookieOptions.LoginPath = "/Login/LogIn";
      cookieOptions.LogoutPath = "/Login/Logout";

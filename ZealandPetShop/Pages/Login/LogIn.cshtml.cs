@@ -14,8 +14,8 @@ namespace ZealandPetShop.Pages.Login
     {
         public static User LoggedInUser { get; set; } = null;
 
-        private Userservice _userService;
-        public LogInModel(Userservice userService)
+        private UserService _userService;
+        public LogInModel(UserService userService)
         {
             _userService = userService;
         }

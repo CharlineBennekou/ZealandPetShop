@@ -2,7 +2,7 @@
 
 namespace ZealandPetShop.MockData
 {
-    public class MockItem
+    public class MockItems
     {
         private static List<Item> _items = new List<Item>()
         {

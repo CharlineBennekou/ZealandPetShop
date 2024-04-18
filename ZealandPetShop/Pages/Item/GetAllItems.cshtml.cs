@@ -11,7 +11,7 @@ namespace ZealandPetShop.Pages.Item
 
         public void OnGet()
         {
-            Items = MockItem.GetMockItems();
+            Items = MockItems.GetMockItems();
         }
 
         public IActionResult OnPostAddToCart(int id)

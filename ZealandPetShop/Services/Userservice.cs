@@ -2,15 +2,15 @@
 using ZealandPetShop.MockData;
 namespace ZealandPetShop.Services
 {
-    public class Userservice
+    public class UserService
     {
+        private DbService dbService;
         public List<User> _users { get; }
 
-        public Userservice()
+        public UserService(DbService dbService)
         {
-
             _users = MockUsers.GetMockUsers();
-       
+            this.dbService = dbService;
         }
 
         public void AddUser(User user)
@@ -24,7 +24,7 @@ namespace ZealandPetShop.Services
                 if (user.Id == id)
                     return user;
             }
-
+             
             return null;
         }
     }
