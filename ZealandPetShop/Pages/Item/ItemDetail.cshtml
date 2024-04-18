@@ -20,6 +20,15 @@
                     <button type="submit" class="buyNow-detail"><b>Køb Nu</b></button>
                 </form>
                 <br />
+
+                <form method="post" asp-page-handler="AddToCart" asp-route-id="@Model.Item.Id">
+                    <label for="itemQuantity">Select Quantity:</label> 
+                    <br />
+                    <input type="number" id="itemQuantity" name="itemQuantity" min="1" value="1">
+                    <span asp-validation-for="Count" class="text-danger"></span>
+                </form>
+                <br />
+
                 <h6>Produkt beskrivelse:</h6>
                 <p>@Model.Item.Description</p>
             </div>
