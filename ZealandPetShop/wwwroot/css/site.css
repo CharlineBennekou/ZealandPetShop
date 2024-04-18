@@ -212,8 +212,9 @@ body {
     margin-top: 20px;*/ /* Justér afstanden til teksten */
     background-color: #f16d65; /* Sets the background color to #f16d65 */
     color: black; /* Sets the text color to black */
+    text-align: center;
     border: none; /* Removes the border */
-    padding: 5px 109px; /* Adjust padding to make the button longer */
+    padding: 8px 60px; /* Adjust padding to make the button longer */
     cursor: pointer; /* Changes cursor to pointer */
     margin-top: 10px; /* Adds top margin for spacing */
 }
