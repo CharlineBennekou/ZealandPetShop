@@ -163,8 +163,39 @@ body {
 /*FORSIDE*/
 
 /* Make the image fill the entire width */
-.forside-image { 
+/*.forside-image { 
+    width: 100%;
+    height: auto;
+    display: block;
+}*/
+
+.image-container{
+    position: relative;
+    width: 100% 
+
+}
+
+
+.image-container img{
     width: 100%;
     height: auto;
     display: block;
 }
+
+.text-overlay {
+    position: absolute;
+    top: 50%;
+    /*    right: 50%;
+*/ transform: translate(-50%, -50%);
+    text-align: center;
+    background-color: #F8F0E0;
+    padding: 20px;
+    width: 200px; /* Justér bredden efter behov */
+    height: 200px; /* Justér højden efter behov */
+    color: black;
+    margin-left: 200px;
+}
+
+    .text-overlay p {
+        margin: 0;
+    }
