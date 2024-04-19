@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Authentication.Cookies;
+using ZealandPetShop.EFDbContext;
 using ZealandPetShop.Services;
 
 
@@ -8,6 +9,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorPages();
 builder.Services.AddSingleton<DbService, DbService>();
 builder.Services.AddSingleton<UserService, UserService>();
+//builder.Services.AddDbContext<ItemDbContext>();
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(cookieOptions => {
     cookieOptions.LoginPath = "/Login/LogIn";
      cookieOptions.LogoutPath = "/Login/Logout";
