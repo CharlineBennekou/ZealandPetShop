@@ -13,8 +13,21 @@ namespace ZealandPetShop.Services
                 using (var context = new ItemDbContext())
                 {
                     return await context.Items.ToListAsync<Item>();
+
+
                 }
             }
+
+             public async Task<List<User>> GetUsers()
+             {
+                  using (var context = new ItemDbContext())
+                  {
+                    return await context.Users.ToListAsync();
+                  }
+             }
+
+
+
             public async Task AddItem(Item item) //Add item til db
             {
                 using (var context = new ItemDbContext())
@@ -23,7 +36,18 @@ namespace ZealandPetShop.Services
                     context.SaveChanges();
                 }
             }
-            public async Task SaveItems(List<Item> items) //Gemmer listen af items
+
+            public async Task AddUser(User user)
+            {
+                using (var context = new ItemDbContext())
+                {
+                    context.Users.Add(user);
+                 context.SaveChanges();
+                }
+
+            }
+
+        public async Task SaveItems(List<Item> items) //Gemmer listen af items
             {
                 using (var context = new ItemDbContext())
                 {
