@@ -12,10 +12,7 @@ namespace ZealandPetShop.Pages.Order
         [BindProperty]
         public Models.Shop.Item Item { get; set; }
 
-        public GetOrderModel(ItemService itemService)
-        {
-            _itemService = itemService;
-        }
+
 
 
 
