@@ -4,55 +4,24 @@ using ZealandPetShop.Services;
 
 namespace ItemRazorV1.Service
 {
-    public class ItemService : IItemService
+    public class ItemService
     {
-        //private List<Item> _items;
-
-        //private DbService _dbService;
-
         private List<Item> _items;
 
-        private JsonFileService<Item> _jsonFileItemService;
-        private DbGenericService<Item> _dbService;
+        private DbService _dbService;
 
-        //public ItemService(DbService dbService)
-        //{
-        //    _items = MockItems.GetMockItems();
-        //    _dbService = dbService;
-        //    //dbService.SaveItems(_items);
-        //    //_items = dbService.GetItems().Result;
-        //}
-
-        public ItemService(JsonFileService<Item> jsonFileItemService, DbGenericService<Item> dbService)
-        {
-            _jsonFileItemService = jsonFileItemService;
-            _dbService = dbService;
-            // _items = MockItems.GetMockItems();
-            _items = _jsonFileItemService.GetJsonObjects().ToList();
-            //_dbService.SaveObjects(_items);
-            //_items = _dbService.GetObjectsAsync().Result.ToList();
-        }
-
-        public ItemService()
+        public ItemService(DbService dbService)
         {
             _items = MockItems.GetMockItems();
-
-
-
+            _dbService = dbService;
+            //dbService.SaveItems(_items);
+            //_items = dbService.GetItems().Result;
         }
 
-
-        //public void AddItem(Item item)
-        //{
-        //    _items.Add(item);
-        //    _dbService.AddItem(item);
-        //}
-
-        public async Task AddItemAsync(Item item)
+        public void AddItem(Item item)
         {
             _items.Add(item);
-            _jsonFileItemService.SaveJsonObjects(_items);
-            //await _dbService.AddObjectAsync(item);
+            _dbService.AddItem(item);
         }
 
         public Item GetItem(int id)
@@ -66,22 +35,7 @@ namespace ItemRazorV1.Service
             return null;
         }
 
-        //public void UpdateItem(Item item)
-        //{
-        //    if (item != null)
-        //    {
-        //        foreach (Item i in _items)
-        //        {
-        //            if (i.Id == item.Id)
-        //            {
-        //                i.Name = item.Name;
-        //                i.Price = item.Price;
-        //            }
-        //        }
-        //    }
-        //}
-
-        public async Task UpdateItemAsync(Item item)
+        public void UpdateItem(Item item)
         {
             if (item != null)
             {
@@ -91,12 +45,8 @@ namespace ItemRazorV1.Service
                     {
                         i.Name = item.Name;
                         i.Price = item.Price;
-                        i.Description = item.Description;
-                        //i.ItemImage = item.ItemImage;
                     }
                 }
-                _jsonFileItemService.SaveJsonObjects(_items);
-                //await _dbService.UpdateObjectAsync(item);
             }
         }
 
@@ -112,18 +62,9 @@ namespace ItemRazorV1.Service
                 }
             }
 
-            //if (itemToBeDeleted != null)
-            //{
-            //    _items.Remove(itemToBeDeleted);
-            //}
-
-            //return itemToBeDeleted;
-
             if (itemToBeDeleted != null)
             {
                 _items.Remove(itemToBeDeleted);
-                _jsonFileItemService.SaveJsonObjects(_items);
-                //await _dbService.DeleteObjectAsync(itemToBeDeleted);
             }
 
             return itemToBeDeleted;

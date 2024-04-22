@@ -22,7 +22,7 @@ namespace ZealandPetShop.Pages.Item
             // ShoppingCart.Add(id);
 
             // Redirect to a different page after adding to cart
-            return RedirectToPage("/Order/GetOrder");
+            return RedirectToPage("/Cart");
 
         }
 
