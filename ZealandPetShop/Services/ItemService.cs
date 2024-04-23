@@ -15,10 +15,10 @@ namespace ItemRazorV1.Service
             _items = MockItems.GetMockItems();
             _dbService = dbService;
             //dbService.SaveItems(_items);
-            //_items = dbService.GetItems().Result;
+            _items = dbService.GetItems().Result;
         }
 
-        public void AddItem(Item item)
+        public void AddItem(Item item) //Ubrugt
         {
             _items.Add(item);
             _dbService.AddItem(item);
@@ -35,7 +35,7 @@ namespace ItemRazorV1.Service
             return null;
         }
 
-        public void UpdateItem(Item item)
+        public void UpdateItem(Item item) //Ubrugt
         {
             if (item != null)
             {
@@ -61,7 +61,6 @@ namespace ItemRazorV1.Service
                     break;
                 }
             }
-
             if (itemToBeDeleted != null)
             {
                 _items.Remove(itemToBeDeleted);

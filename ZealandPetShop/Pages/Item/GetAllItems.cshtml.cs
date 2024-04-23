@@ -1,3 +1,4 @@
+using ItemRazorV1.Service;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using ZealandPetShop.MockData;
@@ -6,12 +7,17 @@ namespace ZealandPetShop.Pages.Item
 {
     public class GetAllItemsModel : PageModel
     {
-
+        private ItemService _itemService;
         public List<Models.Shop.Item> Items { get; set; }
+
+        public GetAllItemsModel(ItemService itemService)
+        {
+            _itemService = itemService;
+        }
 
         public void OnGet()
         {
-            Items = MockItems.GetMockItems();
+            Items = _itemService.GetItems();
         }
 
         public IActionResult OnPostAddToCart(int id)

@@ -1,45 +1,39 @@
+using ZealandPetShop.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.ComponentModel.DataAnnotations;
-using ZealandPetShop.MockData;
 using ZealandPetShop.Models.Shop;
+using ItemRazorV1.Service;
 
 namespace ZealandPetShop.Pages.Item
 {
     public class ItemDetailModel : PageModel
     {
+        private ItemService _itemService;
 
-        
         [BindProperty]
         [Required(ErrorMessage = "Indtast venligst mængden af produktet der ønskes")]
-        public int Count { get; set; }
-
-
-        public List<Models.Shop.Item> Items { get; set; }
-
-        //public MockData.MockItem MockItem { get; set; }
+        public int Count { get; set; } //Ændr dette til Ordrelinje(som har count, itemid og sit eget id)
 
         public Models.Shop.Item Item { get; set; }
 
 
-
-        public Models.Shop.Item GetItemId(int id)
-        {
-            foreach (Models.Shop.Item item in Items)
-            {
-                if (item.Id == id)
-                { return item; }
-            }
-            return null;
+        public ItemDetailModel(ItemService itemService)
+        { 
+            _itemService = itemService;
         }
+
 
         public IActionResult OnGet(int Id)
         {
-            Items = MockItems.GetMockItems();
-            Item = GetItemId(Id);
+            Console.WriteLine("OnGet");
+            Item = _itemService.GetItem(Id);
             if (Item == null)
-            { return NotFound(); }
+            {
+                return NotFound();
+            }
             return Page();
+           
         }
 
 
