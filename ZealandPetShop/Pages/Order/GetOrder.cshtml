@@ -4,34 +4,112 @@
 }
 
 <body>
-    <br />
-    <div class="container bootdey">
-        <div class="panel panel-default panel-order">
-            <div class="panel-heading">
-                <h2><strong>Min Kurv</strong></h2>
-            </div>
-            @foreach (var item in Model.Items)
-            {
-                <hr />
-                <div class="panel-body">
-                    <div class="row">
-                        <div class="col-md-1"><img src=@item.ImagePath class="media-object img-thumbnail" /></div>
-                        <div class="col-md-11">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <span><strong>Navn :</strong></span> <span class="label label-info">@item.Name</span><br />
-                                    <strong>Quantity :</strong> xx <br /> <strong>DDK </strong>@item.Price,- <br />
-                                    @* <a data-placement="top" class="btn btn-success btn-xs glyphicon glyphicon-ok" href="#" title="View"></a>
-                                <a data-placement="top" class="btn btn-danger btn-xs glyphicon glyphicon-trash" href="#" title="Danger"></a>
-                                <a data-placement="top" class="btn btn-info btn-xs glyphicon glyphicon-usd" href="#" title="Danger"></a> *@
+    <!-- Main content -->
+    <div class="row">
+        <div class="col-lg-8">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <div class="mb-3 d-flex justify-content-between">
+                        <div>
+                            <br />
+                            <div class="container bootdey">
+                                <div class="panel panel-default panel-order">
+                                    <div class="panel-heading">
+                                        <h2><strong>Indkøbskurv</strong></h2>
+                                    </div>
+
+                                    @foreach (var item in Model.Items)
+                                    {
+                                        <hr />
+                                        <div class="panel-body">
+                                            <div class="row">
+                                                <div class="col-md-2"><img src=@item.ImagePath class="media-object img-thumbnail" /></div>
+                                                <div class="col-md-10">
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                             <span class="label label-info">@item.Name</span><br />
+                                                             xx <br /> @item.Price,- <br />
+                                                        </div>
+                                                        <div class="col-md-12">order made on: 05/31/2014 by <a href="#">Jane Doe </a></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    }
+                                    <hr />
                                 </div>
-                                <div class="col-md-12">order made on: 05/31/2014 by <a href="#">Jane Doe </a></div>
                             </div>
                         </div>
                     </div>
                 </div>
-            }
-            <hr />
+            </div>
         </div>
+
+        <div class="col-lg-4">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <div class="mb-3">
+                        <div>
+                            <br />
+                            <div class="container bootdey">
+                                <div class="panel panel-default panel-order">
+                                    <div class="panel-heading">
+                                        <h2><strong>Ordre</strong></h2>
+                                    </div>
+                                    <hr />
+                                    <div class="order-info-price">
+                                        <strong>Ordreværdi:</strong> <span class="float-right">xx,-</span><br />
+                                        <strong>Inkl. Fragt:</strong> <span class="float-right">xx,-</span> <br />
+                                    </div>
+                                    <hr />
+                                    <h6><strong>Total Pris:</strong> <span class="float-right">xx,-</span></h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
 </body>
+
+
+<style>
+    body {
+        background: #eee;
+    }
+
+    .card {
+        box-shadow: 0 20px 27px 0 rgb(0 0 0 / 5%); /* Apply a box shadow to the card for a subtle elevation effect */
+        position: relative; /* Position the card relative to its container */
+        display: flex; /* Display the card as a flex container with column direction */
+        min-width: 0; /* Allow the card to wrap long words if necessary */
+        word-wrap: break-word;
+        background-color: #fff; /* Set the background color of the card */
+        background-clip: border-box; /* Clip the background to the border box of the card */
+        border: 0 solid rgba(0,0,0,.125); /* Set border properties for the card */
+        border-radius: 1rem; /* Apply border-radius for rounded corners */
+    }
+
+    .text-reset {
+        --bs-text-opacity: 1;
+        color: inherit !important; /* Reset text color to inherit from parent */
+    }
+
+    a {
+        color: #5465ff; /* Set link color */
+        text-decoration: none; /* Remove underline */
+    }
+
+    .order-info-price {
+        justify-content: space-between;
+    }
+
+    .float-right {
+        float: right;
+    }
+
+    
+</style>
