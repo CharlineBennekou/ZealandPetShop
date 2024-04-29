@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@using System.Security.Claims
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -36,8 +38,9 @@
                      @if (User.Identity.IsAuthenticated) //tjekker om bruger er logget ind
                     {
                         <p>Velkommen @Context.User.Identity.Name </p>
+                        <p>Your ID is: @Context.User.FindFirst(ClaimTypes.NameIdentifier)?.Value</p>
                       
-                        <a class="nav-link btn btn-link" asp-area="" asp-page="/LogIn/Logout">Log ud</a>
+                        <a class="nav-link btn btn-link" asp-area="" asp-page="/LogIn/Logout">Log ud </a>
                     }
                     else
                     {

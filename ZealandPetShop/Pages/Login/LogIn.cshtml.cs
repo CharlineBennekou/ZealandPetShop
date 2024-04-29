@@ -43,7 +43,12 @@ namespace ZealandPetShop.Pages.Login
                     {
                         
 
-                        var claims = new List<Claim> { new Claim(ClaimTypes.Name, user.FirstName) };
+                        var claims = new List<Claim>
+                        { 
+                            new Claim(ClaimTypes.Name, user.FirstName),
+                            new Claim(ClaimTypes.NameIdentifier, user.Id.ToString())
+
+                        };
 
                         if (Email == "admin") claims.Add(new Claim(ClaimTypes.Role, "admin"));
 

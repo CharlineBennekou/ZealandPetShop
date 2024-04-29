@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using ZealandPetShop.Models.Order;
 
 namespace ZealandPetShop.Models.Login
 {
@@ -21,6 +22,9 @@ namespace ZealandPetShop.Models.Login
         public string Phone { get; set; }
         [Required]
         public string Address { get; set; }
+
+        //Navigation property
+        public ICollection<Order.Order> Orders { get; set; }
 
         public User(int id, string email, string password, string firstName, string lastName, string phone, string address)
         {

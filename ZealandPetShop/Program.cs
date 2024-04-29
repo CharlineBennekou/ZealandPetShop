@@ -12,12 +12,14 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorPages();
 builder.Services.AddDbContext<ItemDbContext>(); //en context
 
-
+//Alle vores singleton services
 builder.Services.AddSingleton<UserService, UserService>();
 builder.Services.AddSingleton<ItemService, ItemService>();
+
+//Alle vores transient(Dbgeneric services)
 builder.Services.AddTransient<DbGenericService<Item>, DbGenericService<Item>>();
 builder.Services.AddTransient<DbGenericService<User>, DbGenericService<User>>();
-//builder.Services.AddDbContext<ItemDbContext>();
+
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(cookieOptions => {
     cookieOptions.LoginPath = "/Login/LogIn";
      cookieOptions.LogoutPath = "/Login/Logout";
