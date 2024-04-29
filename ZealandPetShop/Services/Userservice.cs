@@ -1,16 +1,19 @@
 ﻿using ZealandPetShop.Models.Login;
 using ZealandPetShop.MockData;
+using ZealandPetShop.Models.Shop;
 namespace ZealandPetShop.Services
 {
     public class UserService
     {
-        private DbService dbService;
+        private DbGenericService<User> _dbService;
         public List<User> _users { get; }
 
-        public UserService(DbService dbService)
+        public UserService(DbGenericService<User> dbService)
         {
-            _users = MockUsers.GetMockUsers();
-            this.dbService = dbService;
+            //_users = MockUsers.GetMockUsers();
+            _dbService = dbService;
+            //_dbService.SaveObjects(_users);
+            _users = _dbService.GetObjectsAsync().Result.ToList();
         }
 
         public void AddUser(User user)
@@ -24,8 +27,11 @@ namespace ZealandPetShop.Services
                 if (user.Id == id)
                     return user;
             }
-             
             return null;
+        }
+       
+
+        public List<User> GetUsers() { return _users;
         }
     }
 }

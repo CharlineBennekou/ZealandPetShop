@@ -1,11 +1,12 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ZealandPetShop.Models.Login
 {
     public class User
     {
-        [Required]
         [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
         //public string UserName { get; set; }
         [Required]
@@ -24,6 +25,15 @@ namespace ZealandPetShop.Models.Login
         public User(int id, string email, string password, string firstName, string lastName, string phone, string address)
         {
             Id = id;
+            Email = email;
+            Password = password;
+            FirstName = firstName;
+            LastName = lastName;
+            Phone = phone;
+            Address = address;
+        }
+        public User(string email, string password, string firstName, string lastName, string phone, string address)
+        {
             Email = email;
             Password = password;
             FirstName = firstName;

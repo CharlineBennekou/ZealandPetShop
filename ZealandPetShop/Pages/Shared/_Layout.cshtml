@@ -36,9 +36,8 @@
                      @if (User.Identity.IsAuthenticated) //tjekker om bruger er logget ind
                     {
                         <p>Velkommen @Context.User.Identity.Name </p>
-                        <form method="post" asp-page="/Login/Logout">
-                            <button type="submit" class="nav-link btn btn-link">Log ud</button> @* Viser log ud knap *@
-                        </form>
+                      
+                        <a class="nav-link btn btn-link" asp-area="" asp-page="/LogIn/Logout">Log ud</a>
                     }
                     else
                     {
