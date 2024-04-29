@@ -1,0 +1,101 @@
+﻿@page
+@model ZealandPetShop.Pages.Item.CreateItemModel
+@{
+}
+
+<br />
+<h2 class="text-center mb-5">Opret nyt produkt!</h2>
+
+
+<form method="post" enctype="multipart/form-data">
+	<div class="form-group">
+		<label asp-for="@Model.Item.Name" class="control-label">Navn på produktet:</label>
+		<input asp-for="@Model.Item.Name" class="form-control" />
+		<span asp-validation-for="@Model.Item.Name" class="text-danger"></span>
+	</div>
+
+	<div class="form-group">
+		<label asp-for="@Model.Item.Description" class="control-label">Beskrivelse af produktet:</label>
+		<textarea asp-for="@Model.Item.Description" class="form-control" rows="2"></textarea>
+		<span asp-validation-for="@Model.Item.Description" class="text-danger"></span>
+	</div>
+
+	<div class="form-group">
+		<label asp-for="@Model.Item.Price" class="control-label">Pris på produktet:</label>
+		<input asp-for="@Model.Item.Price" class="form-control" />
+		<span asp-validation-for="@Model.Item.Price" class="text-danger"></span>
+	</div>
+
+	<div class="form-group mb-3">
+		<label asp-for="@Model.Photo" class="form-label">Billede af produktet:</label>
+		<div class="custom-file">
+			<input asp-for="@Model.Photo" class="custom-file-input form-control" id="formFile" type="file">
+			<label class="custom-file-label">Gem Billede</label>
+		</div>
+	</div>
+
+	<input type="hidden" asp-for="@Model.Item.Id" />
+
+	<p>
+		<div class="form-group">
+			<input type="submit" value="Opret" class="btn btn-primary" />
+		</div>
+	</p>
+
+</form>
+
+
+
+
+
+
+<style>
+	/* Style for form container */
+	form {
+		max-width: 600px;
+		margin: auto;
+		padding: 20px;
+		border: 1px solid #ccc;
+		border-radius: 8px;
+	}
+
+	/* Style for form labels */
+	label {
+		display: block;
+		margin-bottom: 8px;
+	}
+
+	/* Style for form inputs */
+	select, input {
+		width: 100%;
+		padding: 8px;
+		box-sizing: border-box;
+		margin-top: 4px;
+		margin-bottom: 12px;
+		border: 1px solid #ccc;
+		border-radius: 4px;
+	}
+
+	/* Style for select elements */
+	select {
+		margin-bottom: 16px;
+	}
+
+	/* Style for submit button */
+	input[type="submit"] {
+		background-color: #4CAF50;
+		color: white;
+		padding: 10px 15px;
+		border: none;
+		border-radius: 4px;
+		cursor: pointer;
+	}
+
+		input[type="submit"]:hover {
+			background-color: darkred;
+		}
+
+	h2{
+		color: #f16d65;
+	}
+</style>

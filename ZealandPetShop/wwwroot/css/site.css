@@ -161,6 +161,14 @@ body {
         border: none;
     }
 
+.knapper {
+    text-align: center;
+}
+
+.slet-knap {
+    display: inline-block; /* Ensure the button stays inline */
+}
+
 
 
 /*FORSIDE*/
