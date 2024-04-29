@@ -36,6 +36,8 @@
     </div>
     <div class="knapper">
         <a class="btn btn-danger btn-sm slet-knap" type="button" title="Delete"
-           asp-page="DeleteItem" asp-route-id="@Model.Item.Id">Delete</a>
+           asp-page="DeleteItem" asp-route-id="@Model.Item.Id">Slet</a>
+        <a class="btn btn-danger btn-sm edit-knap" type="button" title="Edit"
+           asp-page="UpdateItem" asp-route-id="@Model.Item.Id">Opdater</a>
     </div>
 </body>

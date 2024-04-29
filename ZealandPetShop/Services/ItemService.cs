@@ -45,6 +45,8 @@ namespace ItemRazorV1.Service
                     {
                         i.Name = item.Name;
                         i.Price = item.Price;
+                        i.Description = item.Description;
+                        i.ImagePath = item.ImagePath;
                     }
                 }
                 _dbService.UpdateObjectAsync(item);
