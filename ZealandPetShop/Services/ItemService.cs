@@ -8,20 +8,20 @@ namespace ItemRazorV1.Service
     {
         private List<Item> _items;
 
-        private DbService _dbService;
+        private DbGenericService<Item> _dbService;
 
-        public ItemService(DbService dbService)
+        public ItemService(DbGenericService<Item> dbService)
         {
-            _items = MockItems.GetMockItems();
+            //_items = MockItems.GetMockItems();
             _dbService = dbService;
             //dbService.SaveItems(_items);
-            _items = dbService.GetItems().Result;
+            _items = _dbService.GetObjectsAsync().Result.ToList();
         }
 
         public void AddItem(Item item) //Ubrugt
         {
             _items.Add(item);
-            _dbService.AddItem(item);
+            _dbService.AddObjectAsync(item);
         }
 
         public Item GetItem(int id)
@@ -47,6 +47,7 @@ namespace ItemRazorV1.Service
                         i.Price = item.Price;
                     }
                 }
+                _dbService.UpdateObjectAsync(item);
             }
         }
 
@@ -64,6 +65,7 @@ namespace ItemRazorV1.Service
             if (itemToBeDeleted != null)
             {
                 _items.Remove(itemToBeDeleted);
+                _dbService.DeleteObjectAsync(itemToBeDeleted);
             }
 
             return itemToBeDeleted;

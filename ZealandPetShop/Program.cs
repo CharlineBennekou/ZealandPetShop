@@ -1,6 +1,7 @@
 using ItemRazorV1.Service;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using ZealandPetShop.EFDbContext;
+using ZealandPetShop.Models.Shop;
 using ZealandPetShop.Services;
 
 
@@ -8,9 +9,11 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
+builder.Services.AddDbContext<ItemDbContext>();
 builder.Services.AddSingleton<DbService, DbService>();
 builder.Services.AddSingleton<UserService, UserService>();
 builder.Services.AddSingleton<ItemService, ItemService>();
+builder.Services.AddTransient<DbGenericService<Item>, DbGenericService<Item>>();
 //builder.Services.AddDbContext<ItemDbContext>();
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(cookieOptions => {
     cookieOptions.LoginPath = "/Login/LogIn";
