@@ -11,7 +11,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddRazorPages();
 builder.Services.AddDbContext<ItemDbContext>(); //en context
-builder.Services.AddSingleton<DbService, DbService>();
+
 
 builder.Services.AddSingleton<UserService, UserService>();
 builder.Services.AddSingleton<ItemService, ItemService>();
