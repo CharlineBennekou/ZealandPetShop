@@ -1,6 +1,7 @@
 ﻿using ZealandPetShop.Models.Shop;
 using Microsoft.EntityFrameworkCore;
 using ZealandPetShop.Models.Login;
+using ZealandPetShop.Models.Order;
 
 namespace ZealandPetShop.EFDbContext
 {
@@ -11,6 +12,11 @@ namespace ZealandPetShop.EFDbContext
             options.UseSqlServer(@"Data Source=mssql17.unoeuro.com;Initial Catalog=databaseprojekt_dk_db_smp_database;User ID=databaseprojekt_dk;Password=5RtGzhep3Fgdrfn4AcbE;Connect Timeout=30;Encrypt=True;Trust Server Certificate=True;Application Intent=ReadWrite;Multi Subnet Failover=False");
         }
         //Encrypt=False
+        protected override void OnModelCreating(ModelBuilder modelBuilder) //Composite key til orderitem
+        {
+            modelBuilder.Entity<OrderItem>()
+                .HasKey(oi => new { oi.ItemId, oi.OrderId });
+        }
 
         public DbSet<Item> Items { get; set; }
         public DbSet<User> Users { get; set; }

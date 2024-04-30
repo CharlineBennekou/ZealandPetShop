@@ -6,9 +6,10 @@ namespace ZealandPetShop.Models.Order
 {
     public class OrderItem
     {
-        
+        [Required]
         public int ItemId { get; set; }
-        
+        [Required]
+
         public int OrderId { get; set; }
         [Required]
         public int Quantity { get; set; }
