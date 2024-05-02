@@ -36,13 +36,18 @@
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Login/LoggedInUser">My Profile</a>
+                           
+
+
                         </li>
                     </ul>
                      @if (User.Identity.IsAuthenticated) //tjekker om bruger er logget ind
                     {
                         <p>Velkommen @Context.User.Identity.Name </p>
                         <p>Your ID is: @Context.User.FindFirst(ClaimTypes.NameIdentifier)?.Value</p>
+                        <a asp-page="Login/LoggedInUser" asp-route-id="@int.Parse(Context.User.FindFirst(ClaimTypes.NameIdentifier)?.Value)">
+                            <button type="submit" class="detail-info"><b>My Profile</b></button>
+                        </a>
                       
                         <a class="nav-link btn btn-link" asp-area="" asp-page="/LogIn/Logout">Log ud </a>
                     }

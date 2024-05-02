@@ -1,4 +1,4 @@
-﻿@page 
+﻿@page "{Id:int}"
 @model ZealandPetShop.Pages.Login.LoggedInUserModel
 @{
     ViewData["Title"] = "My Profile";
@@ -13,7 +13,7 @@
             <div class="author-text">
                 <div class="author-text-profile">
                     <div class="author-text avatar">
-                       <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="Anna Sørensen">
+                       <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="Anna Sørens
                    </div>
                        <div class="author-text-details">
                         <h5 class="author-text-name text-lg">Anna Sørensen</h5><span class="author-text-position">Joined February 06, 2024</span>
@@ -64,7 +64,7 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="account-fn">First Name</label>
-                        <input class="form-control" type="text" id="account-fn" value="Anna" required="">
+                        <input class="form-control" type="text" id="account-fn" value="@Model.user.FirstName" required="">
                     </div>
                 </div>
                 <div class="col-md-6">
