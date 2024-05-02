@@ -41,6 +41,12 @@
 
                         </li>
                     </ul>
+                    <ul>
+                        <li>
+                            <a class="nav-link text-dark" asp-area="" asp-page="/Login/CreateUser">Become a Member</a>
+                        </li>
+                    </ul>
+
                      @if (User.Identity.IsAuthenticated) //tjekker om bruger er logget ind
                     {
                         <p>Velkommen @Context.User.Identity.Name </p>
