@@ -32,6 +32,10 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Privacy</a>
                         </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-page="/Login/LoggedInUser">My Profile</a>
+                        </li>
                     </ul>
                      @if (User.Identity.IsAuthenticated) //tjekker om bruger er logget ind
                     {
