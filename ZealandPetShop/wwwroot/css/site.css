@@ -82,13 +82,15 @@ body {
 
 
 .image-item {
-    width: 100%; /* Ensure the image container spans the full width of the box */
+    width: 250px; /* Ensure the image container spans the full width of the box */
+    height: 250px;
     overflow: hidden; /* Hide any overflowing content */
 }
 
 .image-image {
     width: 100%; /* Make the image fill the entire width of its container */
     height: auto; /* Maintain the aspect ratio */
+    object-fit: cover;
 }
 
 
@@ -108,19 +110,26 @@ body {
     flex-direction: row; /* Arrange the content in a row */
     align-items: center; /* Center items vertically */
     border: hidden;
+    margin-bottom: 20px; /* Reduce spacing between the card and buttons */
 }
 
 /* Style for the image */
-.image-item-detail {
-    flex: 0 0 auto; /* Allow the image to grow and shrink as needed */
+.image-item-detail-container {
+    /*flex: 0 0 auto;*/ /* Allow the image to grow and shrink as needed */
     margin-right: 20px; /* Add some spacing between the image and other content */
+    width: 350px; /* Set your desired width */
+    height: 350px; /* Set your desired height */
+    overflow: hidden;
 }
 
-    .image-item-detail img {
-        max-width: 100%; /* Ensure the image doesn't exceed container width */
-        height: auto; /* Maintain aspect ratio */
-        max-height: 400px; /* Set the maximum height of the image */
+    .image-item-detail-container img {
+        /*max-width: 500px;*/ /* Ensure the image doesn't exceed container width */
+        /*height: auto;*/ /* Maintain aspect ratio */
+        /*max-height: 400px;*/ /* Set the maximum height of the image */
         border: solid;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
     }
 
 /* Style for the card body */
@@ -164,6 +173,16 @@ body {
 .knapper {
     text-align: center;
 }
+
+    .knapper a {
+        margin-right: 10px;
+        background-color: #f16d65; /* Sets the background color to #f16d65 */
+        color: black; /* Sets the text color to black */
+        border: none; /* Removes the border */
+        padding: 10px 85px; /* Adjust padding to make the button longer */
+        cursor: pointer; /* Changes cursor to pointer */
+        margin-bottom: 10px; /* Adds top margin for spacing */
+    }
 
 .slet-knap {
     display: inline-block; /* Ensure the button stays inline */
