@@ -12,12 +12,12 @@ namespace ZealandPetShop.Pages.Login
 {
     public class LogInModel : PageModel
     {
-        public static User LoggedInUser { get; set; } = null;
-
+  
         private UserService _userService;
         public LogInModel(UserService userService)
         {
             _userService = userService;
+ 
         }
         [BindProperty]
         public string Email { get; set; }
@@ -41,14 +41,20 @@ namespace ZealandPetShop.Pages.Login
 
                     if (passwordHasher.VerifyHashedPassword(null, user.Password, Password) == PasswordVerificationResult.Success)
                     {
-                        LoggedInUser = user;
+                        
 
-                        var claims = new List<Claim> { new Claim(ClaimTypes.Name, user.FirstName) };
+                        var claims = new List<Claim>
+                        { 
+                            new Claim(ClaimTypes.Name, user.FirstName),
+                            new Claim(ClaimTypes.NameIdentifier, user.Id.ToString())
+
+                        };
 
                         if (Email == "admin") claims.Add(new Claim(ClaimTypes.Role, "admin"));
 
                         var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
                         await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsIdentity));
+                     
                         return RedirectToPage("/index");
                     }
                 }

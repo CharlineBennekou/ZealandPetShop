@@ -27,9 +27,11 @@ namespace ZealandPetShop.Models.Shop
         [Required(ErrorMessage = "Der skal angives en pris")]
         public double? Price { get; set; }
 
+        //Navigation property
+        public ICollection<OrderItem> OrderItems { get; set; }
 
-        public Item() 
-        { 
+        public Item()
+        {
         }
        
 

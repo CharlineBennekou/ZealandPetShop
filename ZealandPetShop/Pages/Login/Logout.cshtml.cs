@@ -9,23 +9,17 @@ namespace ZealandPetShop.Pages.Login
     {
         public IActionResult OnGet()
         {
-            //Console.WriteLine("???");
-            //if (LogInModel.LoggedInUser == null)
-            //{
-            //    HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
-            //    return RedirectToPage("/Index");
-            //}
-            return RedirectToPage("/Index");
+            Console.WriteLine("???");
+            
+                HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+                return RedirectToPage("/Index");
+            
+          
 
         }
         public IActionResult OnPost()
         {
-            Console.WriteLine("???");
-            if (LogInModel.LoggedInUser != null)
-            {
-                HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
-                return RedirectToPage("/Index");
-            }
+           
             return RedirectToPage("/Index");
         }
     }
