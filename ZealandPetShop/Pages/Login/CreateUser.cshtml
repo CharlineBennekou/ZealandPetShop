@@ -3,48 +3,40 @@
 @{
 }
 
-<br />
-<h2 class="text-center mb-5">Bliv Medlem her!</h2>
+<div class="form-group">
+	<label asp-for="@Model.user.FirstName" class="control-label">Navn:</label>
+	<input asp-for="@Model.user.FirstName" class="form-control" />
+	<span asp-validation-for="@Model.user.FirstName" class="text-danger"></span>
+</div>
 
-<form method="post">
+<div class="form-group">
+	<label asp-for="@Model.user.LastName" class="control-label">Efternavn:</label>
+	<input type ="text"asp-for="@Model.user.LastName" class="form-control"/>
+	<span asp-validation-for="@Model.user.LastName" class="text-danger"></span>
+</div>
 
+<div class="form-group">
+	<label asp-for="@Model.user.Email" class="control-label">Email:</label>
+	<input asp-for="@Model.user.Email" class="form-control" />
+	<span asp-validation-for="@Model.user.Email" class="text-danger"></span>
+</div>
+
+<div class="form-group">
+	<label asp-for="@Model.user.Phone" class="control-label">Mobil Nr.:</label>
+	<input asp-for="@Model.user.Phone" class="form-control" />
+	<span asp-validation-for="@Model.user.Phone" class="text-danger"></span>
+</div>
+
+@* <div class="form-group" hidden>
+	<label asp-for="UserId.Id" class="control-label"></label>
+	<input asp-for="UserId.Id" class="form-control" />
+</div>
+
+*@
+
+
+<p>
 	<div class="form-group">
-		<label asp-for="@Model.user.LastName" class="control-label">Efternavn:</label>
-		<textarea asp-for="@Model.user.LastName" class="form-control" rows="2"></textarea>
-		<span asp-validation-for="@Model.user.LastName" class="text-danger"></span>
+		<input type="submit" value="Bliv Medlem" class="btn btn-primary" />
 	</div>
-
-	<div class="form-group">
-		<label asp-for="@Model.user.Email" class="control-label">Email:</label>
-		<input asp-for="@Model.user.Email" class="form-control" />
-		<span asp-validation-for="@Model.user.Email" class="text-danger"></span>
-	</div>
-
-	<div class="form-group">
-		<label asp-for="@Model.user.Phone" class="control-label">Mobil Nr.:</label>
-		<input asp-for="@Model.user.Phone" class="form-control" />
-		<span asp-validation-for="@Model.user.Phone" class="text-danger"></span>
-	</div>
-
-	@* <div class="form-group" hidden>
-		<label asp-for="UserId.Id" class="control-label"></label>
-		<input asp-for="UserId.Id" class="form-control" />
-	</div>
-
- *@
-	
-
-	<p>
-		<div class="form-group">
-			<input type="submit" value="Bliv Medlem" class="btn btn-primary" />
-		</div>
-	</p>
-
-	
-</form>
-
-
-
-
-
-
+</p>

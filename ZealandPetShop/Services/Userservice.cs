@@ -15,32 +15,24 @@ namespace ZealandPetShop.Services
             //_users = MockUsers.GetMockUsers();
             _dbService = dbService;
             //_dbService.SaveObjects(_users);
-            _users = _dbService.GetObjectsAsync().Result.ToList();
+            //_users = _dbService.GetObjectsAsync().Result.ToList();
         }
 
-        public void AddUser(User user)
+        public async Task AddUser(User user)
         {
-            _users.Add(user);
+            await _dbService.AddObjectAsync(user);
         }
 
-        public User GetUser(int id)
-        {
-            foreach (User user in _users)
-            {
-                if (user.Id == id)
-                    return user;
-            }
-            return null;
-        }
-       
+
         public async Task SaveUSer(User user)
         {
-            await _dbService.SaveObjects(new List<User>() { user });
+            await _dbService.SaveObjects(new List<User> { user });
         }
 
 
-        public List<User> GetUsers() { return _users;
-        }
+        public async Task<User> GetUser(int id)
+        { return await _dbService.GetObjectByIdAsync(id); }
+
 
         internal void AddUser(object user)
         {
@@ -48,3 +40,4 @@ namespace ZealandPetShop.Services
         }
     }
 }
+

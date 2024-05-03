@@ -19,48 +19,51 @@ namespace ZealandPetShop.Pages.Login
             _userService = userService;
         }
 
-        public IActionResult OnGet(int id)
-        {
+		// Bruger async og returner Task<IActionResult> for korrekt asynkron håndtering
+		public async Task<IActionResult> OnGetAsync(int id)
+		{
+			user = await _userService.GetUser(id);  // Antager, at GetUser er en asynkron metode
+
+			if (User == null)
+			{
+				return NotFound();  // Returnerer en 404 side, hvis ingen bruger findes
+			}
+
+			return Page();
+		}
 
 
-            user = _userService.GetUser(id);
-
-            return Page();
-
-        }
+		//public List<Models.Login.User> _user { get; set; }
 
 
-        //public List<Models.Login.User> _user { get; set; }
-       
+		//{
 
-        //{
+		//    int id = int.Parse(id);
 
-        //    int id = int.Parse(id);
-
-        //    return id;
-        //}
+		//    return id;
+		//}
 
 
 
 
 
 
-        //public GetUser(UserService userService)
-        //{
-        //    _userService = userService;
-        //}
+		//public GetUser(UserService userService)
+		//{
+		//    _userService = userService;
+		//}
 
 
-        //public IActionResult OnGet(int id)
-        //{
-        //    Console.WriteLine("OnGet");
-        //    _user = _userService.GetUser(id);
-        //    if (_user == null)
-        //    {
-        //        return NotFound();
-        //    }
-        //    return Page();
-        //}
+		//public IActionResult OnGet(int id)
+		//{
+		//    Console.WriteLine("OnGet");
+		//    _user = _userService.GetUser(id);
+		//    if (_user == null)
+		//    {
+		//        return NotFound();
+		//    }
+		//    return Page();
+		//}
 
-    }
+	}
 }
