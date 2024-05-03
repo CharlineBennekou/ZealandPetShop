@@ -12,7 +12,6 @@ namespace ZealandPetShop.Models.Shop
         public int? Id { get; set; }
 
         [Display(Name = "ImagePath")]
-        //[Required(ErrorMessage = "Item skal have et billede")]
         public string ImagePath { get; set; }
 
         [Display(Name = "Item Navn")]
