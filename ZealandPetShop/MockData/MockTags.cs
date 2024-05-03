@@ -21,7 +21,7 @@ namespace ZealandPetShop.MockData
             new Tag("Hund"),
             new Tag("Kanin"),
             new Tag("Legetøj"),
-            new Tag("Accessories")
+            new Tag("Accessories") 
 
 
         };
