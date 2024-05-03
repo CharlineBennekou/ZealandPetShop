@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using ZealandPetShop.Models.Order;
 
 namespace ZealandPetShop.Models.Shop
 {
@@ -26,6 +27,9 @@ namespace ZealandPetShop.Models.Shop
         [Required(ErrorMessage = "Der skal angives en pris")]
         public double? Price { get; set; }
 
+
+        
+        public ICollection<OrderItem> OrderItems { get; set; }
 
 
         public Item()
