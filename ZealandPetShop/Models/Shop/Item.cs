@@ -28,6 +28,9 @@ namespace ZealandPetShop.Models.Shop
         public double? Price { get; set; }
 
 
+        public Item() 
+        { 
+        }
        
 
         public Item(string name, string description, double price)
