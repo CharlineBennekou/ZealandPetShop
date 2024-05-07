@@ -10,6 +10,7 @@
     <div class="row">
         <div class="col-lg-4 pb-5">
             <!-- Account Sidebar-->
+           <div class="author-text">
             <div class="author-text-profile">
                 <div class="author-text avatar">
                     <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="Anna Sørensen"
@@ -17,6 +18,7 @@
                 <div class="author-text-details">
                     <h5 class="author-text-name text-lg">Anna Sørensen</h5><span class="author-text-position">Joined February 06, 2024</span>
                 </div>
+            </div>
             </div>
             <div class="wizard">
                 <nav class="list-group list-group-flush">
@@ -58,41 +60,29 @@
         </div>
         <!-- Profile Settings-->
         <div class="col-lg-8 pb-5">
-           
-
                 <form class="row">
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="account-fn">First Name</label>
-
-                            <input class="form-control" type="text" id="firstName"  value="user.FirstName" required>
-
+                            <input class="form-control" type="text" id="account-fn"  value="@Model.User.FirstName" required>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="account-ln">Last Name</label>
-
-                            <input class="form-control" type="text" id="lastName"  value="user.LastName" required>
-
+                        <input class="form-control" type="text" id="account-fn" value="@Model.User.LastName" required>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="account-email">E-mail Address</label>
-
-
-                            <input class="form-control" type="text" id="email"  value="user.Email" required>
-
-
+                        <input class="form-control" type="text" id="account-fn" value="@Model.User.Email" required>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="account-phone">Phone Number</label>
-
-                            <input class="form-control" type="text" id="phone"  value="user.Phone" required>
-
+                        <input class="form-control" type="text" id="account-fn" value="@Model.User.Phone" required>
                         </div>
                     </div>
                     <div class="col-md-6">
@@ -114,10 +104,10 @@
                                 <input class="custom-control-input" type="checkbox" id="subscribe_me" checked="">
                                 <label class="custom-control-label" for="subscribe_me">Subscribe me to Newsletter</label>
                             </div>
+                           <button class="btn btn-style-1 btn-primary" type="button" data-toast="" data-toast-position="topRight" data-toast-type="success" data-toast-icon="fe-icon-check-circle" data-toast-title="Success!" data-toast-message="Your profile updated successfuly.">Update Prof
                         </div>
                     </div>
                 </form>
-            
         </div>
     </div>
 </div>

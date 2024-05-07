@@ -14,7 +14,7 @@ namespace ZealandPetShop.Pages.Login
         private UserService _userService;
 
         
-        public User user { get; set; }
+        public User User { get; set; }
 
         public LoggedInUserModel(UserService userService)
         {
@@ -24,7 +24,7 @@ namespace ZealandPetShop.Pages.Login
 		// Bruger async og returner Task<IActionResult> for korrekt asynkron håndtering
 		public async Task<IActionResult> OnGetAsync(int id)
 		{
-			var user = await _userService.GetUser(id);  // Antager, at GetUser er en asynkron metode
+			User = await _userService.GetUser(id);  // Antager, at GetUser er en asynkron metode
 
 			if (User == null)
 			{
