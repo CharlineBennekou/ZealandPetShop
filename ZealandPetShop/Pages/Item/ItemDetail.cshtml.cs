@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.ComponentModel.DataAnnotations;
 using ZealandPetShop.Models.Shop;
 using ItemRazorV1.Service;
+using ZealandPetShop.Models;
 
 namespace ZealandPetShop.Pages.Item
 {
@@ -26,6 +27,7 @@ namespace ZealandPetShop.Pages.Item
 
         public IActionResult OnGet(int Id)
         {
+            
             Console.WriteLine("OnGet");
             Item = _itemService.GetItem(Id);
             if (Item == null)

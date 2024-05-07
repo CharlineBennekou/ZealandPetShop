@@ -6,6 +6,14 @@ namespace ZealandPetShop.Models.Shop
 {
     public class Item
     {
+
+        public enum DyreArt
+        {
+            Hund = 0,
+            Kat = 1,
+            Kanin = 2,
+        }
+
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Display(Name = "Item ID")]   
@@ -27,19 +35,27 @@ namespace ZealandPetShop.Models.Shop
         [Required(ErrorMessage = "Der skal angives en pris")]
         public double? Price { get; set; }
 
+        public DyreArt Art { get; set; }
+
+
+
+
         //Navigation property
         public ICollection<OrderItem> OrderItems { get; set; }
+
+
 
         public Item()
         {
         }
        
 
-        public Item(string name, string description, double price)
+        public Item(string name, string description, double price, DyreArt art)
         {
             Name = name;           
             Description = description;
             Price = price;
+            Art = art;
         }
     }
 }

@@ -14,7 +14,7 @@ namespace ItemRazorV1.Service
         {
             //_items = MockItems.GetMockItems();
             _dbService = dbService;
-            //dbService.SaveItems(_items);
+            ////dbService.SaveObjects(_items);
             _items = _dbService.GetObjectsAsync().Result.ToList();
         }
 

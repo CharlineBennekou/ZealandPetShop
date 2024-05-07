@@ -36,6 +36,7 @@ body {
 
 .product-card {
     margin-bottom: 20px; /* Adds bottom margin to provide spacing between cards */
+    background-color: white;
 }
 
 .product-box {
@@ -175,13 +176,14 @@ body {
 }
 
     .knapper a {
-        margin-right: 10px;
+        /*margin-right: 10px;*/
         background-color: #f16d65; /* Sets the background color to #f16d65 */
         color: black; /* Sets the text color to black */
         border: none; /* Removes the border */
         padding: 10px 85px; /* Adjust padding to make the button longer */
         cursor: pointer; /* Changes cursor to pointer */
         margin-bottom: 10px; /* Adds top margin for spacing */
+        margin: 0px;
     }
 
 .slet-knap {
@@ -251,6 +253,24 @@ body {
 
     #btn-shopping:hover {
      
+    background-color: #e05d55; /* Changes background color on hover to a slightly darker shade */
+    border: none; /* Removes the border on hover */
+    color: white;
+}
+
+#btn-create {
+    background-color: #F8F0E0;
+    color: black;
+    text-align: center;
+    border: none;
+    padding: 8px 20px; /* Adjust padding to your preference */
+    cursor: pointer;
+    width: fit-content; /* Set width to fit content */
+    margin: 5% auto; /* Center the button horizontally */
+    display: block; /* Ensures block-level behavior */
+}
+
+#btn-create:hover {
     background-color: #e05d55; /* Changes background color on hover to a slightly darker shade */
     border: none; /* Removes the border on hover */
     color: white;

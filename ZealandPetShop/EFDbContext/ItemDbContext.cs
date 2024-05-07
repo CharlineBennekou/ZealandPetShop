@@ -16,9 +16,13 @@ namespace ZealandPetShop.EFDbContext
         {
             modelBuilder.Entity<OrderItem>()
                 .HasKey(oi => new { oi.ItemId, oi.OrderId });
+            //modelBuilder.Entity<Item>()
+            //    .Property(e => e.Art)
+            //    .HasConversion<int>(); // This converts enum to int when storing in the database
         }
 
         public DbSet<Item> Items { get; set; }
         public DbSet<User> Users { get; set; }
+
     }
 }

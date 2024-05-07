@@ -6,11 +6,10 @@ namespace ZealandPetShop.MockData
     {
         private static List<Item> _items = new List<Item>()
         {
-            new Item("Kattebakke" ,"Grå platik kattebakke", 150.00),
-            new Item("Halsbånd" ,"Sort hunde halsbånd", 45.00),
-            new Item("Kaninbur" ,"Kaninbur med blå bund", 300.00),
-            new Item("Børste" ,"Grøn børste", 35.00),
-            new Item("Madskål" ,"Gul madskål", 20.00)
+            new Item("Kattebakke" ,"Grå platik kattebakke", 150.00, Item.DyreArt.Kat),
+            new Item("Halsbånd" ,"Sort hunde halsbånd", 45.00, Item.DyreArt.Hund),
+            new Item("Kaninbur" ,"Kaninbur med blå bund", 300.00, Item.DyreArt.Kanin),
+            new Item("Børste" ,"Grøn børste", 35.00, Item.DyreArt.Kat)
         };
 
         public static List<Item> GetMockItems()

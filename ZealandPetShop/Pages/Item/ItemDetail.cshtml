@@ -13,6 +13,7 @@
             <div class="card-body">
                 <h2 class="card-title"><b>@Model.Item.Name</b></h2>
                 <h3 class="card-price">@Model.Item.Price,-</h3>
+                <p><b>Kategori:</b> @Model.Item.Art</p>
                 <form method="post" asp-page-handler="AddToCart" asp-route-id="@Model.Item.Id">
                     <button type="submit" class="addCart-detail"><b>Tilføj til Kurv</b></button>
                 </form>
