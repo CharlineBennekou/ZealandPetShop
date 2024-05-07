@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using ZealandPetShop.EFDbContext;
 using ZealandPetShop.Models.Login;
 using ZealandPetShop.Models.Shop;
+using ZealandPetShop.Models.Order;
 using ZealandPetShop.Services;
 
 
@@ -11,14 +12,22 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddRazorPages();
 builder.Services.AddDbContext<ItemDbContext>(); //en context
+builder.Services.AddHttpContextAccessor(); //HttpContext til at access user's info
+
 
 //Alle vores singleton services
 builder.Services.AddSingleton<UserService, UserService>();
 builder.Services.AddSingleton<ItemService, ItemService>();
+builder.Services.AddSingleton<CartService, CartService>();
+builder.Services.AddSingleton<OrderService, OrderService>();
+
 
 //Alle vores transient(Dbgeneric services)
 builder.Services.AddTransient<DbGenericService<Item>, DbGenericService<Item>>();
 builder.Services.AddTransient<DbGenericService<User>, DbGenericService<User>>();
+builder.Services.AddTransient<DbGenericService<OrderItem>, DbGenericService<OrderItem>>();
+builder.Services.AddTransient<DbGenericService<Order>, DbGenericService<Order>>();
+
 
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(cookieOptions => {
     cookieOptions.LoginPath = "/Login/LogIn";

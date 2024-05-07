@@ -1,11 +1,16 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 using ZealandPetShop.Models.Shop;
+using ZealandPetShop.Models.Order;
+using ZealandPetShop.Pages.Item;
 
 namespace ZealandPetShop.Models.Order
 {
     public class OrderItem
     {
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int Id {  get; set; }
         [Required]
         public int ItemId { get; set; }
         [Required]
@@ -15,9 +20,21 @@ namespace ZealandPetShop.Models.Order
         public int Quantity { get; set; }
         [Required]
         public int UserId { get; set; }
-        
+        public Order.Status State { get; set; }
 
+        public OrderItem()
+        {
+        }
 
+        public OrderItem(int id, int itemid, int userid, int quantity)
+        {
+            id = Id;
+            ItemId = itemid;
+            UserId = userid;
+            Quantity = quantity;
+
+        }
+        //nav prop
         [ForeignKey("ItemId")]
         public Item Item { get; set; }
 
