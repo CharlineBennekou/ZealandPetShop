@@ -35,32 +35,32 @@ namespace ZealandPetShop.Pages.Login
 		}
 
 
-        [BindProperty]
-        public User User { get; set; }
+        //[BindProperty]
+        //public User User { get; set; }
 
       
-        public async Task<IActionResult> OnPostAsync()
-        {
-            if (!ModelState.IsValid)
-            {
-                return Page();
-            }
+        //public async Task<IActionResult> OnPostAsync()
+        //{
+        //    if (!ModelState.IsValid)
+        //    {
+        //        return Page();
+        //    }
 
-            try
-            {
-                await _userService.UpdateUser(User);
-                return RedirectToPage("/Index");
-            }
-            catch (Exception ex)
-            {
+        //    try
+        //    {
+        //        await _userService.UpdateUser(User);
+        //        return RedirectToPage("/Index");
+        //    }
+        //    catch (Exception ex)
+        //    {
 
-                // Log exception or handle errors
-                ModelState.AddModelError(string.Empty, "Der opstod en fejl under opdatering af profilen.");
-                return Page();
-            }
+        //        // Log exception or handle errors
+        //        ModelState.AddModelError(string.Empty, "Der opstod en fejl under opdatering af profilen.");
+        //        return Page();
+        //    }
 
-           /* return RedirectToPage("./Index"); */ // Redirect to a confirmation page or back to the profile
-        }
+        //   /* return RedirectToPage("./Index"); */ // Redirect to a confirmation page or back to the profile
+        //}
     }
 }
 
