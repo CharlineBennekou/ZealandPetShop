@@ -2,17 +2,20 @@ using ItemRazorV1.Service;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using ZealandPetShop.MockData;
+using ZealandPetShop.Services;
 
 namespace ZealandPetShop.Pages.Item
 {
     public class GetAllItemsModel : PageModel
     {
         private ItemService _itemService;
+        private CartService _cartService;
         public List<Models.Shop.Item> Items { get; set; }
 
-        public GetAllItemsModel(ItemService itemService)
+        public GetAllItemsModel(ItemService itemService,CartService cartService)
         {
             _itemService = itemService;
+            _cartService = cartService;
         }
 
         public void OnGet()
@@ -22,12 +25,8 @@ namespace ZealandPetShop.Pages.Item
 
         public IActionResult OnPostAddToCart(int id)
         {
-            // Here, you can implement the logic to add the item with the specified id to the shopping cart
-            // This is just a placeholder method
-            // For example:
-            // ShoppingCart.Add(id);
-
-            // Redirect to a different page after adding to cart
+            Console.WriteLine("OnPostAddToCart"); //debug
+            _cartService.AddItemToCart(id);
             return RedirectToPage("/Order/GetOrder");
 
         }
