@@ -1,34 +1,32 @@
 using ItemRazorV1.Service;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace ZealandPetShop.Pages.Item
 {
-    public class CreateItemModel : PageModel
-    {
-
-        private ItemService _itemService;
-		
+	public class CreateItemModel : PageModel
+	{
+		private ItemService _itemService;
 		private IWebHostEnvironment _webHostEnvironment;
 
-        [BindProperty]
-        public Models.Shop.Item Item { get; set; }
+		[BindProperty]
+		public Models.Shop.Item Item { get; set; }
 
 		[BindProperty]
-		public IFormFile? Photo { get; set; }
+		public IFormFile Photo { get; set; }
 
-
-		public CreateItemModel(ItemService itemService, IWebHostEnvironment webHost) 
-        {
-            _itemService = itemService;
+		public CreateItemModel(ItemService itemService, IWebHostEnvironment webHost)
+		{
+			_itemService = itemService;
 			_webHostEnvironment = webHost;
 		}
 
-        public IActionResult OnGet()
-        {
-            return Page();
-        }
-
+		public IActionResult OnGet()
+		{
+			return Page();
+		}
 
 		private string ProcessUploadedFile()
 		{
@@ -41,37 +39,39 @@ namespace ZealandPetShop.Pages.Item
 				string filePath = Path.Combine(uploadsFolder, uniqueFileName);
 
 				using (var fileStream = new FileStream(filePath, FileMode.Create))
-				{ Photo.CopyTo(fileStream); }
+				{
+					Photo.CopyTo(fileStream);
+				}
+				uniqueFileName = "/images/" + uniqueFileName;
 			}
 			return uniqueFileName;
 		}
 
-
-
-
-		public string errorMessage = "";
-
 		public async Task<IActionResult> OnPostAsync()
 		{
-			if (!ModelState.IsValid)
+			//if (!ModelState.IsValid)
+			//{
+			//	return Page();
+			//}
+
+			if (Photo != null)
 			{
-				errorMessage = "Alle felter er ikke belvet udfyldt";
-				return Page();
-			}
-			if (Photo != null) 
-			{
-				if(Item.ImagePath != null)
+				if (Item.ImagePath != null)
 				{
-					string filePath = Path.Combine(_webHostEnvironment.WebRootPath, "images", Item.ImagePath);
+					string filePath = Path.Combine(_webHostEnvironment.WebRootPath, "/images", Item.ImagePath);
 					System.IO.File.Delete(filePath);
 				}
 
+				// Process and save the new image  
 				Item.ImagePath = ProcessUploadedFile();
 			}
+
+			// If no photo is uploaded, keep the existing ImagePath value
 
 			_itemService.AddItem(Item);
 			return RedirectToPage("/Item/GetAllItems");
 		}
-
 	}
+
 }
+

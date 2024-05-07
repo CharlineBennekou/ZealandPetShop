@@ -7,8 +7,8 @@
 <body>
     <div class="product-container-detail">
         <div class="card">
-            <div class="image-item-detail">
-                <img src="@Model.Item.ImagePath" alt="@Model.Item.Id" class="image-image">
+            <div class="image-item-detail-container">
+                <img src="@Model.Item.ImagePath" alt="@Model.Item.Id" class="image-image-detail">
             </div>
             <div class="card-body">
                 <h2 class="card-title"><b>@Model.Item.Name</b></h2>
@@ -36,8 +36,8 @@
     </div>
     <div class="knapper">
         <a class="btn btn-danger btn-sm slet-knap" type="button" title="Delete"
-           asp-page="DeleteItem" asp-route-id="@Model.Item.Id">Slet</a>
+           asp-page="DeleteItem" asp-route-id="@Model.Item.Id"><b>Slet</b></a>
         <a class="btn btn-danger btn-sm edit-knap" type="button" title="Edit"
-           asp-page="UpdateItem" asp-route-id="@Model.Item.Id">Opdater</a>
+           asp-page="UpdateItem" asp-route-id="@Model.Item.Id"><b>Opdater</b></a>
     </div>
 </body>

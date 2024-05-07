@@ -8,21 +8,19 @@ namespace ZealandPetShop.Models.Shop
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        [Display(Name = "Item ID")]
-        [Required(ErrorMessage = "Der skal angives et ID til Item")]
+        [Display(Name = "Item ID")]   
         [Range(typeof(int), "0", "10000", ErrorMessage = "ID skal være mellem (1) og (2)")]
         public int? Id { get; set; }
-        [Display(Name = "ImagePath")]
-        [Required(ErrorMessage = "Item skal have et billede")]
 
+        [Display(Name = "ImagePath")]
         public string ImagePath { get; set; }
 
         [Display(Name = "Item Navn")]
         [Required(ErrorMessage = "Item skal have et navn")]
         public string? Name { get; set; }
+
         [Display(Name = "Item desc")]
         [Required(ErrorMessage = "Item skal have en beskrivelse")]
-
         public string Description { get; set; }
 
         [Display(Name = "Pris")]
@@ -35,11 +33,11 @@ namespace ZealandPetShop.Models.Shop
         public Item()
         {
         }
+       
 
-        public Item(string name, string imagePath, string description, double price)
+        public Item(string name, string description, double price)
         {
-            Name = name;
-            ImagePath = imagePath;
+            Name = name;           
             Description = description;
             Price = price;
         }
