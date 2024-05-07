@@ -10,15 +10,14 @@
     <div class="row">
         <div class="col-lg-4 pb-5">
             <!-- Account Sidebar-->
-            @if (Model.user != null)
-            {
-                <div class="author-text-profile">
-                    <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="@Model.user.FirstName">
-                    <div class="author-text-details">
-                        <h5 class="author-text-name text-lg">@Model.user.FirstName</h5>
-                    </div>
+            <div class="author-text-profile">
+                <div class="author-text avatar">
+                    <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="Anna Sørensen"
                 </div>
-            }
+                <div class="author-text-details">
+                    <h5 class="author-text-name text-lg">Anna Sørensen</h5><span class="author-text-position">Joined February 06, 2024</span>
+                </div>
+            </div>
             <div class="wizard">
                 <nav class="list-group list-group-flush">
                     <a class="list-group-item" href="#">
@@ -59,73 +58,71 @@
         </div>
         <!-- Profile Settings-->
         <div class="col-lg-8 pb-5">
-            <form class="row">
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label for="account-fn">First Name</label>
-                        @if (Model.user != null)
-                        {
-                            <input class="form-control" type="text" id="firstName"  value="@Model.user.FirstName" required>
-                            
-                        }
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label for="account-ln">Last Name</label>
-                        @if (Model.user != null)
-                        {
-                            <input class="form-control" type="text" id="lastName"  value="@Model.user.LastName" required>
+           
 
-                        }
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label for="account-email">E-mail Address</label>
-                        @if (Model.user != null)
-                        {
-                            <input class="form-control" type="text" id="email"  value="@Model.user.Email" required>
+                <form class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="account-fn">First Name</label>
 
-                        }
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label for="account-phone">Phone Number</label>
-                        @if (Model.user != null)
-                        {
-                            <input class="form-control" type="text" id="phone"  value="@Model.user.Phone" required>
+                            <input class="form-control" type="text" id="firstName"  value="user.FirstName" required>
 
-                        }
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label for="account-pass">New Password</label>
-                        <input class="form-control" type="password" id="account-pass">
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label for="account-confirm-pass">Confirm Password</label>
-                        <input class="form-control" type="password" id="account-confirm-pass">
-                    </div>
-                </div>
-                <div class="col-12">
-                    <hr class="mt-2 mb-3">
-                    <div class="d-flex flex-wrap justify-content-between align-items-center">
-                        <div class="custom-control custom-checkbox d-block">
-                            <input class="custom-control-input" type="checkbox" id="subscribe_me" checked="">
-                            <label class="custom-control-label" for="subscribe_me">Subscribe me to Newsletter</label>
                         </div>
                     </div>
-                </div>
-            </form>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="account-ln">Last Name</label>
+
+                            <input class="form-control" type="text" id="lastName"  value="user.LastName" required>
+
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="account-email">E-mail Address</label>
+
+
+                            <input class="form-control" type="text" id="email"  value="user.Email" required>
+
+
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="account-phone">Phone Number</label>
+
+                            <input class="form-control" type="text" id="phone"  value="user.Phone" required>
+
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="account-pass">New Password</label>
+                            <input class="form-control" type="password" id="account-pass">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="account-confirm-pass">Confirm Password</label>
+                            <input class="form-control" type="password" id="account-confirm-pass">
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <hr class="mt-2 mb-3">
+                        <div class="d-flex flex-wrap justify-content-between align-items-center">
+                            <div class="custom-control custom-checkbox d-block">
+                                <input class="custom-control-input" type="checkbox" id="subscribe_me" checked="">
+                                <label class="custom-control-label" for="subscribe_me">Subscribe me to Newsletter</label>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            
         </div>
     </div>
 </div>
-@* <form method="post">
+            
+            @* <form method="post">
     <label asp-for="User.FirstName">First Name</label>
     <input asp-for="User.FirstName" class="form-control" />
     <span asp-validation-for="User.FirstName" class="text-danger"></span>
