@@ -18,7 +18,7 @@ namespace ZealandPetShop.Services
             var customerId = int.Parse(_httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier)?.Value);
 
             // Check if the item already exists in the user's cart
-            var existingCartItem = (await _dbService.GetObjectsAsync())
+            var existingCartItem = (await _dbService.GetAllObjectsAsync())
                 .FirstOrDefault(c => c.UserId == customerId && c.ItemId == itemId);
 
             if (existingCartItem != null)

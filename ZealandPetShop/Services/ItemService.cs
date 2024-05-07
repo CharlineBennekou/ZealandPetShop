@@ -15,7 +15,7 @@ namespace ItemRazorV1.Service
             //_items = MockItems.GetMockItems();
             _dbService = dbService;
             //dbService.SaveItems(_items);
-            _items = _dbService.GetObjectsAsync().Result.ToList();
+            _items = _dbService.GetAllObjectsAsync().Result.ToList();
         }
 
         public void AddItem(Item item) //Ubrugt

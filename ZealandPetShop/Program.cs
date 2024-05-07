@@ -1,5 +1,6 @@
 using ItemRazorV1.Service;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Identity;
 using ZealandPetShop.EFDbContext;
 using ZealandPetShop.Models.Login;
 using ZealandPetShop.Models.Shop;
@@ -31,6 +32,13 @@ builder.Services.Configure<CookiePolicyOptions>(options => {
 
 });
 var app = builder.Build();
+
+//public void ConfigureServices(IServiceCollection services)
+//{
+//    services.AddRazorPages();
+//    // Registrer PasswordHasher som en service
+//    services.AddScoped<IPasswordHasher<User>, PasswordHasher<User>>();
+//}
 
 
 // Configure the HTTP request pipeline.

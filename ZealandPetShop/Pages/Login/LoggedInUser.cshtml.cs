@@ -12,6 +12,8 @@ namespace ZealandPetShop.Pages.Login
     public class LoggedInUserModel : PageModel
     {
         private UserService _userService;
+
+        
         public User user { get; set; }
 
         public LoggedInUserModel(UserService userService)
@@ -22,7 +24,7 @@ namespace ZealandPetShop.Pages.Login
 		// Bruger async og returner Task<IActionResult> for korrekt asynkron håndtering
 		public async Task<IActionResult> OnGetAsync(int id)
 		{
-			user = await _userService.GetUser(id);  // Antager, at GetUser er en asynkron metode
+			var user = await _userService.GetUser(id);  // Antager, at GetUser er en asynkron metode
 
 			if (User == null)
 			{
@@ -31,6 +33,36 @@ namespace ZealandPetShop.Pages.Login
 
 			return Page();
 		}
+
+
+        [BindProperty]
+        public User User { get; set; }
+
+      
+        public async Task<IActionResult> OnPostAsync()
+        {
+            if (!ModelState.IsValid)
+            {
+                return Page();
+            }
+
+            try
+            {
+                await _userService.UpdateUser(User);
+                return RedirectToPage("/Index");
+            }
+            catch (Exception ex)
+            {
+
+                // Log exception or handle errors
+                ModelState.AddModelError(string.Empty, "Der opstod en fejl under opdatering af profilen.");
+                return Page();
+            }
+
+           /* return RedirectToPage("./Index"); */ // Redirect to a confirmation page or back to the profile
+        }
+    }
+}
 
 
 		//public List<Models.Login.User> _user { get; set; }
@@ -65,5 +97,4 @@ namespace ZealandPetShop.Pages.Login
 		//    return Page();
 		//}
 
-	}
-}
+	

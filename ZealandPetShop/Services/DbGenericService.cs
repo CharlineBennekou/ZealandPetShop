@@ -1,20 +1,36 @@
 ﻿
 
 using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
+using System.Runtime.InteropServices;
 using ZealandPetShop.EFDbContext;
 
 namespace ZealandPetShop.Services
 {
     public class DbGenericService<T> : IService<T> where T : class
     {
-        public async Task<IEnumerable<T>> GetObjectsAsync()
+        private readonly ItemDbContext _context;
+
+
+        
+
+
+        public async Task<IEnumerable<T>> GetAllObjectsAsync()
         {
-            using (var context = new ItemDbContext())
+            using (var context = new ItemDbContext()) 
             {
-                return await context.Set<T>().AsNoTracking().ToListAsync();
-                    
+                return await context.Set<T>().ToListAsync();
             }
         }
+
+        //public async Task<IEnumerable<T>> GetObjectsAsync()
+        //{
+        //    using (var context = new ItemDbContext())
+        //    {
+        //        return await context.Set<T>().AsNoTracking().ToListAsync();
+                    
+        //    }
+        //}
 
         public async Task AddObjectAsync(T obj)
         {
@@ -36,11 +52,10 @@ namespace ZealandPetShop.Services
 
         public async Task UpdateObjectAsync(T obj)
         {
-            using (var context = new ItemDbContext())
-            {
-                context.Set<T>().Update(obj);
-                await context.SaveChangesAsync();
-            }
+            
+                _context.Set<T>().Update(obj);
+                await _context.SaveChangesAsync();
+            
         }
 
         public async Task<T> GetObjectByIdAsync(int id)

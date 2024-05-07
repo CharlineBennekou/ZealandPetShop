@@ -14,10 +14,13 @@ namespace ZealandPetShop.Pages.Login
     {
   
         private UserService _userService;
-        public LogInModel(UserService userService)
+        //private IPasswordHasher<User> _passwordHasher;
+
+        public LogInModel(UserService userService/*, IPasswordHasher<User> passwordHasher*/)
         {
             _userService = userService;
- 
+            //_passwordHasher = passwordHasher;
+
         }
         [BindProperty]
         public string Email { get; set; }
@@ -26,15 +29,54 @@ namespace ZealandPetShop.Pages.Login
         public string Password { get; set; }
         public string Message { get; set; }
 
+
+
+
+        //public void ConfigureServices(IServiceCollection services)
+        //{
+        //    services.AddRazorPages();
+        //    // Registrer PasswordHasher som en service
+        //    services.AddScoped<IPasswordHasher<User>, PasswordHasher<User>>();
+        //}
+
+
         public void OnGet()
         {
+
         }
+
+
+
+
         public async Task<IActionResult> OnPost()
         {
 
-            List<User> users = _userService._users;
+            //List<User> users = _userService._users;
+            var users = await _userService.GetAllUsersAsync();
+
+            if (users == null)
+            {
+                Message = "Ingen brugere fundet.";
+                return Page();
+            }
+
             foreach (User user in users)
             {
+                //if (_passwordHasher == null)
+                //{
+                //    throw new InvalidOperationException("Password hasher is not initialized.");
+                //}
+
+                // Hent alle brugere fra databasen via den generiske service
+                //var users = await _userService.GetAllUsersAsync();
+
+                // Tjek for null for at undgå NullReferenceException
+                if (users == null)
+                {
+                    Message = "Ingen brugere fundet.";
+                    return Page();
+                }
+
                 if (string.Equals(Email, user.Email, StringComparison.OrdinalIgnoreCase))
                 {
                     var passwordHasher = new PasswordHasher<string>();
@@ -63,5 +105,17 @@ namespace ZealandPetShop.Pages.Login
             return Page();
 
         }
+
+        //public async Task<IActionResult> OnGetAsync(int userId)
+        //{
+        //    var user = await _userService.GetUser(userId);
+        //    if (user == null)
+        //    {
+        //        return NotFound();
+        //    }
+
+        //    // Fortsæt med at bruge 'user' objektet
+        //    return Page();
+        //}
     }
 }
