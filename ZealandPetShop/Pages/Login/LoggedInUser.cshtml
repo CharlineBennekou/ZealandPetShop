@@ -70,19 +70,19 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="account-ln">Last Name</label>
-                        <input class="form-control" type="text" id="account-ln" value="Sørensen" required="">
+                        <input class="form-control" type="text" id="account-ln" value="@Model.user.LastName" required="">
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="account-email">E-mail Address</label>
-                        <input class="form-control" type="email" id="account-email" value="Anna@gmail.com" disabled="">
+                        <input class="form-control" type="email" id="account-email" value="@Model.user.Email" disabled="">
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="account-phone">Phone Number</label>
-                        <input class="form-control" type="text" id="account-phone" value="+45 12344321" required="">
+                        <input class="form-control" type="text" id="account-phone" value="@Model.user.Phone" required="">
                     </div>
                 </div>
                 <div class="col-md-6">
