@@ -1,4 +1,6 @@
-﻿using System.Security.Claims;
+﻿using Microsoft.IdentityModel.Tokens;
+using System.Linq;
+using System.Security.Claims;
 using ZealandPetShop.Migrations;
 using ZealandPetShop.MockData;
 using ZealandPetShop.Models.Login;
@@ -10,19 +12,29 @@ namespace ZealandPetShop.Services
         private readonly IHttpContextAccessor _httpContextAccessor;
         private readonly DbGenericService<OrderItem> _dbService;
         private readonly OrderService _orderService;
-        //private List<OrderItem> _orderitems;
-        
-        //public List<OrderItem> GetOrderItems()
-        //{ return _orderitems; }
+        private List<OrderItem> _orderitems;
+
+        public async Task<List<OrderItem>> GetOrderItems()
+        { 
+        return _dbService.GetObjectsAsync().Result.ToList();
+        }
+
+        public async Task<List<OrderItem>> GetCartItemsByUserId(int userId)
+        {
+            var orderItems = await _dbService.GetObjectsAsync();
+            var cartItems = orderItems.Where(orderItem => orderItem.UserId == userId && orderItem.State == Order.Status.Cart).ToList();
+            return cartItems;
+        }
 
 
         public CartService(IHttpContextAccessor httpContextAccessor, DbGenericService<OrderItem> dbservice, OrderService orderService)
         {
-            //_orderitems = MockOrderItems.GetMockOrderItems();
+            
             _httpContextAccessor = httpContextAccessor;
             _dbService = dbservice;
             //_dbService.SaveObjects(_orderitems);
             _orderService = orderService;
+            _orderitems = _dbService.GetObjectsAsync().Result.ToList();
         }
         public async Task AddItemToCart(int itemId)
         {
@@ -55,6 +67,7 @@ namespace ZealandPetShop.Services
                 };
 
                 await _dbService.AddObjectAsync(newCartItem);
+                _orderitems.Add(newCartItem);
             }
 
         }
