@@ -52,7 +52,7 @@
                         <p>Velkommen @Context.User.Identity.Name </p>
                         <p>Your ID is: @Context.User.FindFirst(ClaimTypes.NameIdentifier)?.Value</p>
                         <a asp-page="Login/LoggedInUser" asp-route-id="@int.Parse(Context.User.FindFirst(ClaimTypes.NameIdentifier)?.Value)">
-                            <button type="submit" class="detail-info"><b>My Profile</b></button>
+                            <button type="button" class="detail-info"><b>My Profile</b></button>
                         </a>
                       
                         <a class="nav-link btn btn-link" asp-area="" asp-page="/LogIn/Logout">Log ud </a>
@@ -60,6 +60,9 @@
                     else
                     {
                         <a class="nav-link" asp-area="" asp-page="/Login/LogIn">Log ind</a> @* Viser log ind link *@
+                        <a class="nav-link btn btn-link" asp-area="" asp-page="/LogIn/UpdayeUser"> Update Profile </a>
+
+                       
                     }
                 </div>
             </div>

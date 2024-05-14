@@ -1,6 +1,7 @@
 using ItemRazorV1.Service;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using ZealandPetShop.EFDbContext;
 using ZealandPetShop.Models.Login;
 using ZealandPetShop.Models.Shop;
@@ -20,6 +21,17 @@ builder.Services.AddSingleton<ItemService, ItemService>();
 //Alle vores transient(Dbgeneric services)
 builder.Services.AddTransient<DbGenericService<Item>, DbGenericService<Item>>();
 builder.Services.AddTransient<DbGenericService<User>, DbGenericService<User>>();
+
+
+
+// Tilføjer EF Core
+//builder.Services.AddDbContext<ItemDbContext>(options =>
+//    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+// Tilføjer Identity services
+//builder.Services.AddDefaultIdentity<User>(options => options.SignIn.RequireConfirmedAccount = true)
+//    .AddEntityFrameworkStores<ItemDbContext>();
+
 
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(cookieOptions => {
     cookieOptions.LoginPath = "/Login/LogIn";

@@ -59,31 +59,42 @@
             </div>
         </div>
         <!-- Profile Settings-->
-        <div class="col-lg-8 pb-5">
+        <div class="col-lg-9 pb-6">
             <form class="row">
                 <div class="col-md-6">
                     <div class="form-group">
-                        <label for="account-fn">First Name</label>
-                        <input class="form-control" type="text" id="account-fn" value="@Model.User.FirstName" required="">
+                        <label asp-for="@Model.User.FirstName" class="control-label"></label>
+                        <input asp-for="@Model.User.FirstName" class="form-control" />
+                        <span asp-validation-for="@Model.User.FirstName" class="text-danger"></span>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
-                        <label for="account-ln">Last Name</label>
-                        <input class="form-control" type="text" id="account-ln" value="@Model.User.LastName" required="">
+                        <label asp-for="@Model.User.LastName" class="control-label"></label>
+                        <input asp-for="@Model.User.LastName" class="form-control" />
+                        <span asp-validation-for="@Model.User.LastName" class="text-danger"></span>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
-                        <label for="account-email">E-mail Address</label>
-                        <input class="form-control" type="email" id="account-email" value="@Model.User.Email" disabled="">
+                        <label asp-for="@Model.User.Email" class="control-label"></label>
+                        <input asp-for="@Model.User.Email" class="form-control" />
+                        <span asp-validation-for="@Model.User.Email" class="text-danger"></span>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
-                        <label for="account-phone">Phone Number</label>
-                        <input class="form-control" type="text" id="account-phone" value="@Model.User.Phone" required="">
+                        <label asp-for="@Model.User.Phone" class="control-label"></label>
+                        <input asp-for="@Model.User.Phone" class="form-control" />
+                        <span asp-validation-for="@Model.User.Phone" class="text-danger"></span>
                     </div>
+                  </div>
+                <div class="col-md-6">
+                        <div class="form-group">
+                            <label asp-for="@Model.User.Address" class="control-label"></label>
+                            <input asp-for="@Model.User.Address" class="form-control" />
+                            <span asp-validation-for="@Model.User.Address" class="text-danger"></span>
+                        </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
@@ -104,7 +115,11 @@
                             <input class="custom-control-input" type="checkbox" id="subscribe_me" checked="">
                             <label class="custom-control-label" for="subscribe_me">Subscribe me to Newsletter</label>
                         </div>
-                        <button class="btn btn-style-1 btn-primary" type="button" data-toast="" data-toast-position="topRight" data-toast-type="success" data-toast-icon="fe-icon-check-circle" data-toast-title="Success!" data-toast-message="Your profile updated successfuly.">Update Profile</button>
+                        <div class="user-knapper">
+                          <a class="btn btn-danger btn-sm edit-knap" type="button" title="Edit"
+                          asp-page="UpdateUser" asp-route-id="@Model.User.Id">Opdater
+                          </a>
+                        </div>
                     </div>
                 </div>
             </form>

@@ -3,18 +3,25 @@ using ZealandPetShop.MockData;
 using ZealandPetShop.Models.Shop;
 using ZealandPetShop.EFDbContext;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
+using System.ComponentModel.DataAnnotations;
 
 namespace ZealandPetShop.Services
 {
     public class UserService
     {
+        public PasswordHasher<UserService> passwordHasher;
         private DbGenericService<User> _dbService;
         public List<User> _users { get; }
 
-        public UserService(DbGenericService<User> dbService)
+       
+
+        public UserService(DbGenericService<User> dbService/*, PasswordHasher<UserService> passwordHasher*/)
         {
             //_users = MockUsers.GetMockUsers();
             _dbService = dbService;
+            
             //_dbService.SaveObjects(_users);
             //_users = _dbService.GetObjectsAsync().Result;
         }
@@ -52,17 +59,21 @@ namespace ZealandPetShop.Services
 
         public async Task UpdateUser(User user)
         {
-           // Tjekker om brugeren eksistere i databasen først
             var existingUser = await _dbService.GetObjectByIdAsync(user.Id);
-            if (existingUser != null)
+            if (existingUser == null)
             {
-                // Opdater eksisterende bruger
-                await _dbService.UpdateObjectAsync(user);
+                throw new InvalidOperationException("User not found.");
             }
-            else
-            {
-                throw new InvalidOperationException("User not found");
-            }
+            //var passwordHasher = new PasswordHasher<string>();
+
+            existingUser.Email = user.Email;
+            existingUser.Password = passwordHasher.HashPassword(null, user.Password);
+            existingUser.FirstName = user.FirstName;
+            existingUser.LastName = user.LastName;
+            existingUser.Phone = user.Phone;
+            existingUser.Address = user.Address;
+
+            await _dbService.UpdateObjectAsync(existingUser);
         }
 
     }

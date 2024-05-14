@@ -1,10 +1,11 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.AspNetCore.Identity;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using ZealandPetShop.Models.Order;
 
 namespace ZealandPetShop.Models.Login
 {
-    public class User
+    public class User /*: IdentityUser*/
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
