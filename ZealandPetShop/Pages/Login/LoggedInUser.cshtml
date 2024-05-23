@@ -105,6 +105,13 @@
                             <input class="custom-control-input" type="checkbox" id="subscribe_me" checked="">
                             <label class="custom-control-label" for="subscribe_me">Subscribe me to Newsletter</label>
                         </div>
+                        <div class="Deletebruger">
+                            <form method="post">
+                                <a class="btn btn-danger btn-sm edit-knap" type="button" title="Delete"
+                                   asp-page="DeleteUser" asp-route-id="@Model.user.Id">Slet
+                                </a>
+                            </form>
+                        </div>
                         <a class="btn btn-danger btn-sm edit-knap" type="button" title="Edit"
                            asp-page="UpdateUser" asp-route-id="@Model.user.Id">Opdater
                         </a>
