@@ -2,3 +2,42 @@
 @model ZealandPetShop.Pages.Login.CreateUserModel
 @{
 }
+
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div class="form-group">
+                <label asp-for="@Model.FirstName" class="control-lable"></label>
+                <input asp-for="@Model.FirstName" class="form-control" />
+            </div>
+
+            <div class="form-group">
+                <label asp-for="@Model.LastName" class="control-lable"></label>
+                <input asp-for="@Model.LastName" class="form-control" />
+            </div>
+
+            <div class="form-group">
+                <label asp-for="@Model.Email" class="control-lable"></label>
+                <input asp-for="@Model.Email" class="form-control" />
+            </div>
+
+            <div class="form-group">
+                <label asp-for="@Model.Phone" class="control-lable"></label>
+                <input asp-for="@Model.Phone" class="form-control" />
+            </div>
+
+            <div class="form-group">
+                <label asp-for="@Model.Address" class="control-lable"></label>
+                <input asp-for="@Model.Address" class="form-control" />
+            </div>
+
+            <div class="form-group">
+                <label asp-for="@Model.Password" class="control-lable"></label>
+                <input asp-for="@Model.Password" class="form-control" />
+
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
