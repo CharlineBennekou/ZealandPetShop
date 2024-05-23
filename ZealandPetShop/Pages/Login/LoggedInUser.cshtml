@@ -13,10 +13,10 @@
             <div class="author-text">
                 <div class="author-text-profile">
                     <div class="author-text avatar">
-                       <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="@Model.user.FirstName"
+                       <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="@Model.User.FirstName"
                    </div>
                        <div class="author-text-details">
-                        <h5 class="author-text-name text-lg">@Model.user.FirstName</h5><span class="author-text-position">Joined February 06, 2024</span>
+                        <h5 class="author-text-name text-lg">@Model.User.FirstName</h5><span class="author-text-position">Joined February 06, 2024</span>
                       </div>
                 </div>
             </div>
@@ -63,37 +63,37 @@
             <form class="row">
                 <div class="col-md-8">
                     <div class="form-group">
-                        <label asp-for="@Model.user.FirstName" class="control-label"></label>
-                        <label asp-for="@Model.user.FirstName" class="form-control" />
-                        <span asp-validation-for="@Model.user.FirstName" class="text-danger"></span>
+                        <label asp-for="@Model.User.FirstName" class="control-label"></label>
+                        <label asp-for="@Model.User.FirstName" class="form-control" />
+                        <span asp-validation-for="@Model.User.FirstName" class="text-danger"></span>
                     </div>
                 </div>
                 <div class="col-md-8">
                     <div class="form-group">
-                        <label asp-for="@Model.user.LastName" class="control-label"></label>
-                        <label asp-for="@Model.user.LastName" class="form-control" />
-                        <span asp-validation-for="@Model.user.LastName" class="text-danger"></span>
+                        <label asp-for="@Model.User.LastName" class="control-label"></label>
+                        <label asp-for="@Model.User.LastName" class="form-control" />
+                        <span asp-validation-for="@Model.User.LastName" class="text-danger"></span>
                     </div>
                 </div>
                 <div class="col-md-8">
                     <div class="form-group">
-                        <label asp-for="@Model.user.Email" class="control-label"></label>
-                        <label asp-for="@Model.user.Email" class="form-control" />
-                        <span asp-validation-for="@Model.user.Email" class="text-danger"></span>
+                        <label asp-for="@Model.User.Email" class="control-label"></label>
+                        <label asp-for="@Model.User.Email" class="form-control" />
+                        <span asp-validation-for="@Model.User.Email" class="text-danger"></span>
                     </div>
                 </div>
                 <div class="col-md-8">
                     <div class="form-group">
-                        <label asp-for="@Model.user.Phone" class="control-label"></label>
-                        <label asp-for="@Model.user.Phone" class="form-control" />
-                        <span asp-validation-for="@Model.user.Phone" class="text-danger"></span>
+                        <label asp-for="@Model.User.Phone" class="control-label"></label>
+                        <label asp-for="@Model.User.Phone" class="form-control" />
+                        <span asp-validation-for="@Model.User.Phone" class="text-danger"></span>
                     </div>
                 </div>
                 <div class="col-md-8">
                     <div class="form-group">
-                        <label asp-for="@Model.user.Address" class="control-label"></label>
-                        <label asp-for="@Model.user.Address" class="form-control" />
-                        <span asp-validation-for="@Model.user.Address" class="text-danger"></span>
+                        <label asp-for="@Model.User.Address" class="control-label"></label>
+                        <label asp-for="@Model.User.Address" class="form-control" />
+                        <span asp-validation-for="@Model.User.Address" class="text-danger"></span>
                     </div>
                 </div>
 
@@ -108,12 +108,12 @@
                         <div class="Deletebruger">
                             <form method="post">
                                 <a class="btn btn-danger btn-sm edit-knap" type="button" title="Delete"
-                                   asp-page="DeleteUser" asp-route-id="@Model.user.Id">Slet
+                                   asp-page="DeleteUser" asp-route-id="@Model.User.Id">Slet
                                 </a>
                             </form>
                         </div>
                         <a class="btn btn-danger btn-sm edit-knap" type="button" title="Edit"
-                           asp-page="UpdateUser" asp-route-id="@Model.user.Id">Opdater
+                           asp-page="UpdateUser" asp-route-id="@Model.User.Id">Opdater
                         </a>
                     </div>
                 </div>
