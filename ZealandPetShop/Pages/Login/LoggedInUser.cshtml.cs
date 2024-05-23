@@ -12,6 +12,8 @@ namespace ZealandPetShop.Pages.Login
     public class LoggedInUserModel : PageModel
     {
         private UserService _userService;
+
+        [BindProperty]
         public User user { get; set; }
 
         public LoggedInUserModel(UserService userService)
@@ -19,13 +21,16 @@ namespace ZealandPetShop.Pages.Login
             _userService = userService;
         }
 
-        public IActionResult OnGet(int id)
+        public async Task <IActionResult> OnGetAsync(int id)
         {
 
-
-            user = _userService.GetUser(id);
-
+            user = await _userService.GetUser(id);
+            if (user == null) 
+            { 
+                return NotFound();
+            }
             return Page();
+           
 
         }
 
