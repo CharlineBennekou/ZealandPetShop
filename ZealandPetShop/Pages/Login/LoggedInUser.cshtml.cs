@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System.Dynamic;
 using System.Reflection.Metadata.Ecma335;
+using System.Security.Claims;
 using ZealandPetShop.Models.Login;
 using ZealandPetShop.Services;
 
@@ -13,7 +14,7 @@ namespace ZealandPetShop.Pages.Login
     {
         private UserService _userService;
 
-        
+        [BindProperty]
         public User User { get; set; }
 
         public LoggedInUserModel(UserService userService)
@@ -24,7 +25,8 @@ namespace ZealandPetShop.Pages.Login
 		// Bruger async og returner Task<IActionResult> for korrekt asynkron håndtering
 		public async Task<IActionResult> OnGetAsync(int id)
 		{
-			User = await _userService.GetUser(id);  // Antager, at GetUser er en asynkron metode
+            int userId = GetUserIdFromClaims();
+            User = await _userService.GetUser(id);  // Antager, at GetUser er en asynkron metode
 
 			if (User == null)
 			{
@@ -35,12 +37,61 @@ namespace ZealandPetShop.Pages.Login
 		}
 
 
+        public async Task<IActionResult> OnPost()
+        {
+
+            await _userService.DeleteUser(User);
+            return RedirectToPage("/LoggedInUser");
+
+
+
+
+            //try 
+            //{
+            //    var userToDelete = User;
+            //    var deletedUser = await _userService.DeleteUser(userToDelete);
+            //    if (deletedUser == null) 
+            //    {
+            //        return NotFound();
+            //    }
+
+            //    return RedirectToPage("./Item/GetAllItems");
+            //}
+            //catch (InvalidOperationException ex)
+            //{ 
+            //    return BadRequest(ex.Message);
+            //}
+
+
+
+        }
+
+
+        private int GetUserIdFromClaims()
+        {
+            var claimsIdentity = User.Identity as ClaimsIdentity;
+            var userIdClaim = claimsIdentity?.FindFirst(ClaimTypes.NameIdentifier);
+
+            if (userIdClaim == null)
+            {
+                throw new InvalidOperationException("No claim found for user ID.");
+            }
+
+            if (!int.TryParse(userIdClaim.Value, out int userId))
+            {
+                throw new InvalidOperationException("Invalid user ID claim.");
+            }
+
+            return userId;
+        }
+
 
 
         //[BindProperty]
         //public User User { get; set; }
 
-      
+
+
         //public async Task<IActionResult> OnPostAsync()
         //{
         //    if (!ModelState.IsValid)

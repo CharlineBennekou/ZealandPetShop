@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Security.Claims;
 using ZealandPetShop.Models.Order;
 
 namespace ZealandPetShop.Models.Login
@@ -26,6 +27,7 @@ namespace ZealandPetShop.Models.Login
 
         //Navigation property
         public ICollection<Order.Order> Orders { get; set; }
+        public ClaimsIdentity Identity { get; internal set; }
 
         public User(int id, string email, string password, string firstName, string lastName, string phone, string address)
         {

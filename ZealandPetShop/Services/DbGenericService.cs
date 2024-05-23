@@ -9,8 +9,8 @@ namespace ZealandPetShop.Services
 {
     public class DbGenericService<T> : IService<T> where T : class
     {
-        private readonly ItemDbContext _context;
-
+        //private readonly ItemDbContext _context
+        
 
         
 
@@ -52,9 +52,11 @@ namespace ZealandPetShop.Services
 
         public async Task UpdateObjectAsync(T obj)
         {
-            
-                _context.Set<T>().Update(obj);
-                await _context.SaveChangesAsync();
+            using (var context = new ItemDbContext())
+            {
+                context.Set<T>().Update(obj);
+                await context.SaveChangesAsync();
+            }
             
         }
 

@@ -59,11 +59,11 @@ namespace ZealandPetShop.Pages.Login
         {
             //if (!ModelState.IsValid) 
             //{
-            //    return Page();
+            //return Page();
             //}
 
             await _userService.UpdateUser(EUser);
-            return RedirectToPage("./LoggedInUser");
+            return RedirectToPage("/LoggedInUser");
 
 
             //if (!ModelState.IsValid)
@@ -91,6 +91,7 @@ namespace ZealandPetShop.Pages.Login
             //    await _userService.UpdateUser(EUser);
             //}
             
+
             
 
             //return RedirectToPage("Profile"); // Redirect til profil siden efter opdatering

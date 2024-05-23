@@ -7,6 +7,11 @@
 
 <form method="post">
     <div class="form-group">
+        <label for="Id">id</label>
+        <input asp-for="@Model.EUser.Id" class="form-control" required />
+    </div>
+
+    <div class="form-group">
         <label for="FirstName">Navn</label>
         <input asp-for="@Model.EUser.FirstName" class="form-control" required />
     </div>

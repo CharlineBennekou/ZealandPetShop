@@ -50,9 +50,14 @@
                      @if (User.Identity.IsAuthenticated) //tjekker om bruger er logget ind
                     {
                         <p>Velkommen @Context.User.Identity.Name </p>
-                        <p>Your ID is: @Context.User.FindFirst(ClaimTypes.NameIdentifier)?.Value</p>
-                        <a asp-page="Login/LoggedInUser" asp-route-id="@int.Parse(Context.User.FindFirst(ClaimTypes.NameIdentifier)?.Value)">
-                            <button type="button" class="detail-info"><b>My Profile</b></button>
+                       
+                       
+@*                         <p>Your ID is: @Context.User.FindFirst(ClaimTypes.NameIdentifier)?.Value</p>
+ *@                        <a asp-page="Login/LoggedInUser" asp-route-id="@int.Parse(Context.User.FindFirst(ClaimTypes.NameIdentifier)?.Value)">
+
+                            <div class="profileb">
+                                <button type="button" class="profilebutton"><b>My Profile</b></button>
+                            </div>
                         </a>
                       
                         <a class="nav-link btn btn-link" asp-area="" asp-page="/LogIn/Logout">Log ud </a>
