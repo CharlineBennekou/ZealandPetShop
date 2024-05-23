@@ -40,7 +40,11 @@ namespace ZealandPetShop.Pages.Login
             //}
 
             await _userService.UpdateUser(EUser);
+            
+
             return RedirectToPage("/LoggedInUser");
+
+            
 
         }
     }
