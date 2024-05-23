@@ -1,6 +1,7 @@
 ﻿using ZealandPetShop.Models.Login;
 using ZealandPetShop.MockData;
 using ZealandPetShop.Models.Shop;
+using Microsoft.AspNetCore.Identity;
 namespace ZealandPetShop.Services
 {
     public class UserService
@@ -29,9 +30,74 @@ namespace ZealandPetShop.Services
             }
             return null;
         }
-       
 
-        public List<User> GetUsers() { return _users;
+
+        public async Task SaveUSer(User user)
+        {
+            await _dbService.SaveObjects(new List<User> { user });
         }
+
+
+        public async Task<IEnumerable<User>> GetAllUsersAsync()
+        {
+            return await _dbService.GetAllObjectsAsync();
+        }
+
+
+        public async Task<User> GetUser(int id)
+        {
+            return await _dbService.GetObjectByIdAsync(id);
+        }
+
+
+        internal void AddUser(object user)
+        {
+            throw new NotImplementedException();
+        }
+
+
+
+
+        public async Task UpdateUser(User user)
+        {
+            var existingUser = await _dbService.GetObjectByIdAsync(user.Id);
+            if (existingUser == null)
+            {
+                throw new InvalidOperationException("User not found.");
+            }
+
+
+
+            if (existingUser.Id == user.Id)
+            {
+                var passwordHasher = new PasswordHasher<string>();
+
+                existingUser.Email = user.Email;
+                existingUser.Password = passwordHasher.HashPassword(null, user.Password);
+                existingUser.FirstName = user.FirstName;
+                existingUser.LastName = user.LastName;
+                existingUser.Phone = user.Phone;
+                existingUser.Address = user.Address;
+
+                await _dbService.UpdateObjectAsync(existingUser);
+            }
+        }
+
+        public async Task<User> DeleteUser(User user)
+        {
+            var existingUser = await _dbService.GetObjectByIdAsync(user.Id);
+            if (existingUser == null)
+            {
+                throw new InvalidOperationException("User not found");
+            }
+
+            if (existingUser.Id == user.Id)
+            {
+                await _dbService.DeleteObjectAsync(existingUser);
+                return existingUser;
+            }
+            return null;
+        }
+
     }
 }
