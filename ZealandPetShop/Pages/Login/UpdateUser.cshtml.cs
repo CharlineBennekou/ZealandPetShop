@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.ComponentModel.DataAnnotations;
+using System.Security.Claims;
 using ZealandPetShop.Models.Login;
 using ZealandPetShop.Services;
 
@@ -39,13 +40,34 @@ namespace ZealandPetShop.Pages.Login
             //return Page();
             //}
 
-            await _userService.UpdateUser(EUser);
+            //await _userService.UpdateUser(EUser);
             
 
-            return RedirectToPage("/LoggedInUser");
+            //return RedirectToPage("/LoggedInUser");
 
             
 
         }
+
+
+
+        private int GetUserIdFromClaims()
+        {
+            var claimsIdentity = User.Identity as ClaimsIdentity;
+            var userIdClaim = claimsIdentity?.FindFirst(ClaimTypes.NameIdentifier);
+
+            if (userIdClaim == null)
+            {
+                throw new InvalidOperationException("No claim found for user ID.");
+            }
+
+            if (!int.TryParse(userIdClaim.Value, out int userId))
+            {
+                throw new InvalidOperationException("Invalid user ID claim.");
+            }
+
+            return userId;
+        }
+
     }
 }
