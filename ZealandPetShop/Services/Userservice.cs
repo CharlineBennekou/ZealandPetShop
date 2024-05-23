@@ -14,7 +14,7 @@ namespace ZealandPetShop.Services
             //_users = MockUsers.GetMockUsers();
             _dbService = dbService;
             //_dbService.SaveObjects(_users);
-            _users = _dbService.GetObjectsAsync().Result.ToList();
+            _users = _dbService.GetAllObjectsAsync().Result.ToList();
         }
 
         public void AddUser(User user)
