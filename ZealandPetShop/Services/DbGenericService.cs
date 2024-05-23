@@ -7,7 +7,7 @@ namespace ZealandPetShop.Services
 {
     public class DbGenericService<T> : IService<T> where T : class
     {
-        public async Task<IEnumerable<T>> GetObjectsAsync()
+        public async Task<IEnumerable<T>> GetAllObjectsAsync()
         {
             using (var context = new ItemDbContext())
             {
