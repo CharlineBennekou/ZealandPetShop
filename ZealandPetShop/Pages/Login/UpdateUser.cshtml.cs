@@ -10,7 +10,7 @@ namespace ZealandPetShop.Pages.Login
     {
         private UserService _userService;
 
-        [BindProperty] 
+        [BindProperty]
         public User EUser { get; set; }
 
 
@@ -23,7 +23,7 @@ namespace ZealandPetShop.Pages.Login
             _userService = userService;
         }
 
-       public async Task <IActionResult> OnGetAsync(int id)
+        public async Task<IActionResult> OnGetAsync(int id)
         {
             //int userId = GetUserIdFromClaims();
             EUser = await _userService.GetUser(id);
@@ -32,7 +32,16 @@ namespace ZealandPetShop.Pages.Login
             return Page();
         }
 
+        public async Task<IActionResult> OnPostAsync()
+        {
+            //if (!ModelState.IsValid) 
+            //{
+            //return Page();
+            //}
 
+            await _userService.UpdateUser(EUser);
+            return RedirectToPage("/LoggedInUser");
 
+        }
     }
 }
