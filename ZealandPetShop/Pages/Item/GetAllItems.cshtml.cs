@@ -23,13 +23,22 @@ namespace ZealandPetShop.Pages.Item
             Items = _itemService.GetItems();
         }
 
-        public IActionResult OnPostAddToCart(int id)
+        public async Task OnPostAddToCartAsync(int id)
         {
-            Console.WriteLine("OnPostAddToCart"); //debug
-            _cartService.AddItemToCart(id);
-            return RedirectToPage("/Order/GetOrder");
+            Items = _itemService.GetItems();
+            await _cartService.AddItemToCart(id);
 
+            RedirectToPage("/Order/Cart");
         }
+
+ 
+        //public IActionResult OnPostAddToCart(int id)
+        //{
+        //    _cartService.AddItemToCart(id);
+        //    return RedirectToPage("/Order/Cart");
+
+
+        //}
 
         public IActionResult OnPostSeeDetails(int id)
         {

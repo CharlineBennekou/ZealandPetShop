@@ -1,5 +1,5 @@
 ﻿@page
-@model ZealandPetShop.Pages.Order.GetOrderModel
+@model ZealandPetShop.Pages.Order.CartModel
 @{
 }
 
@@ -18,13 +18,13 @@
                                         <h2><strong>Indkøbskurv</strong></h2>
                                     </div>
 
-                                    @foreach (var OrderItem in Model.OrderItems)
+                                    @foreach (var OrderItem in Model.OrderItems) //foreach loop til at hente alle kundens orderitems
                                     {
                                         <hr />
                                         <div class="panel-body">
                                             <div class="row">
                                                 @{
-                var item = Model.GetItemById(OrderItem.ItemId);
+                                                  var item = Model.GetItemById(OrderItem.ItemId); //finder den matchende item til hvert itemId
                                                 }
                                                 <div class="col-md-2"><img src=@item.ImagePath class="media-object img-thumbnail" /></div>
                                                 <div class="col-md-10">
@@ -38,15 +38,15 @@
                                                 </div>
                                             </div>
                                         </div>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                @* <form method="post" asp-page-handler="Delete" asp-route-id="@OrderItem.Id">
+                                                    <button type="submit" class="btn btn-danger"><i class="bi bi-trash"></i> Delete</button>
+                                                </form> *@
+                                            </div>
+                                        </div>
 
                                     }
-                                    @* @foreach (var orderitem in Model.orderItems)
-                                    {
-                                        <p> Orderitems:</p>
-                                        <p>Id: @orderitem.Id</p>
-                                        <p>itemId: @orderitem.ItemId</p>
-                                        <p>UserId: @orderitem.UserId</p>
-                                    } *@
                                     <hr />
                                 </div>
                             </div>

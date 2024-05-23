@@ -14,7 +14,7 @@ namespace ZealandPetShop.Pages.Item
 
         [BindProperty]
         [Required(ErrorMessage = "Indtast venligst mængden af produktet der ønskes")]
-        public int Count { get; set; } //Ændr dette til Ordrelinje(som har count, itemid og sit eget id)
+        public int Count { get; set; }
 
         public Models.Shop.Item Item { get; set; }
 
