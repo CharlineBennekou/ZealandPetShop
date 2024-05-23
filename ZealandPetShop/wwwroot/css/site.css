@@ -171,6 +171,17 @@ body {
         border: none;
     }
 
+
+.description-box {
+    background-color: #f2f2f2; /* Light grey background color */
+    padding: 10px; /* Add some padding around the content */
+    border-radius: 5px; /* Add rounded corners to the box */
+    max-width: 200px; /* Limit the width of the box */
+    overflow: hidden; /* Hide any content that overflows the box */
+    word-wrap: break-word; /* Wrap long words to fit within the box */
+}
+
+
 .knapper {
     text-align: center;
 }
@@ -206,6 +217,7 @@ body {
     width: 100% 
 
 }
+
 
 
 .image-container img{
@@ -259,7 +271,7 @@ body {
 }
 
 #btn-create {
-    background-color: #F8F0E0;
+    background-color: #f16d65;
     color: black;
     text-align: center;
     border: none;

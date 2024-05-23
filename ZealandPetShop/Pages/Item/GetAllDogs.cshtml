@@ -1,0 +1,35 @@
+﻿@page
+@model ZealandPetShop.Pages.Item.GetAllDogsModel
+@{
+}
+
+<body>
+    <br />
+    <h1 class="product-title"><b>Hunde Produkter</b></h1>
+    <br />
+    <br />
+    <p>xx produkter</p>
+    <br />
+
+    <div class="product-container">
+        @foreach (var item in Model.Items.Where(x => x.Art == Models.Shop.Item.DyreArt.Hund))
+        {
+            <div class="product-card">
+                <div class="product-box">
+                    <div class="image-item">
+                        <img src="@item.ImagePath" alt="@item.Id" class="image-image">
+                    </div>
+                    <h2>@item.Name</h2>
+                    <p>@item.Price,-</p>
+                    <p>Id: @item.Id</p>
+                    <form method="post" asp-page-handler="AddToCart" asp-route-id="@item.Id">
+                        <button type="submit" class="addCart"><b>Tilføj til Kurv</b></button>
+                    </form>
+                    <a asp-page="ItemDetail" asp-route-id="@item.Id">
+                        <button type="submit" class="detail-info"><b>Se info</b></button>
+                    </a>
+                </div>
+            </div>
+        }
+    </div>
+</body>

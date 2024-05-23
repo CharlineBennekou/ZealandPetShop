@@ -20,4 +20,87 @@
            
         </div>
     </div>
+
+    <br />
+    <br />
+
+    <div class="dyr-image-container">
+        <div class="pakke-image">
+            <img class="dyr-forside-image" id="pakke-img" src="images/dealPakke.png" alt="Image 2">
+            <h3>Tilbud</h3>
+            <a asp-page="/Item/GetAllItems" class="btn btn-primary" id="btn-hund-page"><b>Shop Nu</b></a>
+        </div>
+
+        <div class="hund-image">
+            <img class="dyr-forside-image" id="hund-img" src="images/hundForside.png" alt="Image 3">
+            <h3>Hund</h3>
+            <a asp-page="/Item/GetAllDogs" class="btn btn-primary" id="btn-hund-page"><b>Shop Nu</b></a>
+        </div>
+
+        <div class="kat-image">
+            <img class="dyr-forside-image" id="kat-img" src="images/katForside.png" alt="Image 4">
+            <h3>Kat</h3>
+            <a asp-page="/Item/GetAllCats" class="btn btn-primary" id="btn-hund-page"><b>Shop Nu</b></a>
+        </div>
+
+        <div class="kanin-image">
+            <img class="dyr-forside-image" id="kanin-img" src="images/kaninForside.png" alt="Image 5">
+            <h3>Kanin</h3>
+            <a asp-page="/Item/GetAllRabbits" class="btn btn-primary" id="btn-hund-page"><b>Shop Nu</b></a>
+        </div>
+    </div>
 </body>
+
+<style>
+
+    .dyr-image-container a {
+        background-color: black; /* Sets the background color to black */
+        color: white; /* Sets the text color to white */
+        border: none; /* Removes the border */
+        padding: 5px 50px; /* Adjust padding to make the button longer */
+        cursor: pointer; /* Changes cursor to pointer */
+        margin-top: 10px; /* Adds top margin for spacing */
+        align-content: center;
+        display: block;
+    }
+
+    .dyr-forside-image {
+        flex: 1;
+        width: 200px; /* Set your desired width */
+        height: 200px; /* Set your desired height */
+        object-fit: cover; /* Maintain aspect ratio while covering the container */
+        margin: 50px;
+    }
+
+    .pakke-image, .hund-image, .kat-image, .kanin-image {
+        display: inline-block;
+        position: relative;
+        max-width: 50%; /* Ensure images don't exceed their container */
+        background-color: #F8F0E0;
+        margin-right: 20px; /* Adjust the margin as needed */
+        height: 400px;
+    }
+
+    .dyr-image-container h3 {
+        color: black;
+        text-align: center;
+        bottom: 60px;
+    }
+
+    .pakke-image p, .hund-image p, .kat-image p, .kanin-image p {
+        position: absolute;
+        
+        left: 0;
+        width: 100%;
+        background-color: black; /* Black background */
+        color: #fff; /* White text */
+        padding: 10px; /* Padding for text */
+        margin: 0;
+        text-align: center;
+    }
+
+        .pakke-image p:hover, .hund-image p:hover, .kat-image p:hover, .kanin-image p:hover {
+            background-color: rgba(0, 0, 0, 0.9); /* Darken the background on hover */
+            color: indianred; /* Change text color on hover */
+        }
+</style>

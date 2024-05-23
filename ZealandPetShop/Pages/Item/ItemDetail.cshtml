@@ -1,5 +1,6 @@
 ﻿@page "{Id:int}"
 @model ZealandPetShop.Pages.Item.ItemDetailModel
+@using System.Security.Claims
 @{
 }
 
@@ -31,14 +32,24 @@
                 <br />
 
                 <h6>Produkt beskrivelse:</h6>
-                <p>@Model.Item.Description</p>
+                <div class="description-box">
+                    <p>@Model.Item.Description</p>
+                </div>
             </div>
         </div>
+    
     </div>
-    <div class="knapper">
-        <a class="btn btn-danger btn-sm slet-knap" type="button" title="Delete"
+
+        @if (User.Identity.IsAuthenticated)
+        {
+        
+            
+            <div class="knapper">
+                <a class="btn btn-danger btn-sm slet-knap" type="button" title="Delete"
            asp-page="DeleteItem" asp-route-id="@Model.Item.Id"><b>Slet</b></a>
         <a class="btn btn-danger btn-sm edit-knap" type="button" title="Edit"
            asp-page="UpdateItem" asp-route-id="@Model.Item.Id"><b>Opdater</b></a>
-    </div>
+            </div>
+            
+        }
 </body>
