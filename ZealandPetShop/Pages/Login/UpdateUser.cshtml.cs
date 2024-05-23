@@ -25,7 +25,14 @@ namespace ZealandPetShop.Pages.Login
 
        public async Task <IActionResult> OnGetAsync()
         {
-           
+            int userId = GetUserIdFromClaims();
+            EUser = await _userService.GetUser(userId);
+            if (User == null) return NotFound();
+
+            return Page();
         }
+
+
+
     }
 }
