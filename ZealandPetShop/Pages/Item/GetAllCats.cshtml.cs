@@ -1,20 +1,17 @@
 using ItemRazorV1.Service;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using System.Net.NetworkInformation;
-using ZealandPetShop.MockData;
 using ZealandPetShop.Services;
-using System.Security.Claims;
 
 namespace ZealandPetShop.Pages.Item
 {
-    public class GetAllItemsModel : PageModel
+    public class GetAllCatsModel : PageModel
     {
         private ItemService _itemService;
         private CartService _cartService;
         public List<Models.Shop.Item> Items { get; set; }
 
-        public GetAllItemsModel(ItemService itemService,CartService cartService)
+        public GetAllCatsModel(ItemService itemService, CartService cartService)
         {
             _itemService = itemService;
             _cartService = cartService;
@@ -23,18 +20,6 @@ namespace ZealandPetShop.Pages.Item
         public void OnGet()
         {
             Items = _itemService.GetItems();
-        }
-
-        public IActionResult OnGetSortByPrice()
-        {
-            Items = _itemService.SortByPrice().ToList();
-            return Page();
-        }
-
-        public IActionResult OnGetSortByPriceDescending()
-        {
-            Items = _itemService.SortByPriceDescending().ToList();
-            return Page();
         }
 
         public IActionResult OnPostAddToCart(int id)
