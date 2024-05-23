@@ -21,15 +21,15 @@ namespace ZealandPetShop.Services
         {
             _users.Add(user);
         }
-        public User GetUser(int id)
-        {
-            foreach (User user in _users)
-            {
-                if (user.Id == id)
-                    return user;
-            }
-            return null;
-        }
+        //public User GetUser(int id)
+        //{
+        //    foreach (User user in _users)
+        //    {
+        //        if (user.Id == id)
+        //            return user;
+        //    }
+        //    return null;
+        //}
 
 
         public async Task SaveUSer(User user)
