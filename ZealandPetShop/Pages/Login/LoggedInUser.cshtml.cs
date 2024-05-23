@@ -1,10 +1,5 @@
-using ItemRazorV1.Service;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
-using System.Dynamic;
-using System.Reflection.Metadata.Ecma335;
-using System.Security.Claims;
 using ZealandPetShop.Models.Login;
 using ZealandPetShop.Services;
 
@@ -25,7 +20,7 @@ namespace ZealandPetShop.Pages.Login
 		// Bruger async og returner Task<IActionResult> for korrekt asynkron håndtering
 		public async Task<IActionResult> OnGetAsync(int id)
 		{
-            int userId = GetUserIdFromClaims();
+            //int userId = GetUserIdFromClaims();
             User = await _userService.GetUser(id);  // Antager, at GetUser er en asynkron metode
 
 			if (User == null)
@@ -67,23 +62,23 @@ namespace ZealandPetShop.Pages.Login
         }
 
 
-        private int GetUserIdFromClaims()
-        {
-            var claimsIdentity = User.Identity as ClaimsIdentity;
-            var userIdClaim = claimsIdentity?.FindFirst(ClaimTypes.NameIdentifier);
+        //private int GetUserIdFromClaims()
+        //{
+        //    var claimsIdentity = User.Identity as ClaimsIdentity;
+        //    var userIdClaim = claimsIdentity?.FindFirst(ClaimTypes.NameIdentifier);
 
-            if (userIdClaim == null)
-            {
-                throw new InvalidOperationException("No claim found for user ID.");
-            }
+        //    if (userIdClaim == null)
+        //    {
+        //        throw new InvalidOperationException("No claim found for user ID.");
+        //    }
 
-            if (!int.TryParse(userIdClaim.Value, out int userId))
-            {
-                throw new InvalidOperationException("Invalid user ID claim.");
-            }
+        //    if (!int.TryParse(userIdClaim.Value, out int userId))
+        //    {
+        //        throw new InvalidOperationException("Invalid user ID claim.");
+        //    }
 
-            return userId;
-        }
+        //    return userId;
+        //}
 
 
 

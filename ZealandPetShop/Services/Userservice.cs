@@ -14,7 +14,7 @@ namespace ZealandPetShop.Services
     {
         public PasswordHasher<UserService> passwordHasher;
         private DbGenericService<User> _dbService;
-        public List<User> _users { get; }
+        public List<User> _users { get; } 
 
        
 

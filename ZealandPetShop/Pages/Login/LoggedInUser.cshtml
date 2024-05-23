@@ -116,9 +116,11 @@
                             <label class="custom-control-label" for="subscribe_me">Subscribe me to Newsletter</label>
                         </div>
                         <div class="user-knapper">
+                            <div class="Deletebruger">
                             <form method="post">
                                 <button type="submit" asp-page-handler="Delete">Delete</button>
                             </form>
+                            </div>
                           <a class="btn btn-danger btn-sm edit-knap" type="button" title="Edit"
                           asp-page="UpdateUser" asp-route-id="@Model.User.Id">Opdater
                           </a>
