@@ -18,7 +18,7 @@ namespace ZealandPetShop.Services
 
        
 
-        public UserService(DbGenericService<User> dbService/*, PasswordHasher<UserService> passwordHasher*/)
+        public UserService(DbGenericService<User> dbService)
         {
             //_users = MockUsers.GetMockUsers();
             _dbService = dbService;
