@@ -27,10 +27,10 @@ namespace ZealandPetShop.Services
             _users = _dbService.GetAllObjectsAsync().Result.ToList();
         }
 
-        public async Task AddUser(User user)
-        {
-            await _dbService.AddObjectAsync(user);
-        }
+        //public async Task AddUser(User user)
+        //{
+        //    await _dbService.AddObjectAsync(user);
+        //}
 
         public async Task SaveUSer(User user)
         {
@@ -50,9 +50,11 @@ namespace ZealandPetShop.Services
         }
 
 
-        internal void AddUser(object user)
+        public async Task AddUser(User user)
         {
-            throw new NotImplementedException();
+            _users.Add(user);
+            //_jsonFileService.SaveJsonObjects(Users);
+            await _dbService.AddObjectAsync(user);
         }
 
 
