@@ -26,7 +26,7 @@ namespace ZealandPetShop.Pages.Login
 
         public async Task<IActionResult> OnGetAsync(int id)
         {
-            //int userId = GetUserIdFromClaims();
+            int userId = GetUserIdFromClaims();
             EUser = await _userService.GetUser(id);
             if (User == null) return NotFound();
 
@@ -40,12 +40,11 @@ namespace ZealandPetShop.Pages.Login
             //return Page();
             //}
 
-            //await _userService.UpdateUser(EUser);
-            
+            await _userService.UpdateUser(EUser);
 
-            //return RedirectToPage("/LoggedInUser");
+            return RedirectToPage("/LoggedInUser");
 
-            
+
 
         }
 
