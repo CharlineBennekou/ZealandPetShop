@@ -13,7 +13,7 @@ namespace ZealandPetShop.Services
 
         public async Task<IEnumerable<Order>> GetOrdersAsync()
         {
-            return await _orderDbService.GetObjectsAsync();
+            return await _orderDbService.GetAllObjectsAsync();
         }
 
         public async Task<Order> CreateOrderAsync(Order order)

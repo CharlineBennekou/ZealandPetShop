@@ -13,10 +13,10 @@
             <div class="author-text">
                 <div class="author-text-profile">
                     <div class="author-text avatar">
-                       <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="Anna Sørens
+                       <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="@Model.user.FirstName"
                    </div>
                        <div class="author-text-details">
-                        <h5 class="author-text-name text-lg">Anna Sørensen</h5><span class="author-text-position">Joined February 06, 2024</span>
+                        <h5 class="author-text-name text-lg">@Model.user.FirstName</h5><span class="author-text-position">Joined February 06, 2024</span>
                       </div>
                 </div>
             </div>
@@ -63,40 +63,41 @@
             <form class="row">
                 <div class="col-md-6">
                     <div class="form-group">
-                        <label for="account-fn">First Name</label>
-                        <input class="form-control" type="text" id="account-fn" value="@Model.user.FirstName" required="">
+                        <label asp-for="@Model.user.FirstName" class="control-label"></label>
+                        <label asp-for="@Model.user.FirstName" class="form-control" />
+                        <span asp-validation-for="@Model.user.FirstName" class="text-danger"></span>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
-                        <label for="account-ln">Last Name</label>
-                        <input class="form-control" type="text" id="account-ln" value="Sørensen" required="">
+                        <label asp-for="@Model.user.LastName" class="control-label"></label>
+                        <label asp-for="@Model.user.LastName" class="form-control" />
+                        <span asp-validation-for="@Model.user.LastName" class="text-danger"></span>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
-                        <label for="account-email">E-mail Address</label>
-                        <input class="form-control" type="email" id="account-email" value="Anna@gmail.com" disabled="">
+                        <label asp-for="@Model.user.Email" class="control-label"></label>
+                        <label asp-for="@Model.user.Email" class="form-control" />
+                        <span asp-validation-for="@Model.user.Email" class="text-danger"></span>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
-                        <label for="account-phone">Phone Number</label>
-                        <input class="form-control" type="text" id="account-phone" value="+45 12344321" required="">
+                        <label asp-for="@Model.user.Phone" class="control-label"></label>
+                        <label asp-for="@Model.user.Phone" class="form-control" />
+                        <span asp-validation-for="@Model.user.Phone" class="text-danger"></span>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
-                        <label for="account-pass">New Password</label>
-                        <input class="form-control" type="password" id="account-pass">
+                        <label asp-for="@Model.user.Address" class="control-label"></label>
+                        <label asp-for="@Model.user.Address" class="form-control" />
+                        <span asp-validation-for="@Model.user.Address" class="text-danger"></span>
                     </div>
                 </div>
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label for="account-confirm-pass">Confirm Password</label>
-                        <input class="form-control" type="password" id="account-confirm-pass">
-                    </div>
-                </div>
+
+               
                 <div class="col-12">
                     <hr class="mt-2 mb-3">
                     <div class="d-flex flex-wrap justify-content-between align-items-center">

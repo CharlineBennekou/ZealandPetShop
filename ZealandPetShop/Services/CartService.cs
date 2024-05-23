@@ -16,12 +16,12 @@ namespace ZealandPetShop.Services
 
         public async Task<List<OrderItem>> GetOrderItems()
         { 
-        return _dbService.GetObjectsAsync().Result.ToList();
+        return _dbService.GetAllObjectsAsync().Result.ToList();
         }
 
         public async Task<List<OrderItem>> GetCartItemsByUserId(int userId)
         {
-            var orderItems = await _dbService.GetObjectsAsync();
+            var orderItems = await _dbService.GetAllObjectsAsync();
             var cartItems = orderItems.Where(orderItem => orderItem.UserId == userId && orderItem.State == Order.Status.Cart).ToList(); //LINQ sortering for at finde alle orderitems som matcher userid og er i Cart state
             return cartItems;
         }
@@ -44,7 +44,7 @@ namespace ZealandPetShop.Services
             var cart = await GetCartAsync(customerId);
 
             // Tjekker om den valgte item allerede findes i brugerens cart
-            var existingCartItem = (await _dbService.GetObjectsAsync())
+            var existingCartItem = (await _dbService.GetAllObjectsAsync())
                 .FirstOrDefault(c => c.UserId == customerId && c.ItemId == itemId && c.State == Order.Status.Cart);
 
             if (existingCartItem != null)
