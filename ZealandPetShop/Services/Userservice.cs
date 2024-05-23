@@ -6,6 +6,7 @@ namespace ZealandPetShop.Services
 {
     public class UserService
     {
+
         private DbGenericService<User> _dbService;
         public List<User> _users { get; }
 
