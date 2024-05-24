@@ -57,10 +57,14 @@
 
                         </p>
                         <a class="nav-link btn btn-link" asp-area="" asp-page="/Login/LoggedInUser" asp-route-id="@int.Parse(Context.User.FindFirst(ClaimTypes.NameIdentifier)?.Value)">
-                            <button type="button" class="detail-info"><b>My Profile</b></button>
+                            <div class="profileb">
+                                <button type="button" class="profilebutton"><b>My Profile</b></button>
+                            </div>
                         </a>
                         <a asp-page="Order/Cart" asp-route-id="@int.Parse(Context.User.FindFirst(ClaimTypes.NameIdentifier)?.Value)">
-                            <button type="submit" class="detail-info"><b>My Cart</b></button>
+                           <div class="profileb">
+                              <button type="button" class="detailinfo"><b>My Cart</b></button>
+                           </div>
                         </a>
                       
                         <a class="nav-link btn btn-link" asp-area="" asp-page="/LogIn/Logout">Log ud </a>
