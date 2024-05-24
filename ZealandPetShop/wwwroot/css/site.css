@@ -319,3 +319,7 @@ body {
     display: flex;
     gap: 10px;
 }
+
+.profileb {
+    border: none;
+}
