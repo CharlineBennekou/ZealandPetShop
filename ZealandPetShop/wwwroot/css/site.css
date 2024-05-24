@@ -308,3 +308,14 @@ body {
 
 
 /* User profile Page */
+.userdetails{
+    position:absolute;
+    margin-left: 350px;
+    margin-top: -500px;
+   
+}
+
+.brugerknapper {
+    display: flex;
+    gap: 10px;
+}

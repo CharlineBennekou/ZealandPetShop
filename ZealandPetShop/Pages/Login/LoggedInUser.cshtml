@@ -60,6 +60,7 @@
         </div>
         <!-- Profile Settings-->
         <div class="col-lg-9 pb-7">
+         <div class="userdetails">
             <form class="row">
                 <div class="col-md-6">
                     <div class="form-group">
@@ -70,7 +71,7 @@
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
-                        <label asp-route-id="@Model.User.LastName" class="control-label"></label>
+                        <label asp-for="@Model.User.LastName" class="control-label"></label>
                         <input asp-for="@Model.User.LastName" class="form-control" />
                         <span asp-validation-for="@Model.User.LastName" class="text-danger"></span>
                     </div>
@@ -105,6 +106,7 @@
                             <input class="custom-control-input" type="checkbox" id="subscribe_me" checked="">
                             <label class="custom-control-label" for="subscribe_me">Subscribe me to Newsletter</label>
                         </div>
+                       <div class="brugerknapper">
                         <div class="Deletebruger">
                             <form method="post">
                                 <a class="btn btn-danger btn-sm edit-knap" type="button" title="Delete"
@@ -115,9 +117,11 @@
                         <a class="btn btn-danger btn-sm edit-knap" type="button" title="Edit"
                            asp-page="UpdateUser" asp-route-id="@Model.User.Id">Opdater
                         </a>
+                       </div>
                     </div>
                 </div>
             </form>
         </div>
+      </div>
     </div>
 </div>
