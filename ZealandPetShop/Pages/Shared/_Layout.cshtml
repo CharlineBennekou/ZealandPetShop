@@ -56,8 +56,8 @@
                         <p> 
 
                         </p>
-                        <a asp-page="/Login/LoggedInUser" asp-route-id="@int.Parse(Context.User.FindFirst(ClaimTypes.NameIdentifier)?.Value)">
-                            <button type="submit" class="detail-info"><b>My Profile</b></button>
+                        <a class="nav-link btn btn-link" asp-area="" asp-page="/Login/LoggedInUser" asp-route-id="@int.Parse(Context.User.FindFirst(ClaimTypes.NameIdentifier)?.Value)">
+                            <button type="button" class="detail-info"><b>My Profile</b></button>
                         </a>
                         <a asp-page="Order/Cart" asp-route-id="@int.Parse(Context.User.FindFirst(ClaimTypes.NameIdentifier)?.Value)">
                             <button type="submit" class="detail-info"><b>My Cart</b></button>
