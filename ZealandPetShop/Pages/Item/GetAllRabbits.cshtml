@@ -11,6 +11,15 @@
     <p>xx produkter</p>
     <br />
 
+    <div class="dropdown">
+        <button class="dropbtn">Sortér</button>
+        <div class="dropdown-content">
+            <a data-toggle="tooltip" title="Sort By Price" asp-page-handler="SortByPrice"><h5>Billigeste Først</h5></a>
+            <a data-toggle="tooltip" title="Sort By Descending Price" asp-page-handler="SortByPriceDescending"><h5>Dyreste Først</h5></a>
+            <a href="#">Link 3</a>
+        </div>
+    </div>
+
     <div class="product-container">
         @foreach (var item in Model.Items.Where(x => x.Art == Models.Shop.Item.DyreArt.Kanin))
         {

@@ -22,6 +22,18 @@ namespace ZealandPetShop.Pages.Item
             Items = _itemService.GetItems();
         }
 
+        public IActionResult OnGetSortByPrice()
+        {
+            Items = _itemService.SortByPrice().ToList();
+            return Page();
+        }
+
+        public IActionResult OnGetSortByPriceDescending()
+        {
+            Items = _itemService.SortByPriceDescending().ToList();
+            return Page();
+        }
+
         public IActionResult OnPostAddToCart(int id)
         {
             Console.WriteLine("OnPostAddToCart"); //debug
