@@ -58,7 +58,7 @@ namespace ZealandPetShop.Pages.Login
             await _userService.AddUser(new User(Email, passwordHasher.HashPassword(null, Password), FirstName, LastName, Phone, Address)); ;
             await _userService.SaveUSer(user); // Antager denne metode håndterer dbContext.SaveChangesAsync()
 
-            return RedirectToPage("Index");
+            return RedirectToPage("./Shared/Index");
         }
     }
 }
