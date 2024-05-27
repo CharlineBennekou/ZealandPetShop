@@ -1,5 +1,6 @@
 ﻿@page
 @model ZealandPetShop.Pages.Item.UpdateItemModel
+@using ZealandPetShop.Models.Shop
 @{
 }
 
@@ -12,6 +13,14 @@
         <label asp-for="@Model.Item.Name" class="control-label">Navn på produktet:</label>
         <input asp-for="@Model.Item.Name" class="form-control" />
         <span asp-validation-for="@Model.Item.Name" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="@Model.Item.Art" class="control-label">Kategori:</label>
+        <select asp-for="Item.Art" asp-items="Html.GetEnumSelectList<Item.DyreArt>()">
+            <option selected="selected" value="" disabled>Vælg</option>
+        </select>
+        <span asp-validation-for="@Model.Item.Art" class="text-danger"></span>
     </div>
 
     <div class="form-group">

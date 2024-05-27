@@ -44,6 +44,7 @@ namespace ItemRazorV1.Service
                     if (i.Id == item.Id)
                     {
                         i.Name = item.Name;
+                        i.Art = item.Art;
                         i.Price = item.Price;
                         i.Description = item.Description;
                         i.ImagePath = item.ImagePath;
