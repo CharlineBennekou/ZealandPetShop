@@ -15,6 +15,7 @@
         <span asp-validation-for="@Model.Item.Name" class="text-danger"></span>
     </div>
 
+    <br />
     <div class="form-group">
         <label asp-for="@Model.Item.Art" class="control-label">Kategori:</label>
         <select asp-for="Item.Art" asp-items="Html.GetEnumSelectList<Item.DyreArt>()">
@@ -22,6 +23,7 @@
         </select>
         <span asp-validation-for="@Model.Item.Art" class="text-danger"></span>
     </div>
+    <br />
 
     <div class="form-group">
         <label asp-for="@Model.Item.Description" class="control-label">Beskrivelse af produktet:</label>

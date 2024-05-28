@@ -138,5 +138,26 @@ namespace ItemRazorV1.Service
                    orderby item.Price descending
                    select item;
         }
+
+
+        public IEnumerable<Item> Search(string searchTerm)
+        {
+            List<Item> searchResults = new List<Item>();
+
+            foreach (Item i in _items)
+            {
+                if (string.IsNullOrEmpty(searchTerm) ||
+                    i.Name.ToLower().Contains(searchTerm.ToLower()) ||
+                    i.Description.ToLower().Contains(searchTerm.ToLower()))
+
+                {
+                    searchResults.Add(i);
+                }
+            }
+
+            return searchResults;
+        }
+
+
     }
 }

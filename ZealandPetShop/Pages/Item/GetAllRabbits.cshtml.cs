@@ -48,5 +48,14 @@ namespace ZealandPetShop.Pages.Item
             return RedirectToPage("/Item/ItemDetail");
 
         }
+
+        [BindProperty]
+        public string SearchString { get; set; }
+
+        public IActionResult OnPostSearch()
+        {
+            Items = _itemService.Search(SearchString).ToList();
+            return Page();
+        }
     }
 }
