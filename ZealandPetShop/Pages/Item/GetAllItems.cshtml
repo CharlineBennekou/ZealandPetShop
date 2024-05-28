@@ -9,20 +9,31 @@
     <h1 class="product-title"><b>Alle Produkter</b></h1>
     <br />
     <br />
-    <p>xx produkter</p>
 
+    
 
+    <div class="funktion-i-item">
+        <p>@Model.Items.Count produkter</p>
+        <form method="post" class="search-form">
+            <div class="input-group mb-3">
+                <input asp-for="SearchString" class="form-control search-input"
+                       placeholder="Søg på produkt" />
+                <input type="submit" asp-page-handler="Search"
+                       value="Search" class="btn btn-primary search-button" />
+            </div>
+        </form>
 
+        <br />
 
-
-    <div class="dropdown">
-        <button class="dropbtn">Sortér</button>
-        <div class="dropdown-content">
-            <a data-toggle="tooltip" title="Sort By Price" asp-page-handler="SortByPrice"><h5>Billigeste Først</h5></a>
-            <a data-toggle="tooltip" title="Sort By Descending Price" asp-page-handler="SortByPriceDescending"><h5>Dyreste Først</h5></a>
-            <a href="#">Link 3</a>
-        </div> 
+        <div class="dropdown">
+            <button class="dropbtn">Sortér</button>
+            <div class="dropdown-content">
+                <a data-toggle="tooltip" title="Sort By Price" asp-page-handler="SortByPrice"><h5>Billigeste Først</h5></a>
+                <a data-toggle="tooltip" title="Sort By Descending Price" asp-page-handler="SortByPriceDescending"><h5>Dyreste Først</h5></a>
+            </div>
+        </div>
     </div>
+    
 
 
 
@@ -36,7 +47,6 @@
                     </div>
                     <h2>@item.Name</h2>
                     <p>@item.Price,-</p>
-                    <p>Id: @item.Id</p>
                     <form method="post" asp-page-handler="AddToCart" asp-route-id="@item.Id">
                         <button type="submit" class="addCart"><b>Tilføj til Kurv</b></button>
                     </form>
@@ -60,48 +70,3 @@
 
 </body>
 
-<style>
-/* Dropdown Button */
-.dropbtn {
-        background-color: lightgrey;
-  color: black;
-  padding: 10px;
-  font-size: 16px;
-  border: none;
-  border-radius: 12px; /* Rounded corners */
-}
-
-/* The container <div>
-    - needed to position the dropdown content */
-    .dropdown {
-    position: relative;
-    display: inline-block;
-    }
-
-    /* Dropdown Content (Hidden by Default) */
-    .dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #f1f1f1;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
-    }
-
-    /* Links inside the dropdown */
-    .dropdown-content a {
-    color: black;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-    }
-
-    /* Change color of dropdown links on hover */
-    .dropdown-content a:hover {background-color: #ddd;}
-
-    /* Show the dropdown menu on hover */
-    .dropdown:hover .dropdown-content {display: block;}
-
-    /* Change the background color of the dropdown button when the dropdown content is shown */
-    .dropdown:hover .dropbtn {background-color: #3e8e41;}
-</style>
