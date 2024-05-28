@@ -15,15 +15,21 @@
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container">
-                <a class="navbar-brand" asp-area="" asp-page="/Index">ZealandPetShop</a>
+@*                 <a class="navbar-brand" asp-area="" asp-page="/Index">ZealandPetShop</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
-                </button>
+                </button> *@
+
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
+                        <div>
+                            <a href="~/Index">
+                                <img src="~/images/LogoZelandTekst.png" class="navBarImage" />
+                            </a>
+                        </div>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Index">Home</a>
+                            <a class="nav-link text-dark" asp-area="" asp-page="/Index">Forside</a>
                         </li>
                         <li>
                             <a class="nav-link text-dark" asp-area="" asp-page="/Item/GetAllItems">Shop alt</a>
@@ -36,9 +42,6 @@
                         </li>
                         <li>
                             <a class="nav-link text-dark" asp-area="" asp-page="/Item/GetAllRabbits">Kanin</a>
-                        </li>
-                        <li>
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Item/CreateItem">test create item</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Privacy</a>
@@ -54,7 +57,11 @@
 
                         </li>
                     </ul>
-                    <a class="nav-link btn btn-link" asp-area="" asp-page="/LogIn/CreateUser">Become a member </a>
+                    @if (!User.Identity.IsAuthenticated)
+                    {
+                        <a class="nav-link btn btn-link" asp-area="" asp-page="/LogIn/CreateUser">Become a member </a>
+                    }
+                    
                      @if (User.Identity.IsAuthenticated) //tjekker om bruger er logget ind
                     {
                         <p>Velkommen @Context.User.Identity.Name </p>
