@@ -57,7 +57,11 @@
 
                         </li>
                     </ul>
-                    <a class="nav-link btn btn-link" asp-area="" asp-page="/LogIn/CreateUser">Become a member </a>
+                    @if (!User.Identity.IsAuthenticated)
+                    {
+                        <a class="nav-link btn btn-link" asp-area="" asp-page="/LogIn/CreateUser">Become a member </a>
+                    }
+                    
                      @if (User.Identity.IsAuthenticated) //tjekker om bruger er logget ind
                     {
                         <p>Velkommen @Context.User.Identity.Name </p>

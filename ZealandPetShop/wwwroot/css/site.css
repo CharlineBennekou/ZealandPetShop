@@ -33,7 +33,7 @@ body {
     display: flex;
     justify-content: flex-start; /* Align items to the start (left) */
     align-items: center;
-    width: 60%; /* Makes the navbar span the full width of its container */
+    width: 50%; /* Makes the navbar span the full width of its container */
     white-space: nowrap; /* Prevent text from wrapping */
     padding: 0; /* Adjust padding as needed */
     overflow: hidden; /* Prevent overflow issues */
