@@ -21,6 +21,51 @@ body {
     margin-bottom: 60px;
 }
 
+/*NAVBAR*/
+
+.navBarImage {
+    width: auto; /* Allow the image to scale proportionally */
+    max-height: 100px; /* Set a maximum height for the image */
+    margin-right: 20px; /* Add some space between the image and links */
+}
+
+.navbar-nav {
+    display: flex;
+    justify-content: flex-start; /* Align items to the start (left) */
+    align-items: center;
+    width: 60%; /* Makes the navbar span the full width of its container */
+    white-space: nowrap; /* Prevent text from wrapping */
+    padding: 0; /* Adjust padding as needed */
+    overflow: hidden; /* Prevent overflow issues */
+}
+
+.nav-item {
+    margin-right: 20px; /* Optional: space between items */
+    list-style: none; /* Remove default list styles */
+    white-space: nowrap; /* Ensure no wrapping */
+}
+
+.navbar-collapse {
+    display: flex; /* Ensure flexbox is used */
+    flex-grow: 1; /* Allow the collapse to grow to fill available space */
+    align-items: center; /* Vertically center the items */
+}
+
+.navbar {
+    display: flex; /* Ensure navbar is a flex container */
+    align-items: center; /* Align items vertically */
+    overflow: hidden; /* Prevent overflow issues */
+}
+
+/*.container {
+    width: 100%;*/ /* Ensure the container spans the full width */
+    /*max-width: 100%;*/ /* Ensure it spans the full width */
+    /*padding: 0;*/ /* Remove any padding that could affect alignment */
+    /*margin: 0;*/ /* Remove any margin that could affect alignment */
+/*}*/
+
+
+
 
 /*GetAllItems Page html*/
 .product-title {
@@ -323,3 +368,110 @@ body {
 .profileb {
     border: none;
 }
+
+/*SORTER */
+
+/* Dropdown container */
+.dropdown {
+    position: relative;
+    display: inline-block;
+    margin-left: auto; /* Push the dropdown to the right */
+}
+
+/* Dropdown button */
+.dropbtn {
+    background-color: #f16d65; /* Primary color */
+    color: white;
+    padding: 10px 15px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+/* Dropdown content */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #fff;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    left: 0 !important; /* Align content to the left */
+    text-align: left; /* Adjust text alignment */
+}
+
+    /* Links in the dropdown */
+    .dropdown-content a {
+        color: #333; /* Text color */
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+    }
+
+        /* Change color of links on hover */
+        .dropdown-content a:hover {
+            background-color: #f9f9f9; /* Hover color */
+        }
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/*SEARCH FUNKTION*/
+
+/* Style the form */
+.search-form {
+    display: flex;
+    justify-content: center;
+    margin: 20px;
+    flex-grow: 1; /* Allow the search form to grow and take up remaining space */
+    margin-right: auto; /* Push the search form to the left */
+}
+
+/* Style the input field */
+.search-input {
+    border: 2px solid #f16d65;
+    border-radius: 4px 0 0 4px;
+    padding: 10px;
+    font-size: 16px;
+    transition: border-color 0.3s;
+}
+
+    .search-input:focus {
+        border-color: #d85c56;
+        outline: none;
+    }
+
+/* Style the search button */
+.search-button {
+    background-color: #f16d65;
+    border: 2px solid #f16d65;
+    border-radius: 0 4px 4px 0;
+    color: white;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+    .search-button:hover {
+        background-color: #d85c56;
+        border-color: #c04c49;
+    }
+
+/* Additional styling for a more cohesive look */
+.input-group {
+    max-width: 500px;
+    width: 100%;
+}
+
+
+.funktion-i-item {
+    display: flex;
+    align-items: center; /* Align items vertically */
+}
+
+
+

@@ -10,6 +10,28 @@
     <br />
     <p>xx produkter</p>
     <br />
+    <br />
+
+    <div class="funktion-i-item">
+        <form method="post" class="search-form">
+            <div class="input-group mb-3">
+                <input asp-for="SearchString" class="form-control search-input"
+                       placeholder="Søg på produkt" />
+                <input type="submit" asp-page-handler="Search"
+                       value="Search" class="btn btn-primary search-button" />
+            </div>
+        </form>
+
+        <br />
+
+        <div class="dropdown">
+            <button class="dropbtn">Sortér</button>
+            <div class="dropdown-content">
+                <a data-toggle="tooltip" title="Sort By Price" asp-page-handler="SortByPrice"><h5>Billigeste Først</h5></a>
+                <a data-toggle="tooltip" title="Sort By Descending Price" asp-page-handler="SortByPriceDescending"><h5>Dyreste Først</h5></a>
+            </div>
+        </div>
+    </div>
 
     <div class="product-container">
         @foreach (var item in Model.Items.Where(x => x.Art == Models.Shop.Item.DyreArt.Hund))
@@ -20,8 +42,7 @@
                         <img src="@item.ImagePath" alt="@item.Id" class="image-image">
                     </div>
                     <h2>@item.Name</h2>
-                    <p>@item.Price,-</p>
-                    <p>Id: @item.Id</p>
+                    <p>@item.Price,-</p>                   
                     <form method="post" asp-page-handler="AddToCart" asp-route-id="@item.Id">
                         <button type="submit" class="addCart"><b>Tilføj til Kurv</b></button>
                     </form>
