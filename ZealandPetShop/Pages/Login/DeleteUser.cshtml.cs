@@ -9,9 +9,6 @@ namespace ZealandPetShop.Pages.Login
     public class DeleteUserModel : PageModel
     {
         private UserService _userService;
-        //private UserManager<User> _userManager;
-
-
 
         [BindProperty]
         public User EUser { get; set; }
