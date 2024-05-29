@@ -8,48 +8,58 @@
 <body>
     <div class="product-container-detail">
         <div class="card">
+            <!-- Container til item-billede -->
             <div class="image-item-detail-container">
                 <img src="@Model.Item.ImagePath" alt="@Model.Item.Id" class="image-image-detail">
             </div>
             <div class="card-body">
+                <!-- Viser item-navn -->
                 <h2 class="card-title"><b>@Model.Item.Name</b></h2>
+                <!-- Viser item-pris -->
                 <h3 class="card-price">@Model.Item.Price,-</h3>
+                <!-- Viser item-kategori -->
                 <p><b>Kategori:</b> @Model.Item.Art</p>
+
+                <!-- Form til at tilføje item til kurv -->
                 <form method="post" asp-page-handler="AddToCart" asp-route-id="@Model.Item.Id">
                     <button type="submit" class="addCart-detail"><b>Tilføj til Kurv</b></button>
                 </form>
+
+                <!-- Form til at købe item nu -->
                 <form method="post" asp-page-handler="BuyNow" asp-route-id="@Model.Item.Id">
                     <button type="submit" class="buyNow-detail"><b>Køb Nu</b></button>
                 </form>
                 <br />
 
+                <!-- Form til at vælge mængde af item -->
                 <form method="post" asp-page-handler="AddToCart" asp-route-id="@Model.Item.Id">
-                    <label for="itemQuantity">Select Quantity:</label> 
+                    <label for="itemQuantity">Vælg Mængde:</label>
                     <br />
+                    <!-- Input til at vælge mængde -->
                     <input type="number" id="itemQuantity" name="itemQuantity" min="1" value="1">
-                    <span asp-validation-for="Count" class="text-danger"></span>
+                    <span asp-validation-for="Count" class="text-danger"></span> <!-- Viser valideringsfejl -->
                 </form>
                 <br />
 
+                <!-- Viser produktbeskrivelse -->
                 <h6>Produkt beskrivelse:</h6>
                 <div class="description-box">
                     <p>@Model.Item.Description</p>
                 </div>
             </div>
         </div>
-    
     </div>
 
-        @if (User.Identity.IsAuthenticated)
-        {
-        
-            
-            <div class="knapper">
-                <a class="btn btn-danger btn-sm slet-knap" type="button" title="Delete"
-           asp-page="DeleteItem" asp-route-id="@Model.Item.Id"><b>Slet</b></a>
-        <a class="btn btn-danger btn-sm edit-knap" type="button" title="Edit"
-           asp-page="UpdateItem" asp-route-id="@Model.Item.Id"><b>Opdater</b></a>
-            </div>
-            
-        }
+    <!-- Viser "Slet" og "Opdater" knapper, hvis brugeren er logget ind -->
+    @if (User.Identity.IsAuthenticated)
+    {
+        <div class="knapper">
+            <!-- Knap til at slette item -->
+            <a class="btn btn-danger btn-sm slet-knap" type="button" title="Delete"
+               asp-page="DeleteItem" asp-route-id="@Model.Item.Id"><b>Slet</b></a>
+            <!-- Knap til at opdatere item -->
+            <a class="btn btn-danger btn-sm edit-knap" type="button" title="Edit"
+               asp-page="UpdateItem" asp-route-id="@Model.Item.Id"><b>Opdater</b></a>
+        </div>
+    }
 </body>
