@@ -112,6 +112,11 @@ namespace ZealandPetShop.Services
         // Asynkron metode til at slette en bruger
         public async Task<User> DeleteUser(User user)
         {
+            if (user == null || user.Id <= 0)
+            {
+                throw new ArgumentException("Invalid user or user Id!");
+            }
+
             // Henter den eksisterende bruger fra databasen
             var existingUser = await _dbService.GetObjectByIdAsync(user.Id);
             // Hvis brugeren ikke findes, 
