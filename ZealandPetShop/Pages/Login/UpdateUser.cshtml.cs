@@ -33,7 +33,7 @@ namespace ZealandPetShop.Pages.Login
         public async Task<IActionResult> OnGetAsync(int id)
         {
             // Henter bruger-ID fra krav (claims)
-            int userId = GetUserIdFromClaims();
+            //int userId = GetUserIdFromClaims();
             // Henter brugerdata asynkront ved hjælp af UserService
             EUser = await _userService.GetUser(id);
             //Hvis brugeren ikke findes, returner NotFound
@@ -58,27 +58,27 @@ namespace ZealandPetShop.Pages.Login
 
 
         // Privat metode til at hente bruger-ID fra krav (claims)
-        private int GetUserIdFromClaims()
-        {
-            // Henter brugerens claims identity (som er Id)
-            var claimsIdentity = User.Identity as ClaimsIdentity;
-            // Henter bruger-ID claim
-            var userIdClaim = claimsIdentity?.FindFirst(ClaimTypes.NameIdentifier);
+        //private int GetUserIdFromClaims()
+        //{
+        //    // Henter brugerens claims identity (som er Id)
+        //    var claimsIdentity = User.Identity as ClaimsIdentity;
+        //    // Henter bruger-ID claim
+        //    var userIdClaim = claimsIdentity?.FindFirst(ClaimTypes.NameIdentifier);
 
-            // Hvis bruger-ID claim er null, kaster en undtagelse
-            if (userIdClaim == null)
-            {
-                // Forsøger at parse bruger-ID til en int
-                throw new InvalidOperationException("No claim found for user ID.");
-            }
+        //    // Hvis bruger-ID claim er null, kaster en undtagelse
+        //    if (userIdClaim == null)
+        //    {
+        //        // Forsøger at parse bruger-ID til en int
+        //        throw new InvalidOperationException("No claim found for user ID.");
+        //    }
 
-            if (!int.TryParse(userIdClaim.Value, out int userId))
-            {
-                throw new InvalidOperationException("Invalid user ID claim.");
-            }
-            // Returnerer bruger-ID
-            return userId;
-        }
+        //    if (!int.TryParse(userIdClaim.Value, out int userId))
+        //    {
+        //        throw new InvalidOperationException("Invalid user ID claim.");
+        //    }
+        //    // Returnerer bruger-ID
+        //    return userId;
+        //}
 
     }
 }

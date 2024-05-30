@@ -1,3 +1,5 @@
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.ComponentModel.DataAnnotations;
@@ -69,7 +71,8 @@ namespace ZealandPetShop.Pages.Login
                 // Log exception
                 return BadRequest(ex.Message);
             }
-            return RedirectToPage("./Item/GetAllItems");
+            HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+            return RedirectToPage("/Item/GetAllItems");
         }
     }
 }
