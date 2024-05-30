@@ -11,6 +11,7 @@ namespace ZealandPetShop.Pages.Login
 {
     public class LoggedInUserModel : PageModel
     {
+
         private UserService _userService;
 
         [BindProperty]

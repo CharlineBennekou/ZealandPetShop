@@ -28,19 +28,7 @@ namespace ZealandPetShop.Services
             _users = _dbService.GetAllObjectsAsync().Result.ToList();
         }
 
-        //public void AddUser(User user)
-        //{
-        //    _users.Add(user);
-        //}
-        //public User GetUser(int id)
-        //{
-        //    foreach (User user in _users)
-        //    {
-        //        if (user.Id == id)
-        //            return user;
-        //    }
-        //    return null;
-        //}
+        
 
         // Asynkron metode til at gemme en bruger
         public async Task SaveUSer(User user)
