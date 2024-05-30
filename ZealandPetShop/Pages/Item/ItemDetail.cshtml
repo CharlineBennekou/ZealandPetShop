@@ -51,7 +51,7 @@
     </div>
 
     <!-- Viser "Slet" og "Opdater" knapper, hvis brugeren er logget ind -->
-    @if (User.Identity.IsAuthenticated)
+    @if (User.Identity.IsAuthenticated && User.IsInRole("admin"))
     {
         <div class="knapper">
             <!-- Knap til at slette item -->

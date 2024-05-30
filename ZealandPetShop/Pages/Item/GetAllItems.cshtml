@@ -63,7 +63,7 @@
     </div>
 
     <!-- Viser knappen "Opret et nyt produkt" hvis brugeren er logget ind -->
-    @if (User.Identity.IsAuthenticated)
+    @if (User.Identity.IsAuthenticated && User.IsInRole("admin"))
     {
         <a asp-page="/Item/CreateItem" class="btn btn-primary" id="btn-create"><b>Opret et nyt produkt</b></a>
     }
