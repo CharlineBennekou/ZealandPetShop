@@ -69,7 +69,7 @@ namespace ZealandPetShop.Pages.Login
                 // Log exception
                 return BadRequest(ex.Message);
             }
-            return RedirectToPage("./Item/GetAllItems");
+            return RedirectToPage("/Item/GetAllItems");
         }
     }
 }

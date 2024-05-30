@@ -49,6 +49,7 @@ namespace ZealandPetShop.Pages.Login
         }
 
         public string errorMessage = "";
+
         private User user;
 
 
@@ -56,21 +57,21 @@ namespace ZealandPetShop.Pages.Login
         /// OnPostasyns-metoden håndtårer POST-andmodinger. Den udfører følgende trin:
         /// Metoden kontrollere først om modeltilstanden er gyldig. Hvis den ikke er gyldig, sætters en fejlmeddelelse ("Alle felter skal udfyldes korrekt") og siden retuneres med fejlmeddelelsen.
         /// Tilføjelse af User: Hvis modeltilstanden er gyldig, opretter metoden en ny bruger ved hjælp af UserService. Brugeren oprettes med hash-kode for adganskoden samt øverrige brugeroplysinger fra properties.
-        /// Gemme User: Efter at have tilføjet bruger gemmer metoden brugeren i databasen (userService.SaveUser(user).
         /// Omdirigering: Til sidst omdigere metoden brugeren til index-siden, hvis brugeroprettelsen er gennemført.
         /// </summary>
         /// <returns></returns>
         public async Task<IActionResult> OnPostAsync()
         {
+
+            
             if (!ModelState.IsValid)
             {
                 errorMessage = "Alle felter skal udfyldes korrekt";
                 return Page();
             }
             await _userService.AddUser(new User(Email, passwordHasher.HashPassword(null, Password), FirstName, LastName, Phone, Address)); ;
-            await _userService.SaveUSer(user); // Antager denne metode håndterer dbContext.SaveChangesAsync()
 
-            return RedirectToPage("./Shared/Index");
+            return RedirectToPage("/Index");
         }
     }
 }
