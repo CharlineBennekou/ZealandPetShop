@@ -11,10 +11,11 @@ namespace ZealandPetShop.Pages.Login
 {
     public class UpdateUserModel : PageModel
     {
-        //Diffinere en privat variabel til UserService
+       
         private UserService _userService;
 
         //Binder brugerdata til UI
+        //(At forbinde data fra modelklassen til brugergrænsefladen(UI)).
         [BindProperty]
         public User EUser { get; set; }
 
@@ -45,12 +46,7 @@ namespace ZealandPetShop.Pages.Login
         // Metode, der kaldes ved POST-forespørgelser
         public async Task<IActionResult> OnPostAsync()
         {
-            //if (!ModelState.IsValid) 
-            //{
-            //return Page();
-            //}
-
-            // Opdaterer brugerdata asynkront ved hjælp af UserService
+           
             await _userService.UpdateUser(EUser);
 
             // Returnerer Page visning

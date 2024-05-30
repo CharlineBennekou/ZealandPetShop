@@ -5,11 +5,10 @@
 
 <h1>Delete Confirmation</h1>
 <div class="alert alert-danger">
-    <h5>Er du sikker du vil på du vil slette: @Model.Item.Name</h5>
-
-
+    <h5>Er du sikker på, at du vil slette: @Model.Item.Name</h5> <!-- Viser navnet på det produkt, der skal slettes -->
+    <!-- Formular til at bekræfte eller annullere sletningen -->
     <form method="post">
-        <button type="submit" class="btn btn-danger">Yes</button>
-        <a class="btn btn-primary" asp-page="GetAllItems">No</a>
+        <button type="submit" class="btn btn-danger">Yes</button> <!-- Knappen til at bekræfte sletningen -->
+        <a class="btn btn-primary" asp-page="GetAllItems">No</a> <!-- Knappen til at annullere sletningen og gå tilbage til alle produkter -->
     </form>
 </div>

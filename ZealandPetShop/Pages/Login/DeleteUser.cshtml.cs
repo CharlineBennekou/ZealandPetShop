@@ -9,15 +9,15 @@ namespace ZealandPetShop.Pages.Login
     public class DeleteUserModel : PageModel
     {
         private UserService _userService;
-        //private UserManager<User> _userManager;
-
-
 
         [BindProperty]
         public User EUser { get; set; }
 
-        [BindProperty, DataType(DataType.Password)]
-        public string Password { get; set; }
+        [BindProperty]
+        public string Email { get; set; }
+
+        //[BindProperty, DataType(DataType.Password)]
+        //public string Password { get; set; }
 
 
 
@@ -27,6 +27,13 @@ namespace ZealandPetShop.Pages.Login
             //_userManager = userManager;
         }
 
+
+        /// <summary>
+        /// Henter brugeren med det angivende Id med GetUser(int Id)
+        /// Hvis brugen ikke findes, retunere den NotFound ellers retunere den siden hvis breugern findes
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public async Task<IActionResult> OnGetAsync(int id)
         {
             EUser = await _userService.GetUser(id);
@@ -34,14 +41,36 @@ namespace ZealandPetShop.Pages.Login
 
             return Page();
 
-
         }
 
+
+        /// <summary>
+        /// 1. Tjekker om EUser er null eller om EUser.Id er mindre end eller lig med 0.
+        /// 2.Hvis valideringen af EUserId fejler, returneres der en BadRequest exception respons med meddelelsen (Invalid user data)
+        /// 3. hvis EUser.Id er den rette id, prøver DeleteUser-metoden at slette brugeren når metoden er kaldt på fra _userService.
+        /// 4. Hvis der opstår en Exception under metoden, fanges exceptioen og en BadRequest-respons returneres med en (exception message)
+        /// 5. Hvis brugen slettes uden undtagelser, omdirigeres der til siden.
+        /// </summary>
+        /// <returns></returns>
         public async Task<IActionResult> OnPostAsync()
         {
-            await _userService.DeleteUser(EUser);
-
-            return RedirectToPage("/Logout");
+            //Validere om brugerdata er den rette
+            if (EUser == null || EUser.Id <= 0)
+            {
+                
+                return BadRequest("Invalid user data");
+            }
+            try
+            {
+                await _userService.DeleteUser(EUser);
+            }
+            catch (Exception ex)
+            {
+                // Log exception
+                return BadRequest(ex.Message);
+            }
+            return RedirectToPage("./Item/GetAllItems");
         }
     }
 }
+

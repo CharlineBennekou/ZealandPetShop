@@ -5,56 +5,60 @@
 }
 
 <br />
-<h2 class="text-center mb-5">Optader produktet!</h2>
-
+<h2 class="text-center mb-5">Opdater produktet!</h2>
 
 <form method="post" enctype="multipart/form-data">
+    <!-- Formular til opdatering af et eksisterende produkt -->
+    <!-- Input til produktets navn -->
     <div class="form-group">
         <label asp-for="@Model.Item.Name" class="control-label">Navn på produktet:</label>
         <input asp-for="@Model.Item.Name" class="form-control" />
-        <span asp-validation-for="@Model.Item.Name" class="text-danger"></span>
+        <span asp-validation-for="@Model.Item.Name" class="text-danger"></span> <!-- Viser valideringsfejl, hvis navnet ikke er udfyldt -->
     </div>
 
     <br />
+
+    <!-- Dropdown til produktets kategori -->
     <div class="form-group">
         <label asp-for="@Model.Item.Art" class="control-label">Kategori:</label>
         <select asp-for="Item.Art" asp-items="Html.GetEnumSelectList<Item.DyreArt>()">
-            <option selected="selected" value="" disabled>Vælg</option>
+            <option selected="selected" value="" disabled>Vælg</option> <!-- Standard valgmulighed -->
         </select>
-        <span asp-validation-for="@Model.Item.Art" class="text-danger"></span>
+        <span asp-validation-for="@Model.Item.Art" class="text-danger"></span> <!-- Viser valideringsfejl, hvis kategori ikke er valgt -->
     </div>
+
     <br />
 
+    <!-- Tekstfelt til produktets beskrivelse -->
     <div class="form-group">
         <label asp-for="@Model.Item.Description" class="control-label">Beskrivelse af produktet:</label>
         <textarea asp-for="@Model.Item.Description" class="form-control" rows="2"></textarea>
-        <span asp-validation-for="@Model.Item.Description" class="text-danger"></span>
+        <span asp-validation-for="@Model.Item.Description" class="text-danger"></span> <!-- Viser valideringsfejl, hvis beskrivelsen ikke er udfyldt -->
     </div>
 
+    <!-- Input til produktets pris -->
     <div class="form-group">
         <label asp-for="@Model.Item.Price" class="control-label">Pris på produktet:</label>
         <input asp-for="@Model.Item.Price" class="form-control" />
-        <span asp-validation-for="@Model.Item.Price" class="text-danger"></span>
+        <span asp-validation-for="@Model.Item.Price" class="text-danger"></span> <!-- Viser valideringsfejl, hvis prisen ikke er udfyldt -->
     </div>
 
-
+    <!-- Input til upload af nyt billede til produktet -->
     <div class="form-group">
         <label asp-for="@Model.Photo" class="control-label">Billede af produktet:</label>
         <div class="custom-file">
             <input asp-for="@Model.Photo" class="custom-file-input form-control" />
             <label class="custom-file-label">Gem Billede</label>
-
         </div>
     </div>
 
-
-
+    <!-- Skjult input til produktets ID -->
     <input asp-for="@Model.Item.Id" type="hidden" />
 
-	<p>
-		<div class="form-group">
-			<input type="submit" value="Update" class="btn btn-primary" />
-		</div>
-	</p>
-
+    <!-- Knappen til at submitte formen -->
+    <p>
+        <div class="form-group">
+            <input type="submit" value="Opdater" class="btn btn-primary" />
+        </div>
+    </p>
 </form>

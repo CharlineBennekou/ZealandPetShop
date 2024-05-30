@@ -16,11 +16,23 @@ namespace ZealandPetShop.Pages.Login
         [BindProperty]
         public User User { get; set; }
 
+
+        //Kontruktør til at intialisere UserService
         public LoggedInUserModel(UserService userService)
         {
             _userService = userService;
         }
 
+
+        /// <summary>
+        /// 1. (public async Task<IActionResult> OnGetAsync(int id)), er en asynkron metode, 
+        /// der håndtere GET-andmodninger for at hente brugerdata baseret på brugerens Id
+        /// 2. (User = await _userService.GetUser(id);) Henter brugeren med det andgivende Id og genner i _userService
+        /// 3. (if(User == null {return NotFound}): Hvis brugeren ikke findes, returnere den NotFound.
+        /// 4. Hvis brugeren findes, returnere siden: (return Page();)
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public async Task <IActionResult> OnGetAsync(int id)
         {
 
@@ -35,37 +47,7 @@ namespace ZealandPetShop.Pages.Login
         }
 
 
-        //public List<Models.Login.User> _user { get; set; }
-       
-
-        //{
-
-        //    int id = int.Parse(id);
-
-        //    return id;
-        //}
-
-
-
-
-
-
-        //public GetUser(UserService userService)
-        //{
-        //    _userService = userService;
-        //}
-
-
-        //public IActionResult OnGet(int id)
-        //{
-        //    Console.WriteLine("OnGet");
-        //    _user = _userService.GetUser(id);
-        //    if (_user == null)
-        //    {
-        //        return NotFound();
-        //    }
-        //    return Page();
-        //}
+        
 
     }
 }
