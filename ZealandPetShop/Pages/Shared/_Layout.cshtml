@@ -73,7 +73,7 @@
                                 <button type="button" class="profilebutton"><b>My Profile</b></button>
                             </div>
                         </a>
-                        <a asp-page="Order/Cart" asp-route-id="@int.Parse(Context.User.FindFirst(ClaimTypes.NameIdentifier)?.Value)">
+                        <a asp-page="Order/GetOrder" asp-route-id="@int.Parse(Context.User.FindFirst(ClaimTypes.NameIdentifier)?.Value)">
                            <div class="profileb">
                               <button type="button" class="detailinfo"><b>My Cart</b></button>
                            </div>
