@@ -2,10 +2,15 @@
 using ZealandPetShop.MockData;
 using ZealandPetShop.Models.Shop;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 namespace ZealandPetShop.Services
 {
     public class UserService
     {
+        //private readonly UserManager<User> _userManager;
+        //private readonly SignInManager<User> _signInManager;
+        //private readonly RoleManager<IdentityRole> _roleManager;
+
         //en privat PasswordHasher for User-objekter
         public PasswordHasher<UserService> passwordHasher;
         //en privat database service objekt
@@ -13,21 +18,26 @@ namespace ZealandPetShop.Services
         //Gemmer en liste af User-objekter
         public List<User> _users { get; }
 
-        // Constructor for UserService
         
-        public UserService(DbGenericService<User> dbService)
+
+        // Constructor for UserService
+        public UserService(/*UserManager<User> userManager, SignInManager<User> signInManager, RoleManager<IdentityRole> roleManager*/ DbGenericService<User> dbService)
         {
-            //_users = MockUsers.GetMockUsers();
+            //_userManager = userManager;
+            //_signInManager = signInManager;
+            //_roleManager = roleManager;
 
-            // Initialiserer Dbservicen
+            // Initialiserer DbServicen
             _dbService = dbService;
-
-            //_dbService.SaveObjects(_users);
 
             // Henter alle brugerobjekter fra databasen og sætter dem ind til en liste
             _users = _dbService.GetAllObjectsAsync().Result.ToList();
         }
 
+        //public async Task<bool> EmailExistingAsync(string email)
+        //{
+        //    return await _userManager.Users.AnyAsync(u => u.Email == email);
+        //}
         
 
         // Asynkron metode til at gemme en bruger

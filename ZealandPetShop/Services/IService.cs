@@ -7,5 +7,6 @@
         Task DeleteObjectAsync(T obj);
         Task UpdateObjectAsync(T obj);
         Task<T> GetObjectByIdAsync(int id);
+        
     }
 }
