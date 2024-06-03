@@ -18,7 +18,9 @@ namespace ZealandPetShop.Models.Login
         public string FirstName { get; set; }
         [Required]
         public string LastName { get; set; }
+
         [Required]
+        [StringLength(8)]
         public string Phone { get; set; }
         [Required]
         public string Address { get; set; }
