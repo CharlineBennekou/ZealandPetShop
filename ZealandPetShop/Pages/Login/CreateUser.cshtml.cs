@@ -17,23 +17,30 @@ namespace ZealandPetShop.Pages.Login
         /// Properties for user skal opfylde at logge ind
         /// </summary>
         [BindProperty]
+        [Required(ErrorMessage = "Alle felter skal udfyldes")]
         public string Fornavn { get; set; }
 
         [BindProperty]
+        [Required(ErrorMessage = "Alle felter skal udfyldes")]
         public string Efternavn { get; set; }
 
         [BindProperty]
         [Required(ErrorMessage = "Email skal udfyldes!")]
+        [EmailAddress]
         public string Email { get; set; }
 
         [BindProperty]
+        [Required(ErrorMessage = "Alle felter skal udfyldes")]
         [StringLength(8)]
         public string Telefon { get; set; }
 
         [BindProperty]
+        [Required(ErrorMessage = "Alle felter skal udfyldes")]
         public string Addresse { get; set; }
 
+
         [BindProperty, DataType(DataType.Password)]
+        [Required(ErrorMessage = "Alle felter skal udfyldes")]
         public string Password { get; set; }
 
         private PasswordHasher<string> passwordHasher;
@@ -68,12 +75,18 @@ namespace ZealandPetShop.Pages.Login
         public async Task<IActionResult> OnPostAsync()
         {
 
-            
+
             if (!ModelState.IsValid)
             {
                 errorMessage = "Alle felter skal udfyldes korrekt";
                 return Page();
             }
+
+            //if (await _userService.EmailExistingAsync(Email)) 
+            //{
+            //    errorMessage = "Email findes allerede!";
+            //    return Page();
+            //}
             await _userService.AddUser(new User(Email, passwordHasher.HashPassword(null, Password), Fornavn, Efternavn, Telefon, Addresse)); ;
 
             return RedirectToPage("/Index");

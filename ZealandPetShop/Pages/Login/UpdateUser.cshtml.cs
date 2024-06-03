@@ -22,6 +22,8 @@ namespace ZealandPetShop.Pages.Login
         [BindProperty, DataType(DataType.Password)]
         public string Password { get; set; }
 
+        //public string errorMessage = "";
+
         // Konstruktor for at initialisere UserService
         public UpdateUserModel(UserService userService)
         {
@@ -43,6 +45,12 @@ namespace ZealandPetShop.Pages.Login
         // Metode, der kaldes ved POST-forespørgelser
         public async Task<IActionResult> OnPostAsync()
         {
+            //if (await _userService.EmailExistingAsync(EUser.Email))
+            //{
+            //    errorMessage = "Email findes allerede!";
+            //    return Page();
+            //}
+
             await _userService.UpdateUser(EUser);
 
             // Returnerer Page visning
