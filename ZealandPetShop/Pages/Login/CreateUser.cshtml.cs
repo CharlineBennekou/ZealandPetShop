@@ -17,19 +17,21 @@ namespace ZealandPetShop.Pages.Login
         /// Properties for user skal opfylde at logge ind
         /// </summary>
         [BindProperty]
-        public string FirstName { get; set; }
+        public string Fornavn { get; set; }
 
         [BindProperty]
-        public string LastName { get; set; }
+        public string Efternavn { get; set; }
 
         [BindProperty]
+        [Required(ErrorMessage = "Email skal udfyldes!")]
         public string Email { get; set; }
 
         [BindProperty]
-        public string Phone { get; set; }
+        [StringLength(8)]
+        public string Telefon { get; set; }
 
         [BindProperty]
-        public string Address { get; set; }
+        public string Addresse { get; set; }
 
         [BindProperty, DataType(DataType.Password)]
         public string Password { get; set; }
@@ -37,6 +39,7 @@ namespace ZealandPetShop.Pages.Login
         private PasswordHasher<string> passwordHasher;
 
         //Konstruktør
+        //UserService initialliseres ved hjælp af depency injektion
         public CreateUserModel(UserService userService)
         {
             _userService = userService;
@@ -60,6 +63,8 @@ namespace ZealandPetShop.Pages.Login
         /// Omdirigering: Til sidst omdigere metoden brugeren til index-siden, hvis brugeroprettelsen er gennemført.
         /// </summary>
         /// <returns></returns>
+
+        
         public async Task<IActionResult> OnPostAsync()
         {
 
@@ -69,7 +74,7 @@ namespace ZealandPetShop.Pages.Login
                 errorMessage = "Alle felter skal udfyldes korrekt";
                 return Page();
             }
-            await _userService.AddUser(new User(Email, passwordHasher.HashPassword(null, Password), FirstName, LastName, Phone, Address)); ;
+            await _userService.AddUser(new User(Email, passwordHasher.HashPassword(null, Password), Fornavn, Efternavn, Telefon, Addresse)); ;
 
             return RedirectToPage("/Index");
         }

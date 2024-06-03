@@ -59,7 +59,7 @@
                     </ul>
                     @if (!User.Identity.IsAuthenticated)
                     {
-                        <a class="nav-link btn btn-link" asp-area="" asp-page="/LogIn/CreateUser">Become a member </a>
+                        <a class="nav-link btn btn-link" asp-area="" asp-page="/LogIn/CreateUser">Bliv Medlem Her </a>
                     }
                     
                      @if (User.Identity.IsAuthenticated) //tjekker om bruger er logget ind
@@ -70,12 +70,12 @@
                         </p>
                         <a class="nav-link btn btn-link" asp-area="" asp-page="/Login/LoggedInUser" asp-route-id="@int.Parse(Context.User.FindFirst(ClaimTypes.NameIdentifier)?.Value)">
                             <div class="profileb">
-                                <button type="button" class="profilebutton"><b>My Profile</b></button>
+                                <button type="button" class="profilebutton"><b>Min Profil</b></button>
                             </div>
                         </a>
                         <a asp-page="Order/GetOrder" asp-route-id="@int.Parse(Context.User.FindFirst(ClaimTypes.NameIdentifier)?.Value)">
                            <div class="profileb">
-                              <button type="button" class="detailinfo"><b>My Cart</b></button>
+                              <button type="button" class="detailinfo"><b>Min kurv</b></button>
                            </div>
                         </a>
                       
