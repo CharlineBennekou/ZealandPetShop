@@ -44,6 +44,7 @@ namespace ZealandPetShop.Pages.Item
             return Page(); // Returnerer den opdaterede side.
         }
 
+
         // Metode til at tilføje et item til indkøbskurven.
         public async Task<IActionResult> OnPostAddToCart(int id)
         {
