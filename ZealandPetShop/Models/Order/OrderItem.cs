@@ -18,22 +18,13 @@ namespace ZealandPetShop.Models.Order
         public int OrderId { get; set; }
         [Required]
         public int Quantity { get; set; }
-        [Required]
-        public int UserId { get; set; }
-        public Order.Status State { get; set; }
 
+   
         public OrderItem()
         {
         }
 
-        public OrderItem(int id, int itemid, int userid, int quantity)
-        {
-            id = Id;
-            ItemId = itemid;
-            UserId = userid;
-            Quantity = quantity;
-
-        }
+        
         //nav prop
         [ForeignKey("ItemId")]
         public Item Item { get; set; }
