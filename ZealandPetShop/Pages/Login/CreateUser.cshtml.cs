@@ -60,7 +60,7 @@ namespace ZealandPetShop.Pages.Login
 
         public string errorMessage = "";
 
-        private User user;
+        
 
 
         /// <summary>
