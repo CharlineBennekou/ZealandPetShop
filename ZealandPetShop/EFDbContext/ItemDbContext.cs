@@ -14,7 +14,9 @@ namespace ZealandPetShop.EFDbContext
         //Encrypt=False
 
         public DbSet<Item> Items { get; set; }
+
         public DbSet<User> Users { get; set; }
+
         public DbSet<OrderItem> OrderItems { get; set; }
         public DbSet<Order> Order { get; set; }
     }

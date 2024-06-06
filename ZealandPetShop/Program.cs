@@ -5,11 +5,13 @@ using ZealandPetShop.Models.Login;
 using ZealandPetShop.Models.Shop;
 using ZealandPetShop.Models.Order;
 using ZealandPetShop.Services;
+using Microsoft.AspNetCore.Identity;
 
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+
 builder.Services.AddRazorPages();
 builder.Services.AddDbContext<ItemDbContext>(); //en context
 builder.Services.AddHttpContextAccessor(); //HttpContext til at access user's info
@@ -27,6 +29,7 @@ builder.Services.AddTransient<DbGenericService<Item>, DbGenericService<Item>>();
 builder.Services.AddTransient<DbGenericService<User>, DbGenericService<User>>();
 builder.Services.AddTransient<DbGenericService<OrderItem>, DbGenericService<OrderItem>>();
 builder.Services.AddTransient<DbGenericService<Order>, DbGenericService<Order>>();
+
 
 
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(cookieOptions => {
