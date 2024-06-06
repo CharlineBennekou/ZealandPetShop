@@ -87,7 +87,7 @@ namespace ZealandPetShop.Pages.Login
             //    errorMessage = "Email findes allerede!";
             //    return Page();
             //}
-            await _userService.AddUser(new User(Email, passwordHasher.HashPassword(null, Password), Fornavn, Efternavn, Telefon, Addresse)); ;
+
 
             return RedirectToPage("/Index");
         }
