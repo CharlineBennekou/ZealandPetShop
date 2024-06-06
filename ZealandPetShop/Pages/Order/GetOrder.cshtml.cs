@@ -57,12 +57,6 @@ namespace ZealandPetShop.Pages.Order
         public async Task<IActionResult> OnPostBestil(int id)
         {
             _orderService.MarkAsOrdered(id);
-
-            //Vi bliver nødt til at assign vores Items, order og orderitems med data før vi redirecter, da der ellers kommer null exception.
-            int userid = int.Parse(_httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier)?.Value);
-            //Items = _itemService.GetItems(); //Henter alle items
-            //Order = _orderService.GetOrderCartByUserIdAsync(userid).Result;
-            //OrderItems = _cartService.GetOrderItemsByOrderIdAsync(Order.Id).Result;
             return Page();
         }
  
