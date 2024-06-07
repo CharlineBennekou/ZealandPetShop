@@ -82,13 +82,13 @@ namespace ZealandPetShop.Pages.Login
                 return Page();
             }
 
-            //if (await _userService.EmailExistingAsync(Email)) 
-            //{
-            //    errorMessage = "Email findes allerede!";
-            //    return Page();
-            //}
+            if (await _userService.EmailInUseAsync(Email))
+            {
+                errorMessage = "Email er allerede i brug. Indtast venligst en anden email addresse.";
+                return Page();
+            }
 
-
+            await _userService.AddUser(new User(Email, passwordHasher.HashPassword(null, Password), Fornavn, Efternavn, Telefon, Addresse)); ;
             return RedirectToPage("/Index");
         }
     }

@@ -136,5 +136,12 @@ namespace ZealandPetShop.Services
             return null;
         }
 
+        public Task<bool> EmailInUseAsync(string email) //Metode bruges i create user til at tjekke om en bruger allerede bruger den indtastede email
+        {
+            return Task.FromResult(_users.Any(u => u.Email == email)); //Returnerer true hviss den finder en user med den indtastede email
+
+
+        }
+
     }
 }
