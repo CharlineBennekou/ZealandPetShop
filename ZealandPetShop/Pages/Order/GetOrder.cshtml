@@ -17,37 +17,47 @@
                                     <div class="panel-heading">
                                         <h2><strong>Indkøbskurv</strong></h2>
                                     </div>
-
-                                    @foreach (var OrderItem in Model.OrderItems) //foreach loop til at hente alle kundens orderitems
+                                    @if (Model.OrderItems != null)
                                     {
-                                        <hr />
-                                        <div class="panel-body">
-                                            <div class="row">
-                                                @{
-                                                  var item = Model.GetItemById(OrderItem.ItemId); //finder den matchende item til hvert itemId
-                                                }
-                                                <div class="col-md-2"><img src=@item.ImagePath class="media-object img-thumbnail" /></div>
-                                                <div class="col-md-10">
-                                                    <div class="row">
-                                                        <div class="col-md-12">
-                                                            <span class="label label-info">@item.Name</span><br />
-                                                            Mængde: @OrderItem.Quantity <br /> @item.Price,- <br />
+                                        @foreach (var OrderItem in Model.OrderItems) //foreach loop til at hente alle kundens orderitems
+                                        {
+                                            <hr />
+                                            <div class="panel-body">
+                                                <div class="row">
+                                                    @{
+                                                        var item = Model.GetItemById(OrderItem.ItemId); //finder den matchende item til hvert itemId
+                                                    }
+                                                    <div class="col-md-2"><img src="@item.ImagePath" class="media-object img-thumbnail" /></div>
+                                                    <div class="col-md-10">
+                                                        <div class="row">
+                                                            <div class="col-md-12">
+                                                                <span class="label label-info">@item.Name</span><br />
+                                                                Mængde: @OrderItem.Quantity <br /> @item.Price,- <br />
+                                                            </div>
                                                         </div>
-                                                        <div class="col-md-12">orderitem id: @OrderItem.Id in Order id: <a href="#">@OrderItem.OrderId </a></div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-12">
-                                                @* <form method="post" asp-page-handler="Delete" asp-route-id="@OrderItem.Id">
-                                                    <button type="submit" class="btn btn-danger"><i class="bi bi-trash"></i> Delete</button>
-                                                </form> *@
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <form method="post" asp-page-handler="DeleteOrderItem" asp-route-id="@OrderItem.Id">
+                                                        <button type="submit" class="btn btn-danger"><i class="bi bi-trash"></i> Delete</button>
+                                                    </form>
+                                                </div>
                                             </div>
-                                        </div>
+                                        }
 
+                                        <hr />
+                                        <form align="right" method="post" asp-page-handler="Bestil" asp-route-id="@Model.Order.Id">
+                                            <button type="submit" class="btn btn-danger"><i class="bi bi-trash"></i> Bestil</button>
+                                        </form>
                                     }
-                                    <hr />
+                                    else
+                                    {
+                                        <h2>Tak for din bestilling. Du får en mail med ordreinformationer inden for få minutter. :)</h2>
+                                    }
+
+                                   
                                 </div>
                             </div>
                         </div>

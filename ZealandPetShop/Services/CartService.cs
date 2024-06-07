@@ -1,6 +1,7 @@
 ﻿using Microsoft.IdentityModel.Tokens;
 using System.Linq;
 using System.Security.Claims;
+using ZealandPetShop.EFDbContext;
 using ZealandPetShop.Migrations;
 using ZealandPetShop.MockData;
 using ZealandPetShop.Models.Login;
@@ -19,11 +20,14 @@ namespace ZealandPetShop.Services
         return _dbService.GetAllObjectsAsync().Result.ToList();
         }
 
-        public async Task<List<OrderItem>> GetCartItemsByUserId(int userId)
+        public async Task<List<OrderItem>> GetOrderItemsByOrderIdAsync(int orderId)
         {
-            var orderItems = await _dbService.GetAllObjectsAsync();
-            var cartItems = orderItems.Where(orderItem => orderItem.UserId == userId && orderItem.State == Order.Status.Cart).ToList(); //LINQ sortering for at finde alle orderitems som matcher userid og er i Cart state
-            return cartItems;
+            IEnumerable<OrderItem> orderItems = await _dbService.GetAllObjectsAsync();
+            List<OrderItem> orderItemsByOrderId = orderItems
+                .Where(orderitem => orderitem.OrderId == orderId)
+                .ToList();
+
+            return orderItemsByOrderId;
         }
 
 
@@ -38,14 +42,15 @@ namespace ZealandPetShop.Services
         public async Task AddItemToCart(int itemId) //Metode til at tilføje items
         {
             // Finder UserId på bruger som er logget ind og laver det om til en int
-            var customerId = int.Parse(_httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier)?.Value);
+            int customerId = int.Parse(_httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier)?.Value);
 
             //Get Cart returnerer eksisterende cart eller laver en ny cart som den returnerer
-            var cart = await GetCartAsync(customerId);
+            Order cart = await _orderService.GetOrderCartByUserIdAsync(customerId);
 
             // Tjekker om den valgte item allerede findes i brugerens cart
-            var existingCartItem = (await _dbService.GetAllObjectsAsync())
-                .FirstOrDefault(c => c.UserId == customerId && c.ItemId == itemId && c.State == Order.Status.Cart);
+            OrderItem existingCartItem = (
+                await _dbService.GetAllObjectsAsync()).
+                FirstOrDefault(c => c.OrderId == cart.Id && c.ItemId == itemId);
 
             if (existingCartItem != null)
             {
@@ -56,13 +61,11 @@ namespace ZealandPetShop.Services
             else
             {
                 // Hvis den valgte item ikke findes i cart endnu, så laves der en ny orderitem
-                var newCartItem = new OrderItem
+                OrderItem newCartItem = new OrderItem
                 {
                     OrderId = cart.Id,
-                    UserId = customerId,
                     ItemId = itemId,
-                    Quantity = 1,
-                    State = Order.Status.Cart
+                    Quantity = 1
                 };
 
                 await _dbService.AddObjectAsync(newCartItem);
@@ -70,20 +73,32 @@ namespace ZealandPetShop.Services
             }
 
         }
-        private async Task<Order> GetCartAsync(int userId) //hjælpe metode til AddToCart
+        //private async Task<Order> GetCartAsync(int userId) //hjælpe metode til AddToCart
+        //{
+        //    Order cart; 
+        //    var orders = _orderService.GetOrdersAsync().Result.ToList(); //Henter orders vha. orderservice
+
+        //    cart = orders.FirstOrDefault(o => o.UserId == userId && o.State == Order.Status.Cart); //LINQ sortering til at finde ordre med vores userid og cart state
+
+        //    if (cart == null) //Hvis den ik fandt en ordre laves en ny ordre
+        //    {
+        //        cart = new Order { State = Order.Status.Cart, UserId = userId };
+        //        await _orderService.CreateOrderAsync(cart);
+        //    }
+
+        //    return cart; //Returnerer enten den ordre som blev fundet vha. LINQ eller den ordre som blev skabt
+        //}
+
+
+        public async Task DeleteOrderItemAsync(int id)
         {
-            Order cart; 
-            var orders = _orderService.GetOrdersAsync().Result.ToList(); //Henter orders vha. orderservice
-
-            cart = orders.FirstOrDefault(o => o.UserId == userId && o.State == Order.Status.Cart); //LINQ sortering til at finde ordre med vores userid og cart state
-
-            if (cart == null) //Hvis den ik fandt en ordre laves en ny ordre
+            var orderItem = await _dbService.GetObjectByIdAsync(id);
+            if (orderItem != null)
             {
-                cart = new Order { State = Order.Status.Cart, UserId = userId };
-                await _orderService.CreateOrderAsync(cart);
+                await _dbService.DeleteObjectAsync(orderItem);
             }
-
-            return cart; //Returnerer enten den ordre som blev fundet vha. LINQ eller den ordre som blev skabt
         }
+
+
     }
 }

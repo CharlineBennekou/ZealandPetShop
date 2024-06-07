@@ -7,16 +7,14 @@ namespace ZealandPetShop.Services
 {
     public class UserService
     {
-        //private readonly UserManager<User> _userManager;
-        //private readonly SignInManager<User> _signInManager;
-        //private readonly RoleManager<IdentityRole> _roleManager;
-
+      
         //en privat PasswordHasher for User-objekter
         public PasswordHasher<UserService> passwordHasher;
         //en privat database service objekt
         private DbGenericService<User> _dbService;
         //Gemmer en liste af User-objekter
         public List<User> _users { get; }
+        private User user;
 
         
 
