@@ -61,9 +61,7 @@ namespace ZealandPetShop.Pages.Login
         public string errorMessage = "";
 
         
-
-
-        /// <summary>
+/// <summary>
         /// OnPostasyns-metoden håndtårer POST-andmodinger. Den udfører følgende trin:
         /// Metoden kontrollere først om modeltilstanden er gyldig. Hvis den ikke er gyldig, sætters en fejlmeddelelse ("Alle felter skal udfyldes korrekt") og siden retuneres med fejlmeddelelsen.
         /// Tilføjelse af User: Hvis modeltilstanden er gyldig, opretter metoden en ny bruger ved hjælp af UserService. Brugeren oprettes med hash-kode for adganskoden samt øverrige brugeroplysinger fra properties.
@@ -71,6 +69,7 @@ namespace ZealandPetShop.Pages.Login
         /// </summary>
         /// <returns></returns>
 
+       
         
         public async Task<IActionResult> OnPostAsync()
         {
@@ -93,3 +92,4 @@ namespace ZealandPetShop.Pages.Login
         }
     }
 }
+ 
