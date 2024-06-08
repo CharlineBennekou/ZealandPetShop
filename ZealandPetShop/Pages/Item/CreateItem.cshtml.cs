@@ -78,6 +78,7 @@ namespace ZealandPetShop.Pages.Item
             _itemService.AddItem(Item); // Tilføjer det nye item ved at kalde AddItem metoden fra ItemService.
             return RedirectToPage("/Item/GetAllItems"); // Omdirigerer brugeren til siden med alle items.
         }
+
     }
 
 }
