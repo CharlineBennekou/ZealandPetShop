@@ -1,9 +1,12 @@
 ﻿@page
 @model LogInModel
 <div class="container">
-    <div>
-        @Model.Message
-    </div>
+    @if (!string.IsNullOrEmpty(Model.Message)) //Besked hvis login fejler
+    {
+        <div class="alert alert-danger" role="alert">
+            @Model.Message
+        </div>
+    }
     <form method="post">
         <div class="form-group">
             <label asp-for="Email" class="col-form-label "></label>
