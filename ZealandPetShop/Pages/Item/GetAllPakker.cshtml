@@ -1,0 +1,65 @@
+﻿@page
+@model ZealandPetShop.Pages.Item.GetAllPakkerModel
+@{
+}
+
+<body>
+    <br />
+    <h1 class="product-title"><b>Alle Pakkerne</b></h1> <!-- Titel for siden -->
+    <br />
+    <br />
+
+    <div class="funktion-i-item">
+        <!-- Form til søgning efter produkter -->
+        <form method="post" class="search-form">
+            <div class="input-group mb-3">
+                <input asp-for="SearchString" class="form-control search-input"
+                       placeholder="Søg på produkt" /> <!-- Søgefelt -->
+                <input type="submit" asp-page-handler="Search"
+                       value="Search" class="btn btn-primary search-button" /> <!-- Søgeknap -->
+            </div>
+        </form>
+
+        <br />
+
+        <!-- Dropdown-menu til sortering -->
+        <div class="dropdown">
+            <button class="dropbtn">Sortér</button> <!-- Knap til at vise dropdown-menu -->
+            <div class="dropdown-content">
+                <!-- Link til at sortere produkterne efter pris (stigende) -->
+                <a data-toggle="tooltip" title="Sort By Price" asp-page-handler="SortByPrice"><h5>Billigeste Først</h5></a>
+                <!-- Link til at sortere produkterne efter pris (faldende) -->
+                <a data-toggle="tooltip" title="Sort By Descending Price" asp-page-handler="SortByPriceDescending"><h5>Dyreste Først</h5></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Container der indeholder alle produkterne -->
+    <div class="product-container">
+        @foreach (var item in Model.Items)
+        {
+            @if (item.Name != null && item.Name.Contains("pakke", StringComparison.OrdinalIgnoreCase))
+            {
+                <div class="product-card">
+                    <!-- Kort for hvert produkt -->
+                    <div class="product-box">
+                        <div class="image-item">
+                            <img src="@item.ImagePath" alt="@item.Id" class="image-image"> <!-- Produkt billede -->
+                        </div>
+                        <h2>@item.Name</h2> <!-- Produkt navn -->
+                        <p>@item.Price,-</p> <!-- Produkt pris -->
+                        <!-- Form til at tilføje produktet til indkøbskurven -->
+                        <form method="post" asp-page-handler="AddToCart" asp-route-id="@item.Id">
+                            <button type="submit" class="addCart"><b>Tilføj til Kurv</b></button>
+                        </form>
+
+                        <!-- Link til produktdetaljer -->
+                        <a asp-page="ItemDetail" asp-route-id="@item.Id">
+                            <button type="submit" class="detail-info"><b>Se info</b></button>
+                        </a>
+                    </div>
+                </div>
+            }
+        }
+    </div>
+</body>
