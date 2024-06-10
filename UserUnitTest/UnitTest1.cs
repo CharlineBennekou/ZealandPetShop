@@ -41,8 +41,9 @@ namespace UserUnitTesting
             // Act & Assert
             Assert.ThrowsException<ArgumentException>(() => _user.Email = "invalid-email");
             Assert.ThrowsException<ArgumentException>(() => _user.Email = "admin");
-            _user.Email = "email@gmail.com";
-            Assert.AreEqual("email@gmail.com", _user.Email);
+
+            _user.Email = "email@gmail.com"; //act
+            Assert.AreEqual("email@gmail.com", _user.Email); //assert
         }
 
         [TestMethod]
