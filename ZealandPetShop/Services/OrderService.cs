@@ -47,7 +47,7 @@ namespace ZealandPetShop.Services
         public async Task MarkAsOrdered(int orderId) //id på kundes order
         {
             // Henter Order vha. OrderId
-            Order order = await _dbService.GetObjectByIdAsync(orderId); 
+            Order order = await _dbService.GetObjectByIdAsync(orderId);  
 
             if (order != null && order.State == Order.Status.Cart) //tjekker
             {
