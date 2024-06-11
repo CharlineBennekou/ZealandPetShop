@@ -46,10 +46,10 @@ namespace ZealandPetShop.Pages.Item
 
 
         // Metode til at tilføje et item til indkøbskurven.
-        public async Task<IActionResult> OnPostAddToCart(int id)
+        public async Task<IActionResult> OnPostAddToCart(int id) //id fra itemet vi har valgt
         {
-            Console.WriteLine("OnPostAddToCart"); // Debugging output.                                    
-          await  _cartService.AddItemToCart(id);  // Tilføjer item til indkøbskurven via cart service.
+            Console.WriteLine("OnPostAddToCart"); // Debugging liste som printer ud at den er begyndt addToCart metoden                                  
+          await  _cartService.AddItemToCart(id);  // bruger cartservice metoden (med id fra parameter)
             // Redirecter til ordre siden.
             return RedirectToPage("/Order/GetOrder");
         }

@@ -24,32 +24,32 @@ namespace ZealandPetShop.Services
 
         public async Task<Order> GetOrderCartByUserIdAsync(int userId)
         {
-            IEnumerable<Order> orders = await _dbService.GetAllObjectsAsync();
-            Order order = orders.FirstOrDefault(o => o.UserId == userId && o.State == Order.Status.Cart);
+            IEnumerable<Order> orders = await _dbService.GetAllObjectsAsync(); //laver en liste af orders, den assignest til at være alle orders i vores database
+            Order order = orders.FirstOrDefault(o => o.UserId == userId && o.State == Order.Status.Cart); //finder den order hvor userId matcher og status == cart 
 
-            if (order == null)
+            if (order == null) //null tjek - hvis kunden ikke allerede har en kurv
             {
-                // Opretter en ny ordre hvis ordre ikke findes
-                order = new Order
+                // Opretter en ny ordre hvis ordre(kurv) ikke findes
+                order = new Order //bruger denne konstroktor 
                 {
-                    UserId = userId,
+                    UserId = userId, //UserId skal være den vi fik fra vores cartService
                     State = Order.Status.Cart,
                     CreatedDate = DateTime.Now
                                               
                 };
 
-                await _dbService.AddObjectAsync(order);
+                await _dbService.AddObjectAsync(order); //tilføjer til databasen
             }
 
-            return order;
+            return order; //Vores order bliver nu retuneret til vores cartService
         }
 
-        public async Task MarkAsOrdered(int orderId)
+        public async Task MarkAsOrdered(int orderId) //id på kundes order
         {
             // Henter Order vha. OrderId
-            Order order = await _dbService.GetObjectByIdAsync(orderId);
+            Order order = await _dbService.GetObjectByIdAsync(orderId); 
 
-            if (order != null && order.State == Order.Status.Cart)
+            if (order != null && order.State == Order.Status.Cart) //tjekker
             {
                 // Markerer som ordered
                 order.State = Order.Status.Ordered;
@@ -61,7 +61,7 @@ namespace ZealandPetShop.Services
                 await _dbService.UpdateObjectAsync(order);
             }
        
-            else
+            else //hvis if tjekket fejlede får vi execption
             {
                 throw new ArgumentException("Ordre er enten null eller ikke en indkøbskurv.");
             }

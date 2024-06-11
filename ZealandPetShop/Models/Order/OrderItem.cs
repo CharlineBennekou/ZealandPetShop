@@ -20,7 +20,7 @@ namespace ZealandPetShop.Models.Order
         public int Quantity { get; set; }
 
    
-        public OrderItem()
+        public OrderItem() //bruger tomme til at oprette nyt orderitem
         {
         }
 

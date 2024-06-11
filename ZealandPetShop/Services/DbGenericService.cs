@@ -9,21 +9,21 @@ namespace ZealandPetShop.Services
     {
        
 
-        public async Task<IEnumerable<T>> GetAllObjectsAsync()
+        public async Task<IEnumerable<T>> GetAllObjectsAsync() //håndtere sql query til databasen
         {
-            using (var context = new ItemDbContext())
+            using (var context = new ItemDbContext()) //ny instant af itemDbContext
             {
-                return await context.Set<T>().AsNoTracking().ToListAsync();
+                return await context.Set<T>().AsNoTracking().ToListAsync(); //retunere vores liste af objektet -  - fra databasen 
                     
             }
         }
 
         public async Task AddObjectAsync(T obj)
         {
-            using (var context = new ItemDbContext())
+            using (var context = new ItemDbContext()) //ny instant af itemDbContext
             {
-                context.Set<T>().Add(obj);
-                await context.SaveChangesAsync();
+                context.Set<T>().Add(obj); //håndtere sql query til databasen
+                await context.SaveChangesAsync(); //gemmer de nye ændriger i vores database
             }
         }
 
@@ -38,19 +38,19 @@ namespace ZealandPetShop.Services
 
         public async Task UpdateObjectAsync(T obj)
         {
-            using (var context = new ItemDbContext())
+            using (var context = new ItemDbContext()) //laver en istanst af ItemDbContext
             {
-                context.Set<T>().Update(obj);
-                await context.SaveChangesAsync();
+                context.Set<T>().Update(obj); //laver sql query til vores database for at opdatere den
+                await context.SaveChangesAsync(); //gemmer de nye ændriger i vores database
             }
         }
 
         public async Task<T> GetObjectByIdAsync(int id)
         {
-            using (var context = new ItemDbContext())
+            using (var context = new ItemDbContext()) //laver en ny istans af itemDbcontext (bliver altid oprettet ny - transient)
             {
-                return await context.Set<T>().FindAsync(id);
-            }
+                return await context.Set<T>().FindAsync(id); //sql query til databasen
+            } //retunere den med den rigtige id (den fra metodens parameter)
         }
 
         public async Task SaveObjects(List<T> objs)

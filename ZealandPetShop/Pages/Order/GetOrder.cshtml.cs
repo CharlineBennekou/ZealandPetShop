@@ -54,9 +54,9 @@ namespace ZealandPetShop.Pages.Order
             return Page();
 
         }
-        public async Task<IActionResult> OnPostBestil(int id)
+        public async Task<IActionResult> OnPostBestil(int id) //id på kundens order
         {
-            _orderService.MarkAsOrdered(id);
+            _orderService.MarkAsOrdered(id); //metode fra orderService
             return Page();
         }
  

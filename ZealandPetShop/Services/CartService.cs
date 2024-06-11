@@ -34,29 +34,32 @@ namespace ZealandPetShop.Services
         public CartService(IHttpContextAccessor httpContextAccessor, DbGenericService<OrderItem> dbservice, OrderService orderService)
         {
             //Dependency injection
-            _httpContextAccessor = httpContextAccessor;
+            _httpContextAccessor = httpContextAccessor; //tilhøres fra razor pages
             _dbService = dbservice;
             _orderService = orderService;
             
         }
         public async Task AddItemToCart(int itemId) //Metode til at tilføje items
         {
-            // Finder UserId på bruger som er logget ind og laver det om til en int
-            int customerId = int.Parse(_httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier)?.Value);
+            // Finder cutsomerId på bruger som er logget ind og laver det om til en int
+            int customerId = int.Parse(_httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier)?.Value); 
 
             //Get Cart returnerer eksisterende cart eller laver en ny cart som den returnerer
-            Order cart = await _orderService.GetOrderCartByUserIdAsync(customerId);
+
+            //får fat i hvilken order det drejer sig om vha orderService, ved at give customerId vi fandt ovenpå
+            Order cart = await _orderService.GetOrderCartByUserIdAsync(customerId); 
+          
 
             // Tjekker om den valgte item allerede findes i brugerens cart
             OrderItem existingCartItem = (
-                await _dbService.GetAllObjectsAsync()).
-                FirstOrDefault(c => c.OrderId == cart.Id && c.ItemId == itemId);
+                await _dbService.GetAllObjectsAsync()). //Vi laver "existingCartItem" og assigner den til alle orderitems fra vores database
+                FirstOrDefault(c => c.OrderId == cart.Id && c.ItemId == itemId); //lamba - undersøger om orderId matcher med den vi har lavet, og om itemId matcher
 
             if (existingCartItem != null)
             {
                 // Hvis brugeren allerede har den valgte item i cart, så bliver der lagt en til quantity
                 existingCartItem.Quantity++;
-                await _dbService.UpdateObjectAsync(existingCartItem);
+                await _dbService.UpdateObjectAsync(existingCartItem); //opdatere vi databasen
             }
             else
             {
@@ -64,11 +67,11 @@ namespace ZealandPetShop.Services
                 OrderItem newCartItem = new OrderItem
                 {
                     OrderId = cart.Id,
-                    ItemId = itemId,
+                    ItemId = itemId, //"itemId" kommer fra onPost addtocart metoden
                     Quantity = 1
                 };
 
-                await _dbService.AddObjectAsync(newCartItem);
+                await _dbService.AddObjectAsync(newCartItem); //Tilføjer til databasen 
             
             }
 
